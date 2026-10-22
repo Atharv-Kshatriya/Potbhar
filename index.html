@@ -202,6 +202,22 @@
       animation: pulse-warm 6s ease-in-out infinite;
     }
 
+    /* Typewriter Cursor Styles */
+    .typewriter-cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1.15em;
+      margin-left: 3px;
+      vertical-align: -0.15em;
+      background-color: currentColor;
+      box-shadow: 0 0 10px currentColor;
+      animation: typewriter-blink 0.85s steps(2, start) infinite;
+    }
+    @keyframes typewriter-blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
     /* Atmospheric Rising Steam Particles */
     @keyframes steam-rise-1 {
       0% {
@@ -425,23 +441,40 @@
 <section class="relative min-h-[90vh] flex items-center justify-center bg-inverse-surface text-inverse-on-surface overflow-hidden" data-warmth="0" id="hero">
 <!-- Background Image with cold moody overlay -->
 <div class="absolute inset-0 z-0">
-<img alt="Empty stainless steel thali plate under a stark beam of light evoking poignant hunger with intense dramatic contrast" class="w-full h-full object-cover object-center filter brightness-50 contrast-125" src="https://lh3.googleusercontent.com/aida/AEtjO1UIMDy0VCHBTwAc9JcGKgk3bH0S9IDqxdtWneT45qNAU-CCK5oPkS6ZKsHvsM84Ez522dAcHZd7zbYidjA2kyTL8RNjTwaDJXxrV4k0t9qIgq-luPQvDDgxeblaTKxn_R-BJKvQGDpCrjPUOd2h6EhQ7UfvJ99B7TRwQ7a6aOU-PjE0uur_UzmPaEPbEDnv1a4nNMZW_qeKnrcEAMupLCdevT64hgI4JF7Q-D-0erW83UeDpKAqkmC17fA0"/>
+<img id="hero-bg-plate" alt="Empty stainless steel thali plate under a stark beam of light evoking poignant hunger with intense dramatic contrast" class="w-full h-full object-cover object-center filter brightness-50 contrast-125 transition-opacity duration-1000 opacity-100" src="https://lh3.googleusercontent.com/aida/AEtjO1UIMDy0VCHBTwAc9JcGKgk3bH0S9IDqxdtWneT45qNAU-CCK5oPkS6ZKsHvsM84Ez522dAcHZd7zbYidjA2kyTL8RNjTwaDJXxrV4k0t9qIgq-luPQvDDgxeblaTKxn_R-BJKvQGDpCrjPUOd2h6EhQ7UfvJ99B7TRwQ7a6aOU-PjE0uur_UzmPaEPbEDnv1a4nNMZW_qeKnrcEAMupLCdevT64hgI4JF7Q-D-0erW83UeDpKAqkmC17fA0"/>
+<img id="hero-bg-banquet" alt="A lavish evening banquet catering buffet table with gleaming brass vessels of untouched curries, rice, and desserts as workers prepare black disposal bags" class="absolute inset-0 w-full h-full object-cover object-center filter brightness-40 sepia-[0.35] transition-opacity duration-1000 opacity-0" src="https://lh3.googleusercontent.com/aida/AEtjO1X-ugvJ7gRvdJeN0OoiieCvoz7qG357p3vF53aRz7Q3rrAI9dWwcojqAXnkcN-WNJDd9k_Yuv7d3OeSm19wn9w4ypLAEehW975G98zT9AI_4IaOMX5_85dMfbBH4pVPoVBe_5FkpFC0vU9ZL3tIKwk6DxcCL9jk6lv9C7vVN3d51xxmoFSvheS6uLgs3iOUbgFRbO6I0yCjwXOccH8Ewnd7rvb1xXBEZ5HZp21uSNGbywKD9eiv-VXXPXol"/>
 <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface via-inverse-surface/80 to-transparent"></div>
 <div class="absolute inset-0 bg-[#0c121e]/40 mix-blend-multiply"></div>
 </div>
 <div class="relative z-10 w-full max-w-5xl mx-auto px-margin py-space-xl text-center flex flex-col items-center">
-<!-- Provenance Stamp -->
-<div class="inline-flex items-center gap-2 bg-inverse-surface/90 border border-outline/30 px-3 py-1.5 rounded-full mb-6 backdrop-blur-md">
-<span class="w-2 h-2 rounded-full bg-error animate-ping"></span>
-<span class="font-label-sm text-label-sm tracking-wider uppercase text-inverse-primary">The Immediate Reality · FSSAI Recovery Baseline</span>
-<span class="data-badge data-badge-verified">PROVENANCE §1.3</span>
+<!-- Interactive Reality Switcher Tabs -->
+<div class="flex items-center gap-2 mb-6 bg-black/60 backdrop-blur-md p-1.5 rounded-full border border-white/10 shadow-2xl">
+  <button id="reality-tab-0" onclick="switchReality(0, true)" class="px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all flex items-center gap-2 bg-white/20 text-white shadow-sm ring-1 ring-white/30 cursor-pointer">
+    <span class="w-2 h-2 rounded-full bg-error"></span>
+    <span>Reality 1: The Empty Plate</span>
+  </button>
+  <button id="reality-tab-1" onclick="switchReality(1, true)" class="px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all flex items-center gap-2 text-surface-dim hover:text-white cursor-pointer">
+    <span class="w-2 h-2 rounded-full bg-tertiary-container"></span>
+    <span>Reality 2: The Discarded Bin</span>
+  </button>
+  <button id="reality-pause-btn" onclick="toggleRealityAutoplay()" class="p-1.5 rounded-full text-surface-dim hover:text-white hover:bg-white/10 transition-all flex items-center justify-center ml-1 cursor-pointer" title="Pause / Resume animation">
+    <span class="material-symbols-outlined text-sm" id="reality-pause-icon">pause</span>
+  </button>
 </div>
-<h1 class="font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg text-white font-extrabold max-w-3xl tracking-tight leading-tight mb-6">
-          Tonight, somewhere, a plate is empty.
-        </h1>
-<p class="font-body-xl text-body-xl text-surface-dim max-w-2xl mx-auto mb-10 leading-relaxed font-light">
-          In community settlements across our cities, mothers turn out the lights early so hunger hurts a little less in the dark. Silence settles on bare floorboards.
-        </p>
+<!-- Provenance Stamp -->
+<div class="inline-flex items-center gap-2 bg-inverse-surface/90 border border-outline/30 px-3 py-1.5 rounded-full mb-6 backdrop-blur-md transition-all duration-300" id="hero-badge-container">
+<span class="w-2 h-2 rounded-full bg-error animate-ping" id="hero-badge-dot"></span>
+<span class="font-label-sm text-label-sm tracking-wider uppercase text-inverse-primary" id="hero-badge-title">The Immediate Reality · FSSAI Recovery Baseline</span>
+<span class="data-badge data-badge-verified" id="hero-badge-provenance">PROVENANCE §1.3</span>
+</div>
+<!-- Typewriter Headline Container -->
+<div class="min-h-[96px] sm:min-h-[84px] md:min-h-[76px] flex items-center justify-center mb-4">
+  <h1 id="typewriter-heading" class="font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg text-white font-extrabold max-w-3xl tracking-tight leading-tight inline">Tonight, somewhere, a plate is empty.</h1><span id="heading-cursor" class="typewriter-cursor text-error"></span>
+</div>
+<!-- Typewriter Body Container -->
+<div class="min-h-[110px] sm:min-h-[85px] md:min-h-[72px] flex items-start justify-center max-w-2xl mx-auto mb-10">
+  <p id="typewriter-body" class="font-body-xl text-body-xl text-surface-dim leading-relaxed font-light inline">In community settlements across our cities, mothers turn out the lights early so hunger hurts a little less in the dark. Silence settles on bare floorboards.</p><span id="body-cursor" class="typewriter-cursor text-error hidden"></span>
+</div>
 <!-- Context Micro Metrics -->
 <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full max-w-2xl bg-surface-container-lowest/10 backdrop-blur-md p-4 rounded-xl border border-white/10 text-left">
 <div>
@@ -482,12 +515,16 @@
 <span class="font-label-sm text-label-sm tracking-wider uppercase text-tertiary-fixed">The Midnight Banquet Discard</span>
 <span class="data-badge data-badge-estimate">URBAN AUDIT</span>
 </div>
-<h2 class="font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg font-bold text-[#ffdcc3] max-w-4xl mx-auto tracking-tight mb-6">
-          ...and somewhere else, a tray is going in the bin.
-        </h2>
-<p class="font-body-xl text-body-xl text-surface-dim max-w-2xl mx-auto mb-10 leading-relaxed">
-          At 23:45 outside grand banquet halls, four-tier copper chafing dishes brimming with paneer handi, biryani, and gulab jamun are quietly tipped into 60-liter black plastic garbage bags. Cooked with pride three hours ago. Destined for toxic landfills before dawn.
-        </p>
+<div class="min-h-[80px] sm:min-h-[72px] md:min-h-[64px] flex items-center justify-center mb-4">
+  <h2 id="overflow-heading" class="font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg font-bold text-[#ffdcc3] max-w-4xl mx-auto tracking-tight inline">
+    ...and somewhere else, a tray is going in the bin.
+  </h2><span id="overflow-heading-cursor" class="typewriter-cursor text-[#FF9F1C] hidden"></span>
+</div>
+<div class="min-h-[110px] sm:min-h-[85px] md:min-h-[72px] flex items-start justify-center max-w-2xl mx-auto mb-10">
+  <p id="overflow-body" class="font-body-xl text-body-xl text-surface-dim leading-relaxed inline">
+    At 23:45 outside grand banquet halls, four-tier copper chafing dishes brimming with paneer handi, biryani, and gulab jamun are quietly tipped into 60-liter black plastic garbage bags. Cooked with pride three hours ago. Destined for toxic landfills before dawn.
+  </p><span id="overflow-body-cursor" class="typewriter-cursor text-[#FF9F1C] hidden"></span>
+</div>
 <!-- Banquet Tally Grid -->
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left max-w-4xl mx-auto">
 <div class="bg-surface-container-lowest/10 backdrop-blur-md border border-outline-variant/20 p-6 rounded-xl">
@@ -1983,9 +2020,231 @@
       document.getElementById('res-compost').innerText = compostKg.toLocaleString() + ' kg / wk';
     }
 
+    // ==================== DUAL-REALITY CINEMATIC TYPEWRITER ====================
+    const realities = [
+      {
+        badgeTitle: "The Immediate Reality · FSSAI Recovery Baseline",
+        badgeDotClass: "bg-error",
+        badgeProvClass: "data-badge-verified",
+        badgeProvText: "PROVENANCE §1.3",
+        heading: "Tonight, somewhere, a plate is empty.",
+        headingColor: "text-white",
+        body: "In community settlements across our cities, mothers turn out the lights early so hunger hurts a little less in the dark. Silence settles on bare floorboards.",
+        cursorColor: "text-error",
+        bgPlateOpacity: "1",
+        bgBanquetOpacity: "0"
+      },
+      {
+        badgeTitle: "The Midnight Excess · Urban Catering Audit",
+        badgeDotClass: "bg-tertiary-container",
+        badgeProvClass: "data-badge-estimate",
+        badgeProvText: "URBAN AUDIT",
+        heading: "...and somewhere else, a tray is going in the bin.",
+        headingColor: "text-[#ffdcc3]",
+        body: "At 23:45 outside grand banquet halls, four-tier copper chafing dishes brimming with paneer handi, biryani, and gulab jamun are quietly tipped into 60-liter black plastic garbage bags. Cooked with pride three hours ago. Destined for toxic landfills before dawn.",
+        cursorColor: "text-[#FF9F1C]",
+        bgPlateOpacity: "0",
+        bgBanquetOpacity: "1"
+      }
+    ];
+
+    let currentRealityIdx = 0;
+    let isAutoplay = true;
+    let typewriterTimeouts = [];
+
+    function clearTypewriterTimeouts() {
+      typewriterTimeouts.forEach(t => clearTimeout(t));
+      typewriterTimeouts = [];
+    }
+
+    function scheduleTypewriterTimeout(fn, ms) {
+      const t = setTimeout(fn, ms);
+      typewriterTimeouts.push(t);
+      return t;
+    }
+
+    function switchReality(idx, manual = false) {
+      currentRealityIdx = idx;
+      clearTypewriterTimeouts();
+
+      const r = realities[idx];
+      const headingEl = document.getElementById('typewriter-heading');
+      const bodyEl = document.getElementById('typewriter-body');
+      const headingCursor = document.getElementById('heading-cursor');
+      const bodyCursor = document.getElementById('body-cursor');
+      const bgPlate = document.getElementById('hero-bg-plate');
+      const bgBanquet = document.getElementById('hero-bg-banquet');
+      const badgeTitle = document.getElementById('hero-badge-title');
+      const badgeDot = document.getElementById('hero-badge-dot');
+      const badgeProv = document.getElementById('hero-badge-provenance');
+
+      // Update tabs
+      for (let i = 0; i < realities.length; i++) {
+        const tab = document.getElementById(`reality-tab-${i}`);
+        if (tab) {
+          if (i === idx) {
+            tab.className = "px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all flex items-center gap-2 bg-white/20 text-white shadow-sm ring-1 ring-white/30 cursor-pointer";
+          } else {
+            tab.className = "px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all flex items-center gap-2 text-surface-dim hover:text-white cursor-pointer";
+          }
+        }
+      }
+
+      // Crossfade backgrounds
+      if (bgPlate) bgPlate.style.opacity = r.bgPlateOpacity;
+      if (bgBanquet) bgBanquet.style.opacity = r.bgBanquetOpacity;
+
+      // Update Badge
+      if (badgeTitle) badgeTitle.innerText = r.badgeTitle;
+      if (badgeDot) badgeDot.className = `w-2 h-2 rounded-full ${r.badgeDotClass} animate-ping`;
+      if (badgeProv) {
+        badgeProv.className = `data-badge ${r.badgeProvClass}`;
+        badgeProv.innerText = r.badgeProvText;
+      }
+
+      // Heading styling
+      if (headingEl) {
+        headingEl.className = `font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg font-extrabold max-w-3xl tracking-tight leading-tight inline ${r.headingColor}`;
+      }
+      if (headingCursor) {
+        headingCursor.className = `typewriter-cursor ${r.cursorColor}`;
+      }
+      if (bodyCursor) {
+        bodyCursor.className = `typewriter-cursor ${r.cursorColor} hidden`;
+      }
+
+      // Respect prefers-reduced-motion
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        if (headingEl) headingEl.innerText = r.heading;
+        if (bodyEl) bodyEl.innerText = r.body;
+        if (headingCursor) headingCursor.classList.add('hidden');
+        if (bodyCursor) bodyCursor.classList.remove('hidden');
+        return;
+      }
+
+      // Reset text
+      if (headingEl) headingEl.innerText = '';
+      if (bodyEl) bodyEl.innerText = '';
+      if (headingCursor) headingCursor.classList.remove('hidden');
+      if (bodyCursor) bodyCursor.classList.add('hidden');
+
+      let hIdx = 0;
+      function typeHeading() {
+        if (hIdx < r.heading.length) {
+          headingEl.innerText += r.heading.charAt(hIdx);
+          const ch = r.heading.charAt(hIdx);
+          hIdx++;
+          let delay = 34;
+          if (ch === ',' || ch === '.') delay += 70;
+          scheduleTypewriterTimeout(typeHeading, delay);
+        } else {
+          // Switch cursor to body
+          scheduleTypewriterTimeout(() => {
+            if (headingCursor) headingCursor.classList.add('hidden');
+            if (bodyCursor) bodyCursor.classList.remove('hidden');
+            let bIdx = 0;
+            function typeBody() {
+              if (bIdx < r.body.length) {
+                bodyEl.innerText += r.body.charAt(bIdx);
+                const ch = r.body.charAt(bIdx);
+                bIdx++;
+                let delay = 14;
+                if (ch === '.' || ch === ',') delay += 60;
+                scheduleTypewriterTimeout(typeBody, delay);
+              } else {
+                // Reading pause before auto cycling
+                if (isAutoplay) {
+                  scheduleTypewriterTimeout(() => {
+                    const nextIdx = (currentRealityIdx + 1) % realities.length;
+                    switchReality(nextIdx, false);
+                  }, 5200);
+                }
+              }
+            }
+            typeBody();
+          }, 260);
+        }
+      }
+      typeHeading();
+    }
+
+    function toggleRealityAutoplay() {
+      isAutoplay = !isAutoplay;
+      const icon = document.getElementById('reality-pause-icon');
+      if (icon) {
+        icon.innerText = isAutoplay ? 'pause' : 'play_arrow';
+      }
+      if (isAutoplay) {
+        const nextIdx = (currentRealityIdx + 1) % realities.length;
+        switchReality(nextIdx, false);
+      } else {
+        clearTypewriterTimeouts();
+      }
+    }
+
+    // Scroll trigger for Beat 2 (The Overflow)
+    function initOverflowTypewriter() {
+      const target = document.getElementById('overflow');
+      const hEl = document.getElementById('overflow-heading');
+      const bEl = document.getElementById('overflow-body');
+      const hCur = document.getElementById('overflow-heading-cursor');
+      const bCur = document.getElementById('overflow-body-cursor');
+      if (!target || !hEl || !bEl) return;
+
+      const fullH = hEl.innerText.trim();
+      const fullB = bEl.innerText.trim();
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      let triggered = false;
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting && !triggered) {
+            triggered = true;
+            obs.unobserve(entry.target);
+
+            hEl.innerText = '';
+            bEl.innerText = '';
+            if (hCur) hCur.classList.remove('hidden');
+
+            let hi = 0;
+            function stepH() {
+              if (hi < fullH.length) {
+                hEl.innerText += fullH.charAt(hi);
+                const ch = fullH.charAt(hi);
+                hi++;
+                let delay = 32;
+                if (ch === ',' || ch === '.') delay += 60;
+                setTimeout(stepH, delay);
+              } else {
+                if (hCur) hCur.classList.add('hidden');
+                if (bCur) bCur.classList.remove('hidden');
+                let bi = 0;
+                function stepB() {
+                  if (bi < fullB.length) {
+                    bEl.innerText += fullB.charAt(bi);
+                    const ch = fullB.charAt(bi);
+                    bi++;
+                    let delay = 14;
+                    if (ch === ',' || ch === '.') delay += 60;
+                    setTimeout(stepB, delay);
+                  }
+                }
+                setTimeout(stepB, 200);
+              }
+            }
+            stepH();
+          }
+        });
+      }, { threshold: 0.25 });
+      obs.observe(target);
+    }
+
     // Initialize calculator and scroll warmth observer
     window.addEventListener('DOMContentLoaded', () => {
       calculateImpact();
+      switchReality(0);
+      initOverflowTypewriter();
 
       // Emotional Arc Stage definitions per Playbook §1.1 & §4
       const warmthStages = [
