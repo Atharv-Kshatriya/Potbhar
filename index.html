@@ -218,6 +218,64 @@
       50% { opacity: 0; }
     }
 
+    /* Radar Sonar & Sweep Animations */
+    @keyframes radar-sweep {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .radar-sweep-beam {
+      transform-origin: center center;
+      animation: radar-sweep 4s linear infinite;
+    }
+    @keyframes sonar-wave {
+      0% { transform: scale(0.4); opacity: 0.9; }
+      100% { transform: scale(2.6); opacity: 0; }
+    }
+    .sonar-ring {
+      animation: sonar-wave 3s cubic-bezier(0, 0.4, 0.6, 1) infinite;
+    }
+    .sonar-ring-delay-1 {
+      animation: sonar-wave 3s cubic-bezier(0, 0.4, 0.6, 1) infinite 1s;
+    }
+    .sonar-ring-delay-2 {
+      animation: sonar-wave 3s cubic-bezier(0, 0.4, 0.6, 1) infinite 2s;
+    }
+
+    /* Paradox Scanner Laser Sweep */
+    @keyframes laser-sweep {
+      0%, 100% { left: 5%; }
+      50% { left: 95%; }
+    }
+    .laser-scan-line {
+      animation: laser-sweep 5s ease-in-out infinite;
+    }
+
+    /* Logistics Signal Pulse on Wire */
+    @keyframes packet-pulse {
+      0% { left: 0%; opacity: 0; }
+      15% { opacity: 1; }
+      85% { opacity: 1; }
+      100% { left: 100%; opacity: 0; }
+    }
+    .packet-dot-1 {
+      animation: packet-pulse 2.4s ease-in-out infinite;
+    }
+    .packet-dot-2 {
+      animation: packet-pulse 2.4s ease-in-out infinite 0.8s;
+    }
+    .packet-dot-3 {
+      animation: packet-pulse 2.4s ease-in-out infinite 1.6s;
+    }
+
+    /* Live Telemetry Digit Glow */
+    .telemetry-digit-pulse {
+      animation: digit-glow 0.25s ease-out;
+    }
+    @keyframes digit-glow {
+      0% { color: #ff6b6b; transform: scale(1.05); }
+      100% { color: inherit; transform: scale(1); }
+    }
+
     /* Atmospheric Rising Steam Particles */
     @keyframes steam-rise-1 {
       0% {
@@ -479,22 +537,100 @@
 <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full max-w-2xl bg-surface-container-lowest/10 backdrop-blur-md p-4 rounded-xl border border-white/10 text-left">
 <div>
 <span class="block font-label-sm text-label-sm text-surface-dim uppercase">Daily Deficit</span>
-<span class="font-headline-md text-headline-md text-white font-bold">190.7M</span>
+<span class="font-headline-md text-headline-md text-white font-bold" data-counter="190.7" data-suffix="M">190.7M</span>
 <span class="block text-[11px] text-surface-dim/80">undernourished people in India</span>
 </div>
 <div>
 <span class="block font-label-sm text-label-sm text-surface-dim uppercase">Unmet Need</span>
-<span class="font-headline-md text-headline-md text-white font-bold">38.4%</span>
+<span class="font-headline-md text-headline-md text-white font-bold" data-counter="38.4" data-suffix="%">38.4%</span>
 <span class="block text-[11px] text-surface-dim/80">children under 5 stunted (NFHS-5)</span>
 </div>
 <div class="col-span-2 sm:col-span-1 border-t sm:border-t-0 sm:border-l border-white/10 pt-2 sm:pt-0 sm:pl-4">
 <span class="block font-label-sm text-label-sm text-surface-dim uppercase">Emergency Status</span>
 <div class="flex items-center gap-1.5 mt-1">
-<span class="material-symbols-outlined text-error text-lg">crisis_alert</span>
+<span class="material-symbols-outlined text-error text-lg animate-pulse">crisis_alert</span>
 <span class="font-label-lg text-label-lg text-white font-bold">Active Deficit</span>
 </div>
 <span class="block text-[11px] text-surface-dim/80">every evening at 21:00 IST</span>
 </div>
+</div>
+
+<!-- ==================== LIVE CRISIS ACCUMULATOR (Hackathon / High Impact Ticker) ==================== -->
+<div class="w-full max-w-3xl mt-6 bg-black/60 backdrop-blur-xl border border-red-500/30 rounded-2xl p-5 shadow-2xl relative overflow-hidden text-left">
+  <!-- Subtle ambient pulse glow -->
+  <div class="absolute -top-12 -right-12 w-48 h-48 bg-red-600/10 rounded-full blur-2xl pointer-events-none animate-pulse"></div>
+
+  <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3 mb-4">
+    <div class="flex items-center gap-2">
+      <span class="relative flex h-2.5 w-2.5">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-error"></span>
+      </span>
+      <span class="text-xs font-mono font-bold tracking-wider text-red-400 uppercase">NATIONAL CRISIS ACCUMULATOR · LIVE TELEMETRY</span>
+    </div>
+    <div class="flex items-center gap-2 text-[11px] font-mono text-surface-dim">
+      <span>Duration on screen:</span>
+      <span id="session-timer" class="text-white font-bold bg-white/10 px-2.5 py-0.5 rounded border border-white/10">00:00</span>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+    <!-- Ticker 1 -->
+    <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+      <div class="text-[10px] font-mono text-surface-dim uppercase tracking-wider flex items-center justify-between">
+        <span>Food Dumped</span>
+        <span class="material-symbols-outlined text-[13px] text-error">delete_forever</span>
+      </div>
+      <div class="font-mono text-lg sm:text-xl md:text-2xl font-black text-white mt-1">
+        <span id="live-kg-counter">0</span> <span class="text-xs text-red-400 font-normal">kg</span>
+      </div>
+      <div class="text-[9px] font-mono text-surface-dim/70 mt-1">+2,156 kg / sec nationwide</div>
+    </div>
+
+    <!-- Ticker 2 -->
+    <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+      <div class="text-[10px] font-mono text-surface-dim uppercase tracking-wider flex items-center justify-between">
+        <span>Meals Wasted</span>
+        <span class="material-symbols-outlined text-[13px] text-tertiary-fixed">group_off</span>
+      </div>
+      <div class="font-mono text-lg sm:text-xl md:text-2xl font-black text-[#ffdcc3] mt-1">
+        <span id="live-meals-counter">0</span>
+      </div>
+      <div class="text-[9px] font-mono text-surface-dim/70 mt-1">400g safe portion each</div>
+    </div>
+
+    <!-- Ticker 3 -->
+    <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+      <div class="text-[10px] font-mono text-surface-dim uppercase tracking-wider flex items-center justify-between">
+        <span>Economic Loss</span>
+        <span class="material-symbols-outlined text-[13px] text-amber-400">payments</span>
+      </div>
+      <div class="font-mono text-lg sm:text-xl md:text-2xl font-black text-amber-300 mt-1">
+        ₹<span id="live-inr-counter">0</span>
+      </div>
+      <div class="text-[9px] font-mono text-surface-dim/70 mt-1">₹28,220 lost every second</div>
+    </div>
+
+    <!-- Ticker 4 -->
+    <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+      <div class="text-[10px] font-mono text-surface-dim uppercase tracking-wider flex items-center justify-between">
+        <span>CO₂e Methane</span>
+        <span class="material-symbols-outlined text-[13px] text-error">cloud</span>
+      </div>
+      <div class="font-mono text-lg sm:text-xl md:text-2xl font-black text-error mt-1">
+        <span id="live-co2-counter">0</span> <span class="text-xs text-error/70 font-normal">kg</span>
+      </div>
+      <div class="text-[9px] font-mono text-surface-dim/70 mt-1">Untreated landfill rot</div>
+    </div>
+  </div>
+
+  <div class="mt-3 pt-2.5 border-t border-white/10 flex items-center justify-between text-[11px] text-surface-dim">
+    <div class="flex items-center gap-1.5 text-error">
+      <span class="material-symbols-outlined text-xs">crisis_alert</span>
+      <span class="font-medium">Every passing second on this screen = hundreds of freshly cooked meals discarded.</span>
+    </div>
+    <span class="text-[10px] text-surface-dim/60 font-mono hidden md:inline">Source: UNEP & FSSAI National Audits</span>
+  </div>
 </div>
 <!-- Scroll Indicator -->
 <a class="mt-14 inline-flex flex-col items-center gap-2 text-surface-dim hover:text-white transition-colors group" href="#overflow">
@@ -527,28 +663,28 @@
 </div>
 <!-- Banquet Tally Grid -->
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left max-w-4xl mx-auto">
-<div class="bg-surface-container-lowest/10 backdrop-blur-md border border-outline-variant/20 p-6 rounded-xl">
+<div class="bg-surface-container-lowest/10 backdrop-blur-md border border-outline-variant/20 p-6 rounded-xl hover:border-tertiary-fixed/50 transition-colors">
 <div class="flex items-center justify-between mb-2">
 <span class="font-label-sm text-label-sm text-tertiary-fixed uppercase">Typical Big-Fat Wedding</span>
 <span class="data-badge data-badge-verified">FSSAI AUDIT</span>
 </div>
-<div class="font-headline-lg text-headline-lg font-bold text-white mb-1">15% – 22%</div>
+<div class="font-headline-lg text-headline-lg font-bold text-white mb-1"><span data-counter="15" data-suffix="%">15%</span> – <span data-counter="22" data-suffix="%">22%</span></div>
 <p class="font-body-md text-body-md text-surface-dim">Of prepared banquet volume remains unserved and directly discarded at closing.</p>
 </div>
-<div class="bg-surface-container-lowest/10 backdrop-blur-md border border-outline-variant/20 p-6 rounded-xl">
+<div class="bg-surface-container-lowest/10 backdrop-blur-md border border-outline-variant/20 p-6 rounded-xl hover:border-tertiary-fixed/50 transition-colors">
 <div class="flex items-center justify-between mb-2">
 <span class="font-label-sm text-label-sm text-tertiary-fixed uppercase">Single Event Loss</span>
 <span class="data-badge data-badge-estimate">ESTIMATE</span>
 </div>
-<div class="font-headline-lg text-headline-lg font-bold text-white mb-1">120 – 180 kg</div>
+<div class="font-headline-lg text-headline-lg font-bold text-white mb-1"><span data-counter="120">120</span> – <span data-counter="180" data-suffix=" kg">180 kg</span></div>
 <p class="font-body-md text-body-md text-surface-dim">High-protein, safe edible food lost forever in an 800-guest gathering.</p>
 </div>
-<div class="bg-surface-container-lowest/10 backdrop-blur-md border border-outline-variant/20 p-6 rounded-xl">
+<div class="bg-surface-container-lowest/10 backdrop-blur-md border border-outline-variant/20 p-6 rounded-xl hover:border-tertiary-fixed/50 transition-colors">
 <div class="flex items-center justify-between mb-2">
 <span class="font-label-sm text-label-sm text-tertiary-fixed uppercase">Methane Released</span>
 <span class="data-badge data-badge-verified">GHG IMPACT</span>
 </div>
-<div class="font-headline-lg text-headline-lg font-bold text-white mb-1">380 kg CO₂e</div>
+<div class="font-headline-lg text-headline-lg font-bold text-white mb-1"><span data-counter="380" data-suffix=" kg CO₂e">380 kg CO₂e</span></div>
 <p class="font-body-md text-body-md text-surface-dim">Emitted in decomposition per untreated batch tipped at Ghazipur / Deonar.</p>
 </div>
 </div>
@@ -572,45 +708,95 @@
           </p>
 </div>
 <!-- Split Image Banner & Analytical Infographic -->
-<div class="rounded-2xl overflow-hidden shadow-md border border-outline-variant bg-surface-container-lowest mb-12">
-<div class="relative h-[340px] md:h-[420px]">
+<div class="rounded-2xl overflow-hidden shadow-xl border border-outline-variant bg-surface-container-lowest mb-12 relative group">
+<div class="relative h-[360px] md:h-[440px]">
 <img alt="Split visual showcasing an opulent banquet dinner bathed in candlelit warmth on the left contrasted with families queuing silently in twilight for sustenance on the right" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1U-nx_geuL3YZN1iVFVAfTbe7Y57Q3uxbgH1viHeQAuj_asgVTeJa0NP5bMMcAwg_oRThHNUSEzGeMkr-jZa_IpWeWN3_fIiTHQIdlXlTRO-VwNJulEeWP_FSfq7dVNE6dms6WZ9NxkoQt0uoDqej7MWbpH3rG7CiE-Z6uOiYiECbbTJKbGYiqPePaLUMXDfVM3LEJEaIa3jCByihoCQzn0TKF8GUFX43mmJKa-p_olf0d0Hmv7k6vaLQQA"/>
-<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/30 flex items-end p-6 md:p-10">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full text-white">
-<div class="bg-black/60 backdrop-blur-md p-4 rounded-xl border border-white/20">
-<span class="font-label-sm text-label-sm text-tertiary-fixed-dim uppercase tracking-wider block">Urban Waste Axis</span>
-<div class="font-headline-md text-headline-md font-bold mt-1">78,000,000 Tonnes / Year</div>
+
+<!-- Animated Laser Scanning Line -->
+<div class="absolute top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-amber-400 to-transparent shadow-[0_0_20px_#f59e0b] laser-scan-line pointer-events-none z-20">
+  <div class="absolute top-4 left-1/2 -translate-x-1/2 bg-amber-500 text-black text-[9px] font-mono px-2 py-0.5 rounded-full uppercase font-bold tracking-widest whitespace-nowrap shadow-lg">
+    PARADOX RADAR · ACTIVE SCAN
+  </div>
+</div>
+
+<!-- Center Split Line Indicator -->
+<div class="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-white/40 hidden md:block z-10 pointer-events-none">
+  <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/80 text-white border border-white/30 rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-wider backdrop-blur-md">
+    THE 1.4 KM DIVIDE
+  </div>
+</div>
+
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/40 flex flex-col justify-end p-6 md:p-10 z-10">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full text-white mb-4">
+<div class="bg-black/70 backdrop-blur-md p-5 rounded-xl border border-tertiary-fixed/40 shadow-lg">
+<div class="flex items-center justify-between mb-1">
+  <span class="font-label-sm text-label-sm text-tertiary-fixed-dim uppercase tracking-wider font-mono flex items-center gap-1.5">
+    <span class="w-2 h-2 rounded-full bg-tertiary-fixed animate-ping"></span>
+    Urban Waste Axis (23:45 IST)
+  </span>
+  <span class="text-[10px] font-mono bg-tertiary-fixed/20 text-tertiary-fixed px-2 py-0.5 rounded">UNSERVED SURPLUS</span>
+</div>
+<div class="font-headline-md text-headline-md font-bold mt-1 text-[#ffdcc3]"><span data-counter="78000000" data-suffix=" Tonnes / Year">78,000,000 Tonnes / Year</span></div>
 <p class="font-body-md text-body-md text-surface-dim mt-1">Total household and catering surplus discarded annually across Indian urban centers.</p>
 </div>
-<div class="bg-black/60 backdrop-blur-md p-4 rounded-xl border border-white/20">
-<span class="font-label-sm text-label-sm text-secondary-fixed uppercase tracking-wider block">Community Deficit Axis</span>
-<div class="font-headline-md text-headline-md font-bold mt-1">21.4% Undernourishment Gap</div>
+
+<div class="bg-black/70 backdrop-blur-md p-5 rounded-xl border border-secondary-fixed/40 shadow-lg">
+<div class="flex items-center justify-between mb-1">
+  <span class="font-label-sm text-label-sm text-secondary-fixed uppercase tracking-wider font-mono flex items-center gap-1.5">
+    <span class="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
+    Community Deficit Axis (23:45 IST)
+  </span>
+  <span class="text-[10px] font-mono bg-secondary-fixed/20 text-secondary-fixed px-2 py-0.5 rounded">ACTIVE DEFICIT</span>
+</div>
+<div class="font-headline-md text-headline-md font-bold mt-1 text-white"><span data-counter="21.4" data-suffix="% Undernourishment Gap">21.4% Undernourishment Gap</span></div>
 <p class="font-body-md text-body-md text-surface-dim mt-1">Distance between minimum caloric need and actual consumption in vulnerable informal settlements.</p>
 </div>
 </div>
+
+<!-- Animated Logistics Signal Bridge -->
+<div class="bg-black/80 backdrop-blur-xl rounded-xl p-3.5 border border-white/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono">
+  <div class="flex items-center gap-2 text-[#ffdcc3]">
+    <span class="material-symbols-outlined text-sm">restaurant</span>
+    <span class="font-bold">Banquet Kitchen: 140kg hot food</span>
+  </div>
+
+  <div class="relative w-full sm:w-60 h-2 bg-white/10 rounded-full overflow-hidden flex items-center">
+    <div class="absolute inset-0 bg-gradient-to-r from-amber-500 via-primary-fixed to-green-500 opacity-60"></div>
+    <div class="absolute top-0 bottom-0 w-10 bg-white rounded-full blur-[2px] packet-dot-1"></div>
+    <div class="absolute top-0 bottom-0 w-10 bg-white rounded-full blur-[2px] packet-dot-2"></div>
+    <div class="absolute top-0 bottom-0 w-10 bg-white rounded-full blur-[2px] packet-dot-3"></div>
+  </div>
+
+  <div class="flex items-center gap-2 text-green-400">
+    <span class="material-symbols-outlined text-sm">home</span>
+    <span class="font-bold">Community Shelter: 350 diners</span>
+    <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+  </div>
+</div>
+
 </div>
 </div>
 </div>
 <!-- Verified Badged Metrics -->
 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
-<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant">
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant hover:border-primary transition-all shadow-sm">
 <span class="data-badge data-badge-verified">UNEP REPORT</span>
-<div class="font-headline-xl text-headline-xl font-bold text-primary mt-3">132 kg</div>
+<div class="font-headline-xl text-headline-xl font-bold text-primary mt-3"><span data-counter="132" data-suffix=" kg">132 kg</span></div>
 <span class="font-label-md text-label-md text-on-surface block mt-1">Food waste per capita per year in households globally</span>
 </div>
-<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant">
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant hover:border-tertiary transition-all shadow-sm">
 <span class="data-badge data-badge-live">CLIMATE LOSS</span>
-<div class="font-headline-xl text-headline-xl font-bold text-tertiary-container mt-3">8 - 10%</div>
+<div class="font-headline-xl text-headline-xl font-bold text-tertiary-container mt-3"><span data-counter="8">8</span> - <span data-counter="10" data-suffix="%">10%</span></div>
 <span class="font-label-md text-label-md text-on-surface block mt-1">Of global greenhouse gas emissions originate directly from food waste</span>
 </div>
-<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant">
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant hover:border-secondary transition-all shadow-sm">
 <span class="data-badge data-badge-verified">FSSAI STAT</span>
-<div class="font-headline-xl text-headline-xl font-bold text-secondary mt-3">₹89,000 Cr</div>
+<div class="font-headline-xl text-headline-xl font-bold text-secondary mt-3">₹<span data-counter="89000" data-suffix=" Cr">89,000 Cr</span></div>
 <span class="font-label-md text-label-md text-on-surface block mt-1">Economic value of agricultural and prepared food lost annually in India</span>
 </div>
-<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant">
+<div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant hover:border-outline transition-all shadow-sm">
 <span class="data-badge data-badge-estimate">RECOVERY RATIO</span>
-<div class="font-headline-xl text-headline-xl font-bold text-on-surface mt-3">&lt; 3.2%</div>
+<div class="font-headline-xl text-headline-xl font-bold text-on-surface mt-3">&lt; <span data-counter="3.2" data-suffix="%">3.2%</span></div>
 <span class="font-label-md text-label-md text-on-surface block mt-1">Current organized safe recovery of surplus food nationwide</span>
 </div>
 </div>
@@ -1498,6 +1684,81 @@
 <p class="font-body-xl text-body-xl text-surface-dim max-w-2xl mx-auto mb-10 leading-relaxed font-light">
           Whether you are an executive banquet chef closing a 1,000-person wedding tonight or an accredited community shelter needing fresh meals, our dispatch grid is live.
         </p>
+
+<!-- ==================== LIVE DISPATCH RADAR & OPERATIONS FEED ==================== -->
+<div class="max-w-4xl mx-auto mb-12 bg-black/60 backdrop-blur-xl border border-white/15 rounded-2xl p-6 text-left shadow-2xl relative overflow-hidden">
+  <!-- Subtle ambient green glow for active operations -->
+  <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-secondary/15 rounded-full blur-2xl pointer-events-none"></div>
+
+  <div class="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4 mb-4">
+    <div class="flex items-center gap-2.5">
+      <!-- Radar Sonar Pulse Beacon -->
+      <div class="relative w-7 h-7 flex items-center justify-center">
+        <span class="absolute w-full h-full rounded-full bg-secondary/30 sonar-ring"></span>
+        <span class="absolute w-full h-full rounded-full bg-secondary/30 sonar-ring-delay-1"></span>
+        <span class="w-3 h-3 rounded-full bg-secondary-fixed shadow-[0_0_10px_#95f8a7]"></span>
+      </div>
+      <div>
+        <div class="text-xs font-mono font-bold uppercase tracking-wider text-secondary-fixed flex items-center gap-1.5">
+          <span>Active Hyperlocal Dispatch Radar</span>
+          <span class="text-[10px] bg-secondary/20 text-secondary-fixed px-1.5 py-0.2 rounded font-sans">GRID ACTIVE</span>
+        </div>
+        <div class="text-[11px] text-surface-dim font-mono">14 Insulated EV Vans on Patrol · 3 Metro Clusters Connected</div>
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2 font-mono text-[11px] text-surface-dim bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
+      <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+      <span id="active-pings-counter">18 Transits Live</span>
+    </div>
+  </div>
+
+  <!-- Dynamic Live Rescue Transaction Feed -->
+  <div class="space-y-2.5 font-mono text-xs" id="dispatch-feed">
+    <div class="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 hover:border-secondary-fixed/30 transition-all">
+      <div class="flex items-center gap-3">
+        <span class="text-secondary-fixed text-base">🟢</span>
+        <div>
+          <span class="font-bold text-white">Van #04 (Indiranagar)</span>
+          <span class="text-surface-dim ml-1">→ 65kg hot surplus collected from Hotel Grand Sapphire</span>
+        </div>
+      </div>
+      <div class="text-right shrink-0">
+        <span class="text-[11px] text-secondary-fixed font-bold">68.2°C PASS</span>
+        <span class="block text-[10px] text-surface-dim/70">1 min ago</span>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 hover:border-secondary-fixed/30 transition-all">
+      <div class="flex items-center gap-3">
+        <span class="text-secondary-fixed text-base">🟢</span>
+        <div>
+          <span class="font-bold text-white">Van #11 (Dharavi Hub)</span>
+          <span class="text-surface-dim ml-1">→ 180 portions delivered &amp; verified at Sneha Sadan Shelter</span>
+        </div>
+      </div>
+      <div class="text-right shrink-0">
+        <span class="text-[11px] text-green-400 font-bold">INTAKE VERIFIED</span>
+        <span class="block text-[10px] text-surface-dim/70">4 mins ago</span>
+      </div>
+    </div>
+
+    <div class="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 hover:border-secondary-fixed/30 transition-all">
+      <div class="flex items-center gap-3">
+        <span class="text-amber-400 text-base">🟡</span>
+        <div>
+          <span class="font-bold text-white">Van #07 (BKC Mumbai)</span>
+          <span class="text-surface-dim ml-1">→ En route to Convention Center 800-guest wedding banquet</span>
+        </div>
+      </div>
+      <div class="text-right shrink-0">
+        <span class="text-[11px] text-amber-300 font-bold">ETA 5 MINS</span>
+        <span class="block text-[10px] text-surface-dim/70">Live GPS</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Dual Prominent Action Cards -->
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left mb-12">
 <!-- Action 1: Donors -->
@@ -2243,11 +2504,185 @@
       obs.observe(target);
     }
 
+    // ==================== LIVE CRISIS IMPACT ACCUMULATOR ====================
+    function initCrisisAccumulator() {
+      const startTime = Date.now();
+      const kgEl = document.getElementById('live-kg-counter');
+      const mealsEl = document.getElementById('live-meals-counter');
+      const inrEl = document.getElementById('live-inr-counter');
+      const co2El = document.getElementById('live-co2-counter');
+      const timerEl = document.getElementById('session-timer');
+
+      if (!kgEl || !mealsEl || !inrEl || !co2El || !timerEl) return;
+
+      function updateTicker() {
+        const elapsedSec = (Date.now() - startTime) / 1000;
+
+        // Rates: 68M tonnes/yr in India = ~2,156.4 kg/sec
+        const kg = Math.floor(elapsedSec * 2156.4);
+        const meals = Math.floor(kg / 0.4);
+        // ₹89,000 Cr/yr = ~₹28,220/sec
+        const inr = Math.floor(elapsedSec * 28220);
+        // 1.9 kg CO2e per kg food waste in open landfill
+        const co2 = Math.floor(kg * 1.9);
+
+        kgEl.innerText = kg.toLocaleString();
+        mealsEl.innerText = meals.toLocaleString();
+        inrEl.innerText = inr.toLocaleString();
+        co2El.innerText = co2.toLocaleString();
+
+        const mins = Math.floor(elapsedSec / 60);
+        const secs = Math.floor(elapsedSec % 60);
+        timerEl.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+      }
+
+      setInterval(updateTicker, 200);
+      updateTicker();
+    }
+
+    // ==================== ANIMATED METRIC COUNTERS ON SCROLL ====================
+    function initScrollCounters() {
+      const counters = document.querySelectorAll('[data-counter]');
+      if (!('IntersectionObserver' in window)) return;
+
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            obs.unobserve(el);
+
+            const targetVal = parseFloat(el.getAttribute('data-counter'));
+            const suffix = el.getAttribute('data-suffix') || '';
+            const prefix = el.getAttribute('data-prefix') || '';
+            const isFloat = targetVal % 1 !== 0;
+            const duration = 1600;
+            const startTime = performance.now();
+
+            function easeOutExpo(x) {
+              return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
+            }
+
+            function updateCount(currentTime) {
+              const elapsed = currentTime - startTime;
+              const progress = Math.min(elapsed / duration, 1);
+              const eased = easeOutExpo(progress);
+              const currentVal = targetVal * eased;
+
+              let formatted;
+              if (isFloat) {
+                formatted = currentVal.toFixed(1);
+              } else {
+                formatted = Math.floor(currentVal).toLocaleString();
+              }
+
+              el.textContent = `${prefix}${formatted}${suffix}`;
+
+              if (progress < 1) {
+                requestAnimationFrame(updateCount);
+              } else {
+                el.textContent = `${prefix}${isFloat ? targetVal.toFixed(1) : targetVal.toLocaleString()}${suffix}`;
+              }
+            }
+
+            requestAnimationFrame(updateCount);
+          }
+        });
+      }, { threshold: 0.25 });
+
+      counters.forEach(c => observer.observe(c));
+    }
+
+    // ==================== LIVE DISPATCH RADAR TELEMETRY CYCLER ====================
+    function initDispatchFeedCycler() {
+      const feed = document.getElementById('dispatch-feed');
+      const pingsCounter = document.getElementById('active-pings-counter');
+      if (!feed) return;
+
+      const simulatedEvents = [
+        {
+          van: "Van #02 (Bandra West)",
+          desc: "→ 80kg biryani & dessert rescued from Grand Sea Palace Banquet",
+          status: "66.5°C PASS",
+          statusClass: "text-secondary-fixed",
+          time: "Just Now",
+          dot: "🟢"
+        },
+        {
+          van: "Van #09 (Whitefield Hub)",
+          desc: "→ 220 portions delivered to St. Joseph Night Care Shelter",
+          status: "INTAKE VERIFIED",
+          statusClass: "text-green-400",
+          time: "2 mins ago",
+          dot: "🟢"
+        },
+        {
+          van: "Van #14 (Salt Lake City)",
+          desc: "→ FSSAI Thermal & visual screening approved at ITC Sonar Kitchen",
+          status: "71.0°C SEALED",
+          statusClass: "text-secondary-fixed",
+          time: "3 mins ago",
+          dot: "🟢"
+        },
+        {
+          van: "Van #05 (Connaught Place)",
+          desc: "→ Dispatched for late-night corporate banquet surplus (120kg)",
+          status: "IN TRANSIT",
+          statusClass: "text-amber-300",
+          time: "Live GPS",
+          dot: "🟡"
+        }
+      ];
+
+      let eventIndex = 0;
+      setInterval(() => {
+        const ev = simulatedEvents[eventIndex % simulatedEvents.length];
+        eventIndex++;
+
+        // Randomize active transits slightly to show live dynamism (17-22)
+        if (pingsCounter) {
+          const transits = 17 + Math.floor(Math.random() * 6);
+          pingsCounter.innerText = `${transits} Transits Live`;
+        }
+
+        const item = document.createElement('div');
+        item.className = "flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 hover:border-secondary-fixed/30 transition-all opacity-0 translate-y-2";
+        item.innerHTML = `
+          <div class="flex items-center gap-3">
+            <span class="${ev.statusClass} text-base">${ev.dot}</span>
+            <div>
+              <span class="font-bold text-white">${ev.van}</span>
+              <span class="text-surface-dim ml-1">${ev.desc}</span>
+            </div>
+          </div>
+          <div class="text-right shrink-0">
+            <span class="text-[11px] ${ev.statusClass} font-bold">${ev.status}</span>
+            <span class="block text-[10px] text-surface-dim/70">${ev.time}</span>
+          </div>
+        `;
+
+        feed.insertBefore(item, feed.firstChild);
+
+        // Animate in
+        requestAnimationFrame(() => {
+          item.classList.remove('opacity-0', 'translate-y-2');
+          item.classList.add('transition-all', 'duration-500', 'opacity-100', 'translate-y-0');
+        });
+
+        // Keep maximum 3 items
+        if (feed.children.length > 3) {
+          feed.removeChild(feed.lastChild);
+        }
+      }, 5500);
+    }
+
     // Initialize calculator and scroll warmth observer
     window.addEventListener('DOMContentLoaded', () => {
       calculateImpact();
       switchReality(0);
       initOverflowTypewriter();
+      initCrisisAccumulator();
+      initScrollCounters();
+      initDispatchFeedCycler();
 
       // Emotional Arc Stage definitions per Playbook §1.1 & §4
       const warmthStages = [
