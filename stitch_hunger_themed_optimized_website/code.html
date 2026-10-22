@@ -469,11 +469,11 @@
 </div>
 <!-- Typewriter Headline Container -->
 <div class="min-h-[96px] sm:min-h-[84px] md:min-h-[76px] flex items-center justify-center mb-4">
-  <h1 id="typewriter-heading" class="font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg text-white font-extrabold max-w-3xl tracking-tight leading-tight inline">Tonight, somewhere, a plate is empty.</h1><span id="heading-cursor" class="typewriter-cursor text-error"></span>
+  <h1 id="typewriter-heading" class="font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg text-white font-extrabold max-w-3xl tracking-tight leading-tight inline whitespace-pre-wrap">Tonight, somewhere, a plate is empty.</h1><span id="heading-cursor" class="typewriter-cursor text-error"></span>
 </div>
 <!-- Typewriter Body Container -->
 <div class="min-h-[110px] sm:min-h-[85px] md:min-h-[72px] flex items-start justify-center max-w-2xl mx-auto mb-10">
-  <p id="typewriter-body" class="font-body-xl text-body-xl text-surface-dim leading-relaxed font-light inline">In community settlements across our cities, mothers turn out the lights early so hunger hurts a little less in the dark. Silence settles on bare floorboards.</p><span id="body-cursor" class="typewriter-cursor text-error hidden"></span>
+  <p id="typewriter-body" class="font-body-xl text-body-xl text-surface-dim leading-relaxed font-light inline whitespace-pre-wrap">In community settlements across our cities, mothers turn out the lights early so hunger hurts a little less in the dark. Silence settles on bare floorboards.</p><span id="body-cursor" class="typewriter-cursor text-error hidden"></span>
 </div>
 <!-- Context Micro Metrics -->
 <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full max-w-2xl bg-surface-container-lowest/10 backdrop-blur-md p-4 rounded-xl border border-white/10 text-left">
@@ -516,12 +516,12 @@
 <span class="data-badge data-badge-estimate">URBAN AUDIT</span>
 </div>
 <div class="min-h-[80px] sm:min-h-[72px] md:min-h-[64px] flex items-center justify-center mb-4">
-  <h2 id="overflow-heading" class="font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg font-bold text-[#ffdcc3] max-w-4xl mx-auto tracking-tight inline">
+  <h2 id="overflow-heading" class="font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg font-bold text-[#ffdcc3] max-w-4xl mx-auto tracking-tight inline whitespace-pre-wrap">
     ...and somewhere else, a tray is going in the bin.
   </h2><span id="overflow-heading-cursor" class="typewriter-cursor text-[#FF9F1C] hidden"></span>
 </div>
 <div class="min-h-[110px] sm:min-h-[85px] md:min-h-[72px] flex items-start justify-center max-w-2xl mx-auto mb-10">
-  <p id="overflow-body" class="font-body-xl text-body-xl text-surface-dim leading-relaxed inline">
+  <p id="overflow-body" class="font-body-xl text-body-xl text-surface-dim leading-relaxed inline whitespace-pre-wrap">
     At 23:45 outside grand banquet halls, four-tier copper chafing dishes brimming with paneer handi, biryani, and gulab jamun are quietly tipped into 60-liter black plastic garbage bags. Cooked with pride three hours ago. Destined for toxic landfills before dawn.
   </p><span id="overflow-body-cursor" class="typewriter-cursor text-[#FF9F1C] hidden"></span>
 </div>
@@ -2104,7 +2104,10 @@
 
       // Heading styling
       if (headingEl) {
-        headingEl.className = `font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg font-extrabold max-w-3xl tracking-tight leading-tight inline ${r.headingColor}`;
+        headingEl.className = `font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg font-extrabold max-w-3xl tracking-tight leading-tight inline whitespace-pre-wrap ${r.headingColor}`;
+      }
+      if (bodyEl) {
+        bodyEl.className = `font-body-xl text-body-xl text-surface-dim leading-relaxed font-light inline whitespace-pre-wrap`;
       }
       if (headingCursor) {
         headingCursor.className = `typewriter-cursor ${r.cursorColor}`;
@@ -2115,25 +2118,25 @@
 
       // Respect prefers-reduced-motion
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        if (headingEl) headingEl.innerText = r.heading;
-        if (bodyEl) bodyEl.innerText = r.body;
+        if (headingEl) headingEl.textContent = r.heading;
+        if (bodyEl) bodyEl.textContent = r.body;
         if (headingCursor) headingCursor.classList.add('hidden');
         if (bodyCursor) bodyCursor.classList.remove('hidden');
         return;
       }
 
       // Reset text
-      if (headingEl) headingEl.innerText = '';
-      if (bodyEl) bodyEl.innerText = '';
+      if (headingEl) headingEl.textContent = '';
+      if (bodyEl) bodyEl.textContent = '';
       if (headingCursor) headingCursor.classList.remove('hidden');
       if (bodyCursor) bodyCursor.classList.add('hidden');
 
       let hIdx = 0;
       function typeHeading() {
         if (hIdx < r.heading.length) {
-          headingEl.innerText += r.heading.charAt(hIdx);
-          const ch = r.heading.charAt(hIdx);
           hIdx++;
+          headingEl.textContent = r.heading.slice(0, hIdx);
+          const ch = r.heading.charAt(hIdx - 1);
           let delay = 34;
           if (ch === ',' || ch === '.') delay += 70;
           scheduleTypewriterTimeout(typeHeading, delay);
@@ -2145,9 +2148,9 @@
             let bIdx = 0;
             function typeBody() {
               if (bIdx < r.body.length) {
-                bodyEl.innerText += r.body.charAt(bIdx);
-                const ch = r.body.charAt(bIdx);
                 bIdx++;
+                bodyEl.textContent = r.body.slice(0, bIdx);
+                const ch = r.body.charAt(bIdx - 1);
                 let delay = 14;
                 if (ch === '.' || ch === ',') delay += 60;
                 scheduleTypewriterTimeout(typeBody, delay);
@@ -2203,16 +2206,16 @@
             triggered = true;
             obs.unobserve(entry.target);
 
-            hEl.innerText = '';
-            bEl.innerText = '';
+            hEl.textContent = '';
+            bEl.textContent = '';
             if (hCur) hCur.classList.remove('hidden');
 
             let hi = 0;
             function stepH() {
               if (hi < fullH.length) {
-                hEl.innerText += fullH.charAt(hi);
-                const ch = fullH.charAt(hi);
                 hi++;
+                hEl.textContent = fullH.slice(0, hi);
+                const ch = fullH.charAt(hi - 1);
                 let delay = 32;
                 if (ch === ',' || ch === '.') delay += 60;
                 setTimeout(stepH, delay);
@@ -2222,9 +2225,9 @@
                 let bi = 0;
                 function stepB() {
                   if (bi < fullB.length) {
-                    bEl.innerText += fullB.charAt(bi);
-                    const ch = fullB.charAt(bi);
                     bi++;
+                    bEl.textContent = fullB.slice(0, bi);
+                    const ch = fullB.charAt(bi - 1);
                     let delay = 14;
                     if (ch === ',' || ch === '.') delay += 60;
                     setTimeout(stepB, delay);
