@@ -1,2828 +1,5655 @@
 <!DOCTYPE html>
 
+
+
 <html class="scroll-smooth" lang="en"><head>
+
 <meta charset="utf-8"/>
+
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
 <title>POTBHAR — Har Pet Bhare, Har Nivala Sambhale</title>
+
 <!-- Material Symbols Outlined -->
+
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
 <!-- Fonts: Outfit & Plus Jakarta Sans -->
+
 <link href="https://fonts.googleapis.com" rel="preconnect"/>
+
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+
 <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+
 <!-- Tailwind CSS v3 -->
+
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
 <script id="tailwind-config">
+
     tailwind.config = {
+
       darkMode: "class",
+
       theme: {
+
         extend: {
+
           "colors": {
+
             "on-secondary-container": "#007233",
+
             "on-secondary-fixed-variant": "#005323",
+
             "on-surface-variant": "#59413a",
+
             "background": "#f9f9ff",
+
             "on-primary": "#ffffff",
+
             "on-secondary": "#ffffff",
+
             "surface-variant": "#d8e3fb",
+
             "surface-tint": "#ac3400",
+
             "tertiary-fixed": "#ffdcc3",
+
             "on-tertiary-container": "#ffede1",
+
             "on-primary-fixed": "#390c00",
+
             "on-primary-container": "#ffece7",
+
             "inverse-on-surface": "#ecf1ff",
+
             "tertiary-container": "#a65900",
+
             "on-tertiary": "#ffffff",
+
             "on-background": "#111c2d",
+
             "error-container": "#ffdad6",
+
             "surface-container-high": "#dee8ff",
+
             "inverse-surface": "#263143",
+
             "surface-container": "#e7eeff",
+
             "secondary-fixed": "#95f8a7",
+
             "on-tertiary-fixed-variant": "#6e3900",
+
             "outline-variant": "#e1bfb5",
+
             "secondary": "#006d30",
+
             "error": "#ba1a1a",
+
             "inverse-primary": "#ffb59d",
+
             "surface": "#f9f9ff",
+
             "surface-dim": "#cfdaf2",
+
             "primary-fixed": "#ffdbd0",
+
             "primary": "#9b2f00",
+
             "tertiary-fixed-dim": "#ffb77d",
+
             "secondary-fixed-dim": "#79db8d",
+
             "on-surface": "#111c2d",
+
             "surface-container-low": "#f0f3ff",
+
             "on-primary-fixed-variant": "#832600",
+
             "surface-bright": "#f9f9ff",
+
             "on-error-container": "#93000a",
+
             "secondary-container": "#92f5a4",
+
             "on-tertiary-fixed": "#2f1500",
+
             "primary-container": "#c2410c",
+
             "on-secondary-fixed": "#00210a",
+
             "tertiary": "#824500",
+
             "on-error": "#ffffff",
+
             "surface-container-lowest": "#ffffff",
+
             "outline": "#8d7168",
+
             "primary-fixed-dim": "#ffb59d",
+
             "surface-container-highest": "#d8e3fb"
+
           },
+
           "borderRadius": {
+
             "DEFAULT": "0.25rem",
+
             "lg": "0.5rem",
+
             "xl": "0.75rem",
+
             "full": "9999px"
+
           },
+
           "spacing": {
+
             "margin-mobile": "1rem",
+
             "space-lg": "1.5rem",
+
             "space-md": "1rem",
+
             "gutter-mobile": "1rem",
+
             "space-xl": "2.5rem",
+
             "margin": "2.5rem",
+
             "gutter": "1.5rem",
+
             "space-xs": "0.25rem",
+
             "space-sm": "0.5rem"
+
           },
+
           "fontFamily": {
+
             "label-lg": ["Plus Jakarta Sans"],
+
             "label-sm": ["Plus Jakarta Sans"],
+
             "body-md": ["Plus Jakarta Sans"],
+
             "display-lg-mobile": ["Outfit"],
+
             "display-lg": ["Outfit"],
+
             "headline-sm": ["Outfit"],
+
             "headline-xl-mobile": ["Outfit"],
+
             "label-md": ["Plus Jakarta Sans"],
+
             "headline-lg": ["Outfit"],
+
             "headline-xl": ["Outfit"],
+
             "body-xl": ["Plus Jakarta Sans"],
+
             "headline-md": ["Outfit"],
+
             "body-lg": ["Plus Jakarta Sans"]
+
           },
+
           "fontSize": {
+
             "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+
             "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+
             "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+
             "display-lg-mobile": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.015em", "fontWeight": "700" }],
+
             "display-lg": ["56px", { "lineHeight": "64px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+
             "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "0em", "fontWeight": "600" }],
+
             "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+
             "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+
             "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+
             "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+
             "body-xl": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+
             "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.005em", "fontWeight": "600" }],
+
             "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+
           }
+
         }
+
       }
+
     };
+
   </script>
+
 <style>
+
     :root {
+
       --slate: #1B2430;
+
       --amber: #6B4E2E;
+
       --turmeric: #F2A900;
+
       --saffron: #FF9F1C;
+
       --cream: #FFF6E5;
+
       --green: #1F6F50;
+
       --warmth: 0; /* 0 = cold hunger slate, 1 = warm saffron relief */
+
       --bg-gradient: color-mix(in oklab, var(--slate), var(--cream) calc(var(--warmth) * 100%));
+
     }
+
+
 
     body {
+
       transition: background 0.7s cubic-bezier(0.16, 1, 0.3, 1), color 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+
     }
+
+
 
     .ambient-warmth-glow {
+
       position: fixed;
+
       inset: 0;
+
       pointer-events: none;
+
       z-index: 1;
+
       opacity: calc(0.15 + (var(--warmth) * 0.45));
+
       background: radial-gradient(circle at 50% 30%, 
+
         color-mix(in oklab, rgba(27, 36, 48, 0.05), rgba(255, 159, 28, 0.18) calc(var(--warmth) * 100%)),
+
         transparent 70%);
+
       transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), background 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+
     }
+
+
 
     @media (prefers-reduced-motion: reduce) {
+
       *, body, .ambient-warmth-glow, .steam-particle, .steam-plume {
+
         animation: none !important;
+
         transition: none !important;
+
       }
+
     }
+
+
 
     .material-symbols-outlined {
+
       font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+
       display: inline-block;
+
       vertical-align: middle;
+
       line-height: 1;
+
     }
+
     
+
     .data-badge {
+
       display: inline-flex;
+
       align-items: center;
+
       gap: 0.25rem;
+
       padding: 0.125rem 0.5rem;
+
       border-radius: 9999px;
+
       font-family: 'Plus Jakarta Sans', sans-serif;
+
       font-size: 10px;
+
       font-weight: 700;
+
       letter-spacing: 0.05em;
+
       text-transform: uppercase;
+
     }
+
     .data-badge-verified {
+
       background-color: #dcfce7;
+
       color: #15803d;
+
       border: 1px solid #86efac;
+
     }
+
     .data-badge-live {
+
       background-color: #fee2e2;
+
       color: #b91c1c;
+
       border: 1px solid #fca5a5;
+
     }
+
     .data-badge-estimate {
+
       background-color: #fef3c7;
+
       color: #b45309;
+
       border: 1px solid #fde68a;
+
     }
+
     .data-badge-demo {
+
       background-color: #e0e7ff;
+
       color: #3730a3;
+
       border: 1px solid #c7d2fe;
+
     }
+
     
+
     /* Warmth glow animations */
+
     @keyframes pulse-warm {
+
       0%, 100% { opacity: 0.2; transform: scale(1); }
+
       50% { opacity: 0.4; transform: scale(1.05); }
+
     }
+
     .warm-glow {
+
       animation: pulse-warm 6s ease-in-out infinite;
+
     }
+
+
 
     /* Typewriter Cursor Styles */
+
     .typewriter-cursor {
+
       display: inline-block;
+
       width: 3px;
+
       height: 1.15em;
+
       margin-left: 3px;
+
       vertical-align: -0.15em;
+
       background-color: currentColor;
+
       box-shadow: 0 0 10px currentColor;
+
       animation: typewriter-blink 0.85s steps(2, start) infinite;
+
     }
+
     @keyframes typewriter-blink {
+
       0%, 100% { opacity: 1; }
+
       50% { opacity: 0; }
+
     }
+
+
 
     /* Radar Sonar & Sweep Animations */
+
     @keyframes radar-sweep {
+
       0% { transform: rotate(0deg); }
+
       100% { transform: rotate(360deg); }
+
     }
+
     .radar-sweep-beam {
+
       transform-origin: center center;
+
       animation: radar-sweep 4s linear infinite;
+
     }
+
     @keyframes sonar-wave {
+
       0% { transform: scale(0.4); opacity: 0.9; }
+
       100% { transform: scale(2.6); opacity: 0; }
+
     }
+
     .sonar-ring {
+
       animation: sonar-wave 3s cubic-bezier(0, 0.4, 0.6, 1) infinite;
+
     }
+
     .sonar-ring-delay-1 {
+
       animation: sonar-wave 3s cubic-bezier(0, 0.4, 0.6, 1) infinite 1s;
+
     }
+
     .sonar-ring-delay-2 {
+
       animation: sonar-wave 3s cubic-bezier(0, 0.4, 0.6, 1) infinite 2s;
+
     }
+
+
 
     /* Paradox Scanner Laser Sweep */
+
     @keyframes laser-sweep {
+
       0%, 100% { left: 5%; }
+
       50% { left: 95%; }
+
     }
+
     .laser-scan-line {
+
       animation: laser-sweep 5s ease-in-out infinite;
+
     }
+
+
 
     /* Logistics Signal Pulse on Wire */
+
     @keyframes packet-pulse {
+
       0% { left: 0%; opacity: 0; }
+
       15% { opacity: 1; }
+
       85% { opacity: 1; }
+
       100% { left: 100%; opacity: 0; }
+
     }
+
     .packet-dot-1 {
+
       animation: packet-pulse 2.4s ease-in-out infinite;
+
     }
+
     .packet-dot-2 {
+
       animation: packet-pulse 2.4s ease-in-out infinite 0.8s;
+
     }
+
     .packet-dot-3 {
+
       animation: packet-pulse 2.4s ease-in-out infinite 1.6s;
+
     }
+
+
 
     /* Live Telemetry Digit Glow */
+
     .telemetry-digit-pulse {
+
       animation: digit-glow 0.25s ease-out;
+
     }
+
     @keyframes digit-glow {
+
       0% { color: #ff6b6b; transform: scale(1.05); }
+
       100% { color: inherit; transform: scale(1); }
+
     }
+
+
 
     /* Atmospheric Rising Steam Particles */
+
     @keyframes steam-rise-1 {
+
       0% {
+
         transform: translateY(0) translateX(0) scale(0.85);
+
         opacity: 0;
+
       }
+
       20% {
+
         opacity: 0.55;
+
       }
+
       50% {
+
         transform: translateY(-80px) translateX(-14px) scale(1.4);
+
         opacity: 0.35;
+
       }
+
       80% {
+
         opacity: 0.15;
+
       }
+
       100% {
+
         transform: translateY(-165px) translateX(18px) scale(2.1);
+
         opacity: 0;
+
       }
+
     }
+
+
 
     @keyframes steam-rise-2 {
+
       0% {
+
         transform: translateY(0) translateX(0) scale(0.9);
+
         opacity: 0;
+
       }
+
       25% {
+
         opacity: 0.6;
+
       }
+
       60% {
+
         transform: translateY(-95px) translateX(20px) scale(1.6);
+
         opacity: 0.3;
+
       }
+
       100% {
+
         transform: translateY(-185px) translateX(-12px) scale(2.4);
+
         opacity: 0;
+
       }
+
     }
+
+
 
     @keyframes steam-rise-3 {
+
       0% {
+
         transform: translateY(0) translateX(0) scale(0.7);
+
         opacity: 0;
+
       }
+
       30% {
+
         opacity: 0.5;
+
       }
+
       70% {
+
         transform: translateY(-110px) translateX(-24px) scale(1.7);
+
         opacity: 0.25;
+
       }
+
       100% {
+
         transform: translateY(-200px) translateX(10px) scale(2.6);
+
         opacity: 0;
+
       }
+
     }
+
+
 
     .steam-particle {
+
       position: absolute;
+
       border-radius: 50%;
+
       background: radial-gradient(circle, rgba(255, 245, 230, 0.7) 0%, rgba(255, 225, 185, 0.35) 45%, rgba(255, 255, 255, 0) 75%);
+
       filter: blur(14px);
+
       pointer-events: none;
+
       will-change: transform, opacity;
+
     }
+
+
 
     .steam-wisp-1 {
+
       width: 75px;
+
       height: 75px;
+
       left: 46%;
+
       bottom: 26%;
+
       animation: steam-rise-1 5.4s cubic-bezier(0.35, 0, 0.25, 1) infinite;
+
     }
+
+
 
     .steam-wisp-2 {
+
       width: 90px;
+
       height: 90px;
+
       left: 52%;
+
       bottom: 28%;
+
       animation: steam-rise-2 6.8s cubic-bezier(0.35, 0, 0.25, 1) infinite 1.6s;
+
     }
+
+
 
     .steam-wisp-3 {
+
       width: 65px;
+
       height: 65px;
+
       left: 49%;
+
       bottom: 24%;
+
       animation: steam-rise-3 5.9s cubic-bezier(0.35, 0, 0.25, 1) infinite 3.1s;
+
     }
+
+
 
     .steam-wisp-4 {
+
       width: 80px;
+
       height: 80px;
+
       left: 43%;
+
       bottom: 25%;
+
       animation: steam-rise-2 7.2s cubic-bezier(0.35, 0, 0.25, 1) infinite 4.2s;
+
     }
+
+
 
     .steam-wisp-5 {
+
       width: 100px;
+
       height: 100px;
+
       left: 55%;
+
       bottom: 27%;
+
       animation: steam-rise-1 6.3s cubic-bezier(0.35, 0, 0.25, 1) infinite 2.5s;
+
     }
+
+
 
     .steam-plume {
+
       position: absolute;
+
       left: 40%;
+
       bottom: 22%;
+
       width: 25%;
+
       height: 55%;
+
       pointer-events: none;
+
       opacity: 0.38;
+
       filter: blur(8px);
+
       mix-blend-mode: screen;
+
       transform-origin: bottom center;
+
       animation: steam-rise-3 8s ease-in-out infinite alternate;
+
     }
+
   </style>
+
 </head>
+
 <body class="bg-background text-on-surface antialiased overflow-x-hidden selection:bg-primary-container selection:text-on-primary relative">
+
 <!-- Ambient dynamic background warmth glow overlay -->
+
 <div aria-hidden="true" class="ambient-warmth-glow"></div>
+
 <!-- ==================== TOP NAVIGATION BAR ==================== -->
+
 <header class="bg-surface-container-lowest dark:bg-inverse-surface shadow-sm dark:shadow-none border-b border-outline-variant dark:border-outline docked full-width top-0 z-50 sticky">
+
 <div class="w-full max-w-7xl mx-auto px-margin flex items-center justify-between h-20">
+
 <!-- Brand Anchor -->
+
 <a class="flex items-center gap-2 group" href="#hero">
+
 <div class="w-9 h-9 rounded-lg bg-primary-container flex items-center justify-center text-on-primary shadow-sm group-hover:scale-105 transition-transform">
+
 <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">soup_kitchen</span>
+
 </div>
+
 <div>
+
 <span class="font-headline-md text-headline-md text-primary dark:text-inverse-primary tracking-tight font-bold block leading-none">POTBHAR</span>
+
 <span class="font-label-sm text-label-sm text-outline tracking-wider uppercase block mt-1">Surplus Recovery</span>
+
 </div>
+
 </a>
+
 <!-- Desktop Nav Links -->
+
 <nav class="hidden md:flex items-center gap-6">
+
 <a class="text-on-surface-variant dark:text-outline-variant font-label-lg text-label-lg hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors pb-1" href="#impact">The Crisis</a>
+
 <a class="text-on-surface-variant dark:text-outline-variant font-label-lg text-label-lg hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors pb-1" href="#how-it-works">How It Works</a>
+
 <a class="text-on-surface-variant dark:text-outline-variant font-label-lg text-label-lg hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors pb-1" href="#freshguard">Food Quality Check</a>
+
 <a class="border-b-2 border-primary text-primary dark:border-inverse-primary dark:text-inverse-primary font-label-lg text-label-lg pb-1" href="#pathways">3-Way Zero Waste (Humans, Animals, Khaad)</a>
+
 <a class="text-on-surface-variant dark:text-outline-variant font-label-lg text-label-lg hover:text-on-surface dark:hover:text-inverse-on-surface transition-colors pb-1" href="#calculator">Impact Simulator</a>
+
 </nav>
+
 <!-- Trailing Action Cluster -->
+
 <div class="flex items-center gap-3"><!-- Warmth Arc Chip in Navigation -->
+
 <div class="hidden lg:flex items-center gap-1.5 px-3 py-1 rounded-full bg-surface-container border border-outline-variant text-[11px] font-mono tracking-wide" id="nav-warmth-chip" title="Real-time Narrative Warmth Tracker">
+
 <span class="w-2 h-2 rounded-full transition-colors duration-500" id="warmth-indicator-dot" style="background-color: var(--slate);"></span>
+
 <span class="text-on-surface font-semibold" id="warmth-indicator-label">Cold Hunger · 0%</span>
+
 </div>
+
 <!-- Demo / Test User Quick Role Switcher Dropdown -->
+
 <div class="relative" id="demo-role-dropdown-container">
+
 <button class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high border border-outline-variant text-xs font-semibold text-on-surface transition-colors" id="btn-demo-dropdown" onclick="toggleDemoDropdown()" title="Quick Demo User Switcher">
+
 <span class="material-symbols-outlined text-primary text-base">verified_user</span>
+
 <span class="hidden sm:inline" id="current-role-label">Demo Roles</span>
+
 <span class="material-symbols-outlined text-xs">expand_more</span>
+
 </button>
+
 <div class="hidden absolute right-0 mt-2 w-72 bg-surface-container-lowest rounded-xl shadow-xl border border-outline-variant p-2 z-50 text-left" id="demo-dropdown-menu">
+
 <div class="text-[10px] font-bold uppercase tracking-wider text-outline px-3 py-1.5 border-b border-outline-variant/50">Select Persona to Test</div>
+
 <button class="w-full flex items-start gap-2.5 p-2.5 rounded-lg hover:bg-surface-container-low transition-colors text-left group" onclick="loginAsDemo('donor')">
+
 <div class="w-7 h-7 rounded bg-primary-fixed text-on-primary-fixed flex items-center justify-center shrink-0 mt-0.5">
+
 <span class="material-symbols-outlined text-sm">soup_kitchen</span>
+
 </div>
+
 <div>
+
 <div class="text-xs font-bold text-on-surface group-hover:text-primary">Grand Sapphire Banquets</div>
+
 <div class="text-[11px] text-on-surface-variant">Food Donor · Exec Chef Vikram</div>
+
 </div>
+
 </button>
+
 <button class="w-full flex items-start gap-2.5 p-2.5 rounded-lg hover:bg-surface-container-low transition-colors text-left group" onclick="loginAsDemo('recipient')">
+
 <div class="w-7 h-7 rounded bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center shrink-0 mt-0.5">
+
 <span class="material-symbols-outlined text-sm">home_work</span>
+
 </div>
+
 <div>
+
 <div class="text-xs font-bold text-on-surface group-hover:text-secondary">Asha Kiran Shelter</div>
+
 <div class="text-[11px] text-on-surface-variant">Verified Recipient Hub · Sister Mary</div>
+
 </div>
+
 </button>
+
 <button class="w-full flex items-start gap-2.5 p-2.5 rounded-lg hover:bg-surface-container-low transition-colors text-left group" onclick="loginAsDemo('admin')">
+
 <div class="w-7 h-7 rounded bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center shrink-0 mt-0.5">
+
 <span class="material-symbols-outlined text-sm">shield_person</span>
+
 </div>
+
 <div>
+
 <div class="text-xs font-bold text-on-surface group-hover:text-tertiary">FSSAI Central Ops</div>
+
 <div class="text-[11px] text-on-surface-variant">Platform Dispatcher &amp; Compliance</div>
+
 </div>
+
 </button>
+
 </div>
+
 </div>
+
 <!-- Unauthenticated Buttons Cluster -->
+
 <div class="flex items-center gap-2" id="auth-buttons-cluster">
+
 <button class="px-3.5 py-2 text-xs font-bold text-on-surface hover:text-primary transition-colors rounded-lg hover:bg-surface-container" onclick="openAuthModal('login')">
+
     Sign In
+
   </button>
+
 <button class="hidden sm:inline-flex items-center gap-1.5 bg-primary-container text-on-primary font-label-md text-xs px-4 py-2 rounded-lg shadow-sm hover:opacity-95 active:scale-[0.98] transition-all" onclick="openAuthModal('register')">
+
 <span class="material-symbols-outlined text-sm">person_add</span>
+
     Register
+
   </button>
+
 </div>
+
 <!-- Active User Session Profile Badge (dynamically shown) -->
+
 <div class="hidden flex items-center gap-2 bg-surface-container pl-2 pr-3 py-1 rounded-full border border-outline-variant" id="auth-user-badge">
+
 <div class="w-6 h-6 rounded-full bg-primary text-white flex items-center justify-center font-bold text-[10px]" id="user-avatar">G</div>
+
 <div class="text-left">
+
 <div class="text-xs font-bold text-on-surface leading-tight max-w-[110px] truncate" id="user-display-name">Grand Sapphire</div>
+
 <div class="text-[9px] font-bold text-primary uppercase leading-tight" id="user-role-badge">Donor</div>
+
 </div>
+
 <button class="p-1 text-outline hover:text-error transition-colors rounded-full" onclick="logoutUser()" title="Sign Out">
+
 <span class="material-symbols-outlined text-sm">logout</span>
+
 </button>
+
 </div>
+
 <!-- Workspace Launcher Button -->
+
 <button class="hidden sm:inline-flex items-center gap-1.5 bg-secondary text-white font-label-md text-xs px-3.5 py-2 rounded-lg shadow-sm hover:brightness-110 active:scale-[0.98] transition-all" id="btn-open-workspace" onclick="openRoleWorkspace()">
+
 <span class="material-symbols-outlined text-sm">dashboard</span>
+
 <span>Live Portal</span>
+
 </button></div>
+
 </div>
+
 </header>
+
 <main>
+
 <!-- ==================== BEAT 1: EMPTY PLATE (Cold Slate, Profound Dignity) ==================== -->
+
 <section class="relative min-h-[90vh] flex items-center justify-center bg-inverse-surface text-inverse-on-surface overflow-hidden" data-warmth="0" id="hero">
+
 <!-- Background Image with cold moody overlay -->
+
 <div class="absolute inset-0 z-0">
+
 <img id="hero-bg-plate" alt="Empty stainless steel thali plate under a stark beam of light evoking poignant hunger with intense dramatic contrast" class="w-full h-full object-cover object-center filter brightness-50 contrast-125 transition-opacity duration-1000 opacity-100" src="https://lh3.googleusercontent.com/aida/AEtjO1UIMDy0VCHBTwAc9JcGKgk3bH0S9IDqxdtWneT45qNAU-CCK5oPkS6ZKsHvsM84Ez522dAcHZd7zbYidjA2kyTL8RNjTwaDJXxrV4k0t9qIgq-luPQvDDgxeblaTKxn_R-BJKvQGDpCrjPUOd2h6EhQ7UfvJ99B7TRwQ7a6aOU-PjE0uur_UzmPaEPbEDnv1a4nNMZW_qeKnrcEAMupLCdevT64hgI4JF7Q-D-0erW83UeDpKAqkmC17fA0"/>
+
 <img id="hero-bg-banquet" alt="A lavish evening banquet catering buffet table with gleaming brass vessels of untouched curries, rice, and desserts as workers prepare black disposal bags" class="absolute inset-0 w-full h-full object-cover object-center filter brightness-40 sepia-[0.35] transition-opacity duration-1000 opacity-0" src="https://lh3.googleusercontent.com/aida/AEtjO1X-ugvJ7gRvdJeN0OoiieCvoz7qG357p3vF53aRz7Q3rrAI9dWwcojqAXnkcN-WNJDd9k_Yuv7d3OeSm19wn9w4ypLAEehW975G98zT9AI_4IaOMX5_85dMfbBH4pVPoVBe_5FkpFC0vU9ZL3tIKwk6DxcCL9jk6lv9C7vVN3d51xxmoFSvheS6uLgs3iOUbgFRbO6I0yCjwXOccH8Ewnd7rvb1xXBEZ5HZp21uSNGbywKD9eiv-VXXPXol"/>
+
 <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface via-inverse-surface/80 to-transparent"></div>
+
 <div class="absolute inset-0 bg-[#0c121e]/40 mix-blend-multiply"></div>
+
 </div>
+
 <div class="relative z-10 w-full max-w-5xl mx-auto px-margin py-space-xl text-center flex flex-col items-center">
+
 <!-- Interactive Reality Switcher Tabs -->
+
 <div class="flex items-center gap-2 mb-6 bg-black/60 backdrop-blur-md p-1.5 rounded-full border border-white/10 shadow-2xl">
+
   <button id="reality-tab-0" onclick="switchReality(0, true)" class="px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all flex items-center gap-2 bg-white/20 text-white shadow-sm ring-1 ring-white/30 cursor-pointer">
+
     <span class="w-2 h-2 rounded-full bg-error"></span>
+
     <span>Reality 1: The Empty Plate</span>
+
   </button>
+
   <button id="reality-tab-1" onclick="switchReality(1, true)" class="px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all flex items-center gap-2 text-surface-dim hover:text-white cursor-pointer">
+
     <span class="w-2 h-2 rounded-full bg-tertiary-container"></span>
+
     <span>Reality 2: The Discarded Bin</span>
+
   </button>
+
   <button id="reality-pause-btn" onclick="toggleRealityAutoplay()" class="p-1.5 rounded-full text-surface-dim hover:text-white hover:bg-white/10 transition-all flex items-center justify-center ml-1 cursor-pointer" title="Pause / Resume animation">
+
     <span class="material-symbols-outlined text-sm" id="reality-pause-icon">pause</span>
+
   </button>
+
 </div>
+
 <!-- Ground Reality Badge -->
+
 <div class="inline-flex items-center gap-2 bg-inverse-surface/90 border border-outline/30 px-3 py-1.5 rounded-full mb-6 backdrop-blur-md transition-all duration-300" id="hero-badge-container">
+
 <span class="w-2 h-2 rounded-full bg-error animate-ping" id="hero-badge-dot"></span>
+
 <span class="font-label-sm text-label-sm tracking-wider uppercase text-inverse-primary" id="hero-badge-title">The Daily Reality · Hunger in Our Cities</span>
+
 <span class="data-badge data-badge-verified" id="hero-badge-provenance">VERIFIED DATA</span>
+
 </div>
+
 <!-- Typewriter Headline Container -->
+
 <div class="min-h-[96px] sm:min-h-[84px] md:min-h-[76px] flex items-center justify-center mb-4">
+
   <h1 id="typewriter-heading" class="font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg text-white font-extrabold max-w-3xl tracking-tight leading-tight inline whitespace-pre-wrap">Tonight, somewhere, a plate is empty.</h1><span id="heading-cursor" class="typewriter-cursor text-error"></span>
+
 </div>
+
 <!-- Typewriter Body Container -->
+
 <div class="min-h-[110px] sm:min-h-[85px] md:min-h-[72px] flex items-start justify-center max-w-2xl mx-auto mb-10">
+
   <p id="typewriter-body" class="font-body-xl text-body-xl text-surface-dim leading-relaxed font-light inline whitespace-pre-wrap">In community settlements across our cities, mothers turn out the lights early so hunger hurts a little less in the dark. Silence settles on bare floorboards.</p><span id="body-cursor" class="typewriter-cursor text-error hidden"></span>
+
 </div>
+
 <!-- Context Micro Metrics -->
+
 <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 w-full max-w-2xl bg-surface-container-lowest/10 backdrop-blur-md p-4 rounded-xl border border-white/10 text-left">
+
 <div>
+
 <span class="block font-label-sm text-label-sm text-surface-dim uppercase">Daily Deficit</span>
+
 <span class="font-headline-md text-headline-md text-white font-bold" data-counter="190.7" data-suffix="M">190.7M</span>
+
 <span class="block text-[11px] text-surface-dim/80">undernourished people in India</span>
+
 </div>
+
 <div>
+
 <span class="block font-label-sm text-label-sm text-surface-dim uppercase">Unmet Need</span>
+
 <span class="font-headline-md text-headline-md text-white font-bold" data-counter="38.4" data-suffix="%">38.4%</span>
+
 <span class="block text-[11px] text-surface-dim/80">children under 5 stunted (NFHS-5)</span>
+
 </div>
+
 <div class="col-span-2 sm:col-span-1 border-t sm:border-t-0 sm:border-l border-white/10 pt-2 sm:pt-0 sm:pl-4">
+
 <span class="block font-label-sm text-label-sm text-surface-dim uppercase">Emergency Status</span>
+
 <div class="flex items-center gap-1.5 mt-1">
+
 <span class="material-symbols-outlined text-error text-lg animate-pulse">crisis_alert</span>
+
 <span class="font-label-lg text-label-lg text-white font-bold">Active Deficit</span>
+
 </div>
+
 <span class="block text-[11px] text-surface-dim/80">every evening at 21:00 IST</span>
+
 </div>
+
 </div>
+
+
 
 <!-- ==================== LIVE CRISIS ACCUMULATOR (Hackathon / High Impact Ticker) ==================== -->
+
 <div class="w-full max-w-3xl mt-6 bg-black/60 backdrop-blur-xl border border-red-500/30 rounded-2xl p-5 shadow-2xl relative overflow-hidden text-left">
+
   <!-- Subtle ambient pulse glow -->
+
   <div class="absolute -top-12 -right-12 w-48 h-48 bg-red-600/10 rounded-full blur-2xl pointer-events-none animate-pulse"></div>
 
+
+
   <div class="flex flex-wrap items-center justify-between gap-2 border-b border-white/10 pb-3 mb-4">
+
     <div class="flex items-center gap-2">
+
       <span class="relative flex h-2.5 w-2.5">
+
         <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
+
         <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-error"></span>
+
       </span>
+
       <span class="text-xs font-mono font-bold tracking-wider text-red-400 uppercase">NATIONAL CRISIS ACCUMULATOR · LIVE TELEMETRY</span>
+
     </div>
+
     <div class="flex items-center gap-2 text-[11px] font-mono text-surface-dim">
+
       <span>Duration on screen:</span>
+
       <span id="session-timer" class="text-white font-bold bg-white/10 px-2.5 py-0.5 rounded border border-white/10">00:00</span>
+
     </div>
+
   </div>
+
+
 
   <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+
     <!-- Ticker 1 -->
+
     <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+
       <div class="text-[10px] font-mono text-surface-dim uppercase tracking-wider flex items-center justify-between">
+
         <span>Food Dumped</span>
+
         <span class="material-symbols-outlined text-[13px] text-error">delete_forever</span>
+
       </div>
+
       <div class="font-mono text-lg sm:text-xl md:text-2xl font-black text-white mt-1">
+
         <span id="live-kg-counter">0</span> <span class="text-xs text-red-400 font-normal">kg</span>
+
       </div>
+
       <div class="text-[9px] font-mono text-surface-dim/70 mt-1">+2,156 kg / sec nationwide</div>
+
     </div>
+
+
 
     <!-- Ticker 2 -->
+
     <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+
       <div class="text-[10px] font-mono text-surface-dim uppercase tracking-wider flex items-center justify-between">
+
         <span>Meals Wasted</span>
+
         <span class="material-symbols-outlined text-[13px] text-tertiary-fixed">group_off</span>
+
       </div>
+
       <div class="font-mono text-lg sm:text-xl md:text-2xl font-black text-[#ffdcc3] mt-1">
+
         <span id="live-meals-counter">0</span>
+
       </div>
+
       <div class="text-[9px] font-mono text-surface-dim/70 mt-1">400g safe portion each</div>
+
     </div>
+
+
 
     <!-- Ticker 3 -->
+
     <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+
       <div class="text-[10px] font-mono text-surface-dim uppercase tracking-wider flex items-center justify-between">
+
         <span>Economic Loss</span>
+
         <span class="material-symbols-outlined text-[13px] text-amber-400">payments</span>
+
       </div>
+
       <div class="font-mono text-lg sm:text-xl md:text-2xl font-black text-amber-300 mt-1">
+
         ₹<span id="live-inr-counter">0</span>
+
       </div>
+
       <div class="text-[9px] font-mono text-surface-dim/70 mt-1">₹28,220 lost every second</div>
+
     </div>
+
+
 
     <!-- Ticker 4 -->
+
     <div class="bg-white/5 p-3 rounded-xl border border-white/5">
+
       <div class="text-[10px] font-mono text-surface-dim uppercase tracking-wider flex items-center justify-between">
+
         <span>CO₂e Methane</span>
+
         <span class="material-symbols-outlined text-[13px] text-error">cloud</span>
+
       </div>
+
       <div class="font-mono text-lg sm:text-xl md:text-2xl font-black text-error mt-1">
+
         <span id="live-co2-counter">0</span> <span class="text-xs text-error/70 font-normal">kg</span>
+
       </div>
+
       <div class="text-[9px] font-mono text-surface-dim/70 mt-1">Untreated landfill rot</div>
+
     </div>
+
   </div>
+
+
 
   <div class="mt-3 pt-2.5 border-t border-white/10 flex items-center justify-between text-[11px] text-surface-dim">
+
     <div class="flex items-center gap-1.5 text-error">
+
       <span class="material-symbols-outlined text-xs">crisis_alert</span>
+
       <span class="font-medium">Every passing second on this screen = hundreds of freshly cooked meals discarded.</span>
+
     </div>
+
     <span class="text-[10px] text-surface-dim/60 font-mono hidden md:inline">Source: UNEP & FSSAI National Audits</span>
+
   </div>
+
 </div>
+
 <!-- Scroll Indicator -->
+
 <a class="mt-14 inline-flex flex-col items-center gap-2 text-surface-dim hover:text-white transition-colors group" href="#overflow">
+
 <span class="font-label-sm text-label-sm uppercase tracking-widest">Witness The Contrast</span>
+
 <span class="material-symbols-outlined text-2xl group-hover:translate-y-1 transition-transform">arrow_downward</span>
+
 </a>
+
 </div>
+
 </section>
+
 <!-- ==================== BEAT 2: THE OVERFLOW (Guilt & Excess) ==================== -->
+
 <section class="relative min-h-[85vh] flex items-center justify-center bg-[#1c1815] text-white overflow-hidden py-space-xl" data-warmth="0.25" id="overflow">
+
 <div class="absolute inset-0 z-0">
+
 <img alt="A lavish evening banquet catering buffet table with gleaming brass vessels of untouched curries, rice, and desserts as workers prepare black disposal bags" class="w-full h-full object-cover object-center filter brightness-40 sepia-[0.35]" src="https://lh3.googleusercontent.com/aida/AEtjO1X-ugvJ7gRvdJeN0OoiieCvoz7qG357p3vF53aRz7Q3rrAI9dWwcojqAXnkcN-WNJDd9k_Yuv7d3OeSm19wn9w4ypLAEehW975G98zT9AI_4IaOMX5_85dMfbBH4pVPoVBe_5FkpFC0vU9ZL3tIKwk6DxcCL9jk6lv9C7vVN3d51xxmoFSvheS6uLgs3iOUbgFRbO6I0yCjwXOccH8Ewnd7rvb1xXBEZ5HZp21uSNGbywKD9eiv-VXXPXol"/>
+
 <div class="absolute inset-0 bg-gradient-to-b from-inverse-surface via-[#1c1815]/80 to-[#120e0c]"></div>
+
 </div>
+
 <div class="relative z-10 w-full max-w-5xl mx-auto px-margin text-center">
+
 <div class="inline-flex items-center gap-2 bg-[#2b1f1a] border border-outline-variant/40 px-3 py-1.5 rounded-full mb-6">
+
 <span class="material-symbols-outlined text-tertiary-fixed text-sm">delete_forever</span>
+
 <span class="font-label-sm text-label-sm tracking-wider uppercase text-tertiary-fixed">The Midnight Banquet Discard</span>
+
 <span class="data-badge data-badge-estimate">URBAN AUDIT</span>
+
 </div>
+
 <div class="min-h-[80px] sm:min-h-[72px] md:min-h-[64px] flex items-center justify-center mb-4">
+
   <h2 id="overflow-heading" class="font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg font-bold text-[#ffdcc3] max-w-4xl mx-auto tracking-tight inline whitespace-pre-wrap">
+
     ...and somewhere else, a tray is going in the bin.
+
   </h2><span id="overflow-heading-cursor" class="typewriter-cursor text-[#FF9F1C] hidden"></span>
+
 </div>
+
 <div class="min-h-[110px] sm:min-h-[85px] md:min-h-[72px] flex items-start justify-center max-w-2xl mx-auto mb-10">
+
   <p id="overflow-body" class="font-body-xl text-body-xl text-surface-dim leading-relaxed inline whitespace-pre-wrap">
+
     At 23:45 outside grand banquet halls, four-tier copper chafing dishes brimming with paneer handi, biryani, and gulab jamun are quietly tipped into 60-liter black plastic garbage bags. Cooked with pride three hours ago. Destined for toxic landfills before dawn.
+
   </p><span id="overflow-body-cursor" class="typewriter-cursor text-[#FF9F1C] hidden"></span>
+
 </div>
+
 <!-- Banquet Tally Grid -->
+
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-left max-w-4xl mx-auto">
+
 <div class="bg-surface-container-lowest/10 backdrop-blur-md border border-outline-variant/20 p-6 rounded-xl hover:border-tertiary-fixed/50 transition-colors">
+
 <div class="flex items-center justify-between mb-2">
+
 <span class="font-label-sm text-label-sm text-tertiary-fixed uppercase">Typical Big-Fat Wedding</span>
+
 <span class="data-badge data-badge-verified">FSSAI AUDIT</span>
+
 </div>
+
 <div class="font-headline-lg text-headline-lg font-bold text-white mb-1"><span data-counter="15" data-suffix="%">15%</span> – <span data-counter="22" data-suffix="%">22%</span></div>
+
 <p class="font-body-md text-body-md text-surface-dim">Of prepared banquet volume remains unserved and directly discarded at closing.</p>
+
 </div>
+
 <div class="bg-surface-container-lowest/10 backdrop-blur-md border border-outline-variant/20 p-6 rounded-xl hover:border-tertiary-fixed/50 transition-colors">
+
 <div class="flex items-center justify-between mb-2">
+
 <span class="font-label-sm text-label-sm text-tertiary-fixed uppercase">Single Event Loss</span>
+
 <span class="data-badge data-badge-estimate">ESTIMATE</span>
+
 </div>
+
 <div class="font-headline-lg text-headline-lg font-bold text-white mb-1"><span data-counter="120">120</span> – <span data-counter="180" data-suffix=" kg">180 kg</span></div>
+
 <p class="font-body-md text-body-md text-surface-dim">High-protein, safe edible food lost forever in an 800-guest gathering.</p>
+
 </div>
+
 <div class="bg-surface-container-lowest/10 backdrop-blur-md border border-outline-variant/20 p-6 rounded-xl hover:border-tertiary-fixed/50 transition-colors">
+
 <div class="flex items-center justify-between mb-2">
+
 <span class="font-label-sm text-label-sm text-tertiary-fixed uppercase">Methane Released</span>
+
 <span class="data-badge data-badge-verified">GHG IMPACT</span>
+
 </div>
+
 <div class="font-headline-lg text-headline-lg font-bold text-white mb-1"><span data-counter="380" data-suffix=" kg CO₂e">380 kg CO₂e</span></div>
+
 <p class="font-body-md text-body-md text-surface-dim">Emitted in decomposition per untreated batch tipped at Ghazipur / Deonar.</p>
+
 </div>
+
 </div>
+
 </div>
+
 </section>
+
 <!-- ==================== BEAT 3: THE GAP (Tension & Dual Realities) ==================== -->
+
 <section class="py-space-xl bg-surface-container-low border-b border-outline-variant" data-warmth="0.45" id="impact">
+
 <div class="w-full max-w-7xl mx-auto px-margin">
+
 <div class="text-center max-w-3xl mx-auto mb-14">
+
 <div class="inline-flex items-center gap-2 bg-surface-container px-3 py-1 rounded-full mb-3">
+
 <span class="material-symbols-outlined text-primary text-sm">balance</span>
+
 <span class="font-label-sm text-label-sm text-on-surface uppercase tracking-wider">The Paradox of Abundance</span>
+
 <span class="data-badge data-badge-verified">UNEP FWIR 2024</span>
+
 </div>
+
 <h2 class="font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg font-bold text-on-background tracking-tight">
+
             1.05 billion tonnes wasted.<br/>
+
 <span class="text-primary">783 million hungry.</span>
+
 </h2>
+
 <p class="font-body-xl text-body-xl text-on-surface-variant mt-4">
+
             The tragedy of hunger in India is not a supply failure. It is a distribution, trust, and real-time food safety logistics failure.
+
           </p>
+
 </div>
+
 <!-- Split Image Banner & Analytical Infographic -->
+
 <div class="rounded-2xl overflow-hidden shadow-xl border border-outline-variant bg-surface-container-lowest mb-12 relative group">
+
 <div class="relative h-[360px] md:h-[440px]">
+
 <img alt="Split visual showcasing an opulent banquet dinner bathed in candlelit warmth on the left contrasted with families queuing silently in twilight for sustenance on the right" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/AEtjO1U-nx_geuL3YZN1iVFVAfTbe7Y57Q3uxbgH1viHeQAuj_asgVTeJa0NP5bMMcAwg_oRThHNUSEzGeMkr-jZa_IpWeWN3_fIiTHQIdlXlTRO-VwNJulEeWP_FSfq7dVNE6dms6WZ9NxkoQt0uoDqej7MWbpH3rG7CiE-Z6uOiYiECbbTJKbGYiqPePaLUMXDfVM3LEJEaIa3jCByihoCQzn0TKF8GUFX43mmJKa-p_olf0d0Hmv7k6vaLQQA"/>
 
+
+
 <!-- Animated Laser Scanning Line -->
+
 <div class="absolute top-0 bottom-0 w-0.5 bg-gradient-to-b from-transparent via-amber-400 to-transparent shadow-[0_0_20px_#f59e0b] laser-scan-line pointer-events-none z-20">
+
   <div class="absolute top-4 left-1/2 -translate-x-1/2 bg-amber-500 text-black text-[9px] font-mono px-2 py-0.5 rounded-full uppercase font-bold tracking-widest whitespace-nowrap shadow-lg">
+
     PARADOX RADAR · ACTIVE SCAN
+
   </div>
+
 </div>
+
+
 
 <!-- Center Split Line Indicator -->
+
 <div class="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-px bg-white/40 hidden md:block z-10 pointer-events-none">
+
   <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-black/80 text-white border border-white/30 rounded-full px-3 py-1 font-mono text-[10px] uppercase tracking-wider backdrop-blur-md">
+
     THE 1.4 KM DIVIDE
+
   </div>
+
 </div>
+
+
 
 <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/40 flex flex-col justify-end p-6 md:p-10 z-10">
+
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full text-white mb-4">
+
 <div class="bg-black/70 backdrop-blur-md p-5 rounded-xl border border-tertiary-fixed/40 shadow-lg">
+
 <div class="flex items-center justify-between mb-1">
+
   <span class="font-label-sm text-label-sm text-tertiary-fixed-dim uppercase tracking-wider font-mono flex items-center gap-1.5">
+
     <span class="w-2 h-2 rounded-full bg-tertiary-fixed animate-ping"></span>
+
     Urban Waste Axis (23:45 IST)
+
   </span>
+
   <span class="text-[10px] font-mono bg-tertiary-fixed/20 text-tertiary-fixed px-2 py-0.5 rounded">UNSERVED SURPLUS</span>
+
 </div>
+
 <div class="font-headline-md text-headline-md font-bold mt-1 text-[#ffdcc3]"><span data-counter="78000000" data-suffix=" Tonnes / Year">78,000,000 Tonnes / Year</span></div>
+
 <p class="font-body-md text-body-md text-surface-dim mt-1">Total household and catering surplus discarded annually across Indian urban centers.</p>
+
 </div>
+
+
 
 <div class="bg-black/70 backdrop-blur-md p-5 rounded-xl border border-secondary-fixed/40 shadow-lg">
+
 <div class="flex items-center justify-between mb-1">
+
   <span class="font-label-sm text-label-sm text-secondary-fixed uppercase tracking-wider font-mono flex items-center gap-1.5">
+
     <span class="w-2 h-2 rounded-full bg-secondary-fixed animate-pulse"></span>
+
     Community Deficit Axis (23:45 IST)
+
   </span>
+
   <span class="text-[10px] font-mono bg-secondary-fixed/20 text-secondary-fixed px-2 py-0.5 rounded">ACTIVE DEFICIT</span>
+
 </div>
+
 <div class="font-headline-md text-headline-md font-bold mt-1 text-white"><span data-counter="21.4" data-suffix="% Undernourishment Gap">21.4% Undernourishment Gap</span></div>
+
 <p class="font-body-md text-body-md text-surface-dim mt-1">Distance between minimum caloric need and actual consumption in vulnerable informal settlements.</p>
+
 </div>
+
 </div>
+
+
 
 <!-- Animated Logistics Signal Bridge -->
+
 <div class="bg-black/80 backdrop-blur-xl rounded-xl p-3.5 border border-white/15 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono">
+
   <div class="flex items-center gap-2 text-[#ffdcc3]">
+
     <span class="material-symbols-outlined text-sm">restaurant</span>
+
     <span class="font-bold">Banquet Kitchen: 140kg hot food</span>
+
   </div>
+
+
 
   <div class="relative w-full sm:w-60 h-2 bg-white/10 rounded-full overflow-hidden flex items-center">
+
     <div class="absolute inset-0 bg-gradient-to-r from-amber-500 via-primary-fixed to-green-500 opacity-60"></div>
+
     <div class="absolute top-0 bottom-0 w-10 bg-white rounded-full blur-[2px] packet-dot-1"></div>
+
     <div class="absolute top-0 bottom-0 w-10 bg-white rounded-full blur-[2px] packet-dot-2"></div>
+
     <div class="absolute top-0 bottom-0 w-10 bg-white rounded-full blur-[2px] packet-dot-3"></div>
+
   </div>
+
+
 
   <div class="flex items-center gap-2 text-green-400">
+
     <span class="material-symbols-outlined text-sm">home</span>
+
     <span class="font-bold">Community Shelter: 350 diners</span>
+
     <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+
   </div>
+
+</div>
+
+
+
 </div>
 
 </div>
+
 </div>
-</div>
+
 <!-- Verified Badged Metrics -->
+
 <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+
 <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant hover:border-primary transition-all shadow-sm">
+
 <span class="data-badge data-badge-verified">UNEP REPORT</span>
+
 <div class="font-headline-xl text-headline-xl font-bold text-primary mt-3"><span data-counter="132" data-suffix=" kg">132 kg</span></div>
+
 <span class="font-label-md text-label-md text-on-surface block mt-1">Food waste per capita per year in households globally</span>
+
 </div>
+
 <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant hover:border-tertiary transition-all shadow-sm">
+
 <span class="data-badge data-badge-live">CLIMATE LOSS</span>
+
 <div class="font-headline-xl text-headline-xl font-bold text-tertiary-container mt-3"><span data-counter="8">8</span> - <span data-counter="10" data-suffix="%">10%</span></div>
+
 <span class="font-label-md text-label-md text-on-surface block mt-1">Of global greenhouse gas emissions originate directly from food waste</span>
+
 </div>
+
 <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant hover:border-secondary transition-all shadow-sm">
+
 <span class="data-badge data-badge-verified">FSSAI STAT</span>
+
 <div class="font-headline-xl text-headline-xl font-bold text-secondary mt-3">₹<span data-counter="89000" data-suffix=" Cr">89,000 Cr</span></div>
+
 <span class="font-label-md text-label-md text-on-surface block mt-1">Economic value of agricultural and prepared food lost annually in India</span>
+
 </div>
+
 <div class="bg-surface-container-lowest p-6 rounded-xl border border-outline-variant hover:border-outline transition-all shadow-sm">
+
 <span class="data-badge data-badge-estimate">RECOVERY RATIO</span>
+
 <div class="font-headline-xl text-headline-xl font-bold text-on-surface mt-3">&lt; <span data-counter="3.2" data-suffix="%">3.2%</span></div>
+
 <span class="font-label-md text-label-md text-on-surface block mt-1">Current organized safe recovery of surplus food nationwide</span>
+
 </div>
+
 </div>
+
 </div>
+
 </section>
+
 <!-- ==================== BEAT 4: THE POT (Hope & Connection) ==================== -->
+
 <section class="py-space-xl bg-[#fffbf2] relative overflow-hidden border-b border-outline-variant" data-warmth="0.7" id="pot-section">
+
 <!-- Glow sphere -->
+
 <div class="absolute -right-32 top-10 w-96 h-96 rounded-full bg-[#f2a900]/20 blur-3xl warm-glow pointer-events-none"></div>
+
 <div class="w-full max-w-7xl mx-auto px-margin relative z-10">
+
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+
 <div class="lg:col-span-6">
+
 <div class="inline-flex items-center gap-2 bg-[#fee8bf] px-3 py-1 rounded-full mb-4">
+
 <span class="material-symbols-outlined text-primary text-base">local_fire_department</span>
+
 <span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wider">The Sacred Symbol</span>
+
 <span class="data-badge data-badge-verified">DIGNITY CODE</span>
+
 </div>
+
 <h2 class="font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg font-bold text-[#832600] tracking-tight leading-tight mb-6">
+
               POTBHAR connects the two — safely.
+
             </h2>
+
 <p class="font-body-xl text-body-xl text-on-surface-variant mb-6 leading-relaxed">
+
               *Potbhar* is a Marathi and Hindi expression of total satiety — a belly filled with genuine warmth, dignity, and care. We are not a dumping pipeline for stale leftovers; we are an institutional safety bridge.
+
             </p>
+
 <div class="space-y-4 mb-8">
+
 <div class="flex items-start gap-3">
+
 <div class="w-8 h-8 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed-variant shrink-0 mt-0.5">
+
 <span class="material-symbols-outlined text-base">check</span>
+
 </div>
+
 <div>
+
 <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">Zero Compromise on Human Dignity</h3>
+
 <p class="font-body-md text-body-md text-on-surface-variant">Recipient shelters receive the exact same nutritional standards and temperature integrity as paying dining halls.</p>
+
 </div>
+
 </div>
+
 <div class="flex items-start gap-3">
+
 <div class="w-8 h-8 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed shrink-0 mt-0.5">
+
 <span class="material-symbols-outlined text-base">security</span>
+
 </div>
+
 <div>
+
 <h3 class="font-headline-sm text-headline-sm text-on-surface font-semibold">FSSAI Food Safety &amp; Standards Compliance</h3>
+
 <p class="font-body-md text-body-md text-on-surface-variant">Cold chain logging, pH validation, sensory assessment checkpoints, and end-to-end QR batch tracking.</p>
+
 </div>
+
 </div>
+
 </div>
+
 <div class="flex flex-wrap gap-4">
+
 <a class="inline-flex items-center gap-2 bg-primary-container text-on-primary font-label-lg text-label-lg px-6 py-3 rounded-lg shadow-sm hover:opacity-95 active:scale-[0.98] transition-all" href="#how-it-works">
+
 <span>Explore the 5-Step Relay</span>
+
 <span class="material-symbols-outlined text-sm">arrow_forward</span>
+
 </a>
+
 <a class="inline-flex items-center gap-2 bg-white text-on-surface border border-outline-variant font-label-lg text-label-lg px-6 py-3 rounded-lg hover:bg-surface-container transition-colors" href="#calculator">
+
 <span>Scenario Calculator</span>
+
 </a>
+
 </div>
+
 </div>
+
 <!-- Illustrated Route Drawing Visual -->
+
 <div class="lg:col-span-6">
+
 <div class="bg-white p-6 md:p-8 rounded-2xl border border-outline-variant shadow-lg relative">
+
 <div class="flex items-center justify-between pb-4 border-b border-outline-variant mb-6">
+
 <div class="flex items-center gap-2">
+
 <span class="w-3 h-3 rounded-full bg-secondary animate-pulse"></span>
+
 <span class="font-label-md text-label-md text-on-surface font-bold uppercase tracking-wider">Live Recovery Corridor #MH-4019</span>
+
 </div>
+
 <span class="data-badge data-badge-live">TRANSIT ACTIVE</span>
+
 </div>
+
 <!-- Journey Diagram -->
+
 <div class="space-y-6 relative before:absolute before:left-6 before:top-6 before:bottom-6 before:w-0.5 before:bg-gradient-to-b before:from-primary before:via-tertiary before:to-secondary">
+
 <!-- Node 1 -->
+
 <div class="relative flex items-center gap-4 pl-12">
+
 <div class="absolute left-4 w-5 h-5 rounded-full bg-primary ring-4 ring-primary-fixed flex items-center justify-center text-white">
+
 <span class="w-2 h-2 rounded-full bg-white"></span>
+
 </div>
+
 <div class="bg-surface-container-low p-4 rounded-xl w-full border border-outline-variant">
+
 <span class="font-label-sm text-label-sm text-primary font-bold">22:45 · Donor Manifest Generated</span>
+
 <h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Grand Sapphire Banquet Hall, Andheri East</h4>
+
 <p class="font-body-md text-body-md text-on-surface-variant">120 kg prepared meal surplus (Basmati pulav, dal makhani, paneer). Hot holding maintained at 64°C.</p>
+
 </div>
+
 </div>
+
 <!-- Node 2 -->
+
 <div class="relative flex items-center gap-4 pl-12">
+
 <div class="absolute left-4 w-5 h-5 rounded-full bg-tertiary ring-4 ring-tertiary-fixed flex items-center justify-center text-white">
+
 <span class="w-2 h-2 rounded-full bg-white"></span>
+
 </div>
+
 <div class="bg-[#fff9ef] p-4 rounded-xl w-full border border-tertiary-fixed">
+
 <span class="font-label-sm text-label-sm text-tertiary font-bold">23:05 · Food Quality &amp; Safety Check</span>
+
 <h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Inspected on Site by Field Officer Rajesh M.</h4>
+
 <p class="font-body-md text-body-md text-on-surface-variant">Visual micro-inspection verified. Core temp recorded at 62.8°C. Batch approved for immediate humanitarian dispatch.</p>
+
 </div>
+
 </div>
+
 <!-- Node 3 -->
+
 <div class="relative flex items-center gap-4 pl-12">
+
 <div class="absolute left-4 w-5 h-5 rounded-full bg-secondary ring-4 ring-secondary-fixed flex items-center justify-center text-white">
+
 <span class="w-2 h-2 rounded-full bg-white"></span>
+
 </div>
+
 <div class="bg-[#f0fdf4] p-4 rounded-xl w-full border border-secondary-fixed">
+
 <span class="font-label-sm text-label-sm text-secondary font-bold">23:50 · Delivered &amp; Shared</span>
+
 <h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Asha Sadan Community Shelter, Kurla</h4>
+
 <p class="font-body-md text-body-md text-on-surface-variant">300 warm, nourishing meal portions distributed with QR receipt verified. Zero landfill diversion accomplished.</p>
+
 </div>
+
 </div>
+
 </div>
+
 <!-- Corridor summary stats -->
+
 <div class="mt-6 pt-4 border-t border-outline-variant flex items-center justify-between text-xs text-on-surface-variant">
+
 <span>Total Elapsed: <strong>1 hr 05 min</strong></span>
+
 <span>Thermal Integrity: <strong>Compliant (&gt;60°C)</strong></span>
+
 <span>Distance: <strong>6.8 km</strong></span>
+
 </div>
+
 </div>
+
 </div>
+
 </div>
+
 </div>
+
 </section>
+
 <!-- ==================== BEAT 5: HOW IT WORKS (The 5 Clean Steps) ==================== -->
+
 <section class="py-space-xl bg-background border-b border-outline-variant" data-warmth="0.85" id="how-it-works">
+
 <div class="w-full max-w-7xl mx-auto px-margin">
+
 <div class="text-center max-w-3xl mx-auto mb-16">
+
 <span class="data-badge data-badge-verified mb-3">SYSTEM ARCHITECTURE</span>
+
 <h2 class="font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg font-bold text-on-background tracking-tight">
+
             How It Works
+
           </h2>
+
 <p class="font-body-xl text-body-xl text-on-surface-variant mt-3">
+
             A fail-safe 5-step operational chain moving surplus from commercial kitchens to community plates in under 90 minutes.
+
           </p>
+
 </div>
+
 <div class="grid grid-cols-1 md:grid-cols-5 gap-4 relative">
+
 <!-- Step 1 -->
+
 <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between hover:border-primary transition-colors">
+
 <div>
+
 <div class="w-12 h-12 rounded-xl bg-primary-fixed text-on-primary-fixed flex items-center justify-center font-bold text-lg mb-4">
+
                 01
+
               </div>
+
 <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-2">Log Extra Food</h3>
+
 <p class="font-body-md text-body-md text-on-surface-variant">
+
                 Wedding host, hotel chef, or caterer logs surplus food volume, cooking time, and dishes in 60 seconds on their mobile phone.
+
               </p>
+
 </div>
+
 <div class="mt-6 pt-4 border-t border-outline-variant/50">
+
 <span class="inline-flex items-center gap-1 text-xs text-primary font-semibold">
+
 <span class="material-symbols-outlined text-sm">edit_note</span> 60-Sec Quick Log
+
               </span>
+
 </div>
+
 </div>
+
 <!-- Step 2 -->
+
 <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between hover:border-primary transition-colors">
+
 <div>
+
 <div class="w-12 h-12 rounded-xl bg-tertiary-fixed text-on-tertiary-fixed flex items-center justify-center font-bold text-lg mb-4">
+
                 02
+
               </div>
+
 <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-2">Freshness Scan</h3>
+
 <p class="font-body-md text-body-md text-on-surface-variant">
+
                 We check food type, time elapsed since cooking, and storage temperature to dispatch the nearest insulated van immediately.
+
               </p>
+
 </div>
+
 <div class="mt-6 pt-4 border-t border-outline-variant/50">
+
 <span class="inline-flex items-center gap-1 text-xs text-tertiary font-semibold">
+
 <span class="material-symbols-outlined text-sm">local_shipping</span> Van Dispatched
+
               </span>
+
 </div>
+
 </div>
+
 <!-- Step 3 -->
+
 <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between hover:border-primary transition-colors">
+
 <div>
+
 <div class="w-12 h-12 rounded-xl bg-surface-container-highest text-on-surface flex items-center justify-center font-bold text-lg mb-4">
+
                 03
+
               </div>
+
 <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-2">Safety Approval</h3>
+
 <p class="font-body-md text-body-md text-on-surface-variant">
+
                 A trained food safety inspector personally tests aroma, checks core temperature (&gt;60°C hot zone), and verifies hygiene.
+
               </p>
+
 </div>
+
 <div class="mt-6 pt-4 border-t border-outline-variant/50">
+
 <span class="inline-flex items-center gap-1 text-xs text-on-surface font-semibold">
+
 <span class="material-symbols-outlined text-sm">verified_user</span> Human Inspector Sign-off
+
               </span>
+
 </div>
+
 </div>
+
 <!-- Step 4 -->
+
 <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between hover:border-primary transition-colors">
+
 <div>
+
 <div class="w-12 h-12 rounded-xl bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center font-bold text-lg mb-4">
+
                 04
+
               </div>
+
 <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-2">Smart 3-Way Sorting</h3>
+
 <p class="font-body-md text-body-md text-on-surface-variant">
+
                 Good fresh food goes to human shelters; medium surplus goes to animal gaushalas; spoiled scraps go to organic khaad (compost).
+
               </p>
+
 </div>
+
 <div class="mt-6 pt-4 border-t border-outline-variant/50">
+
 <span class="inline-flex items-center gap-1 text-xs text-secondary font-semibold">
+
 <span class="material-symbols-outlined text-sm">alt_route</span> 3-Way Zero Waste
+
               </span>
+
 </div>
+
 </div>
+
 <!-- Step 5 -->
+
 <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between hover:border-primary transition-colors">
+
 <div>
+
 <div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary flex items-center justify-center font-bold text-lg mb-4">
+
                 05
+
               </div>
+
 <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-2">Hot Delivery &amp; Dignity</h3>
+
 <p class="font-body-md text-body-md text-on-surface-variant">
+
                 Insulated delivery within 90 minutes. Shelter confirms safe receipt, and diners receive hot, nutritious, dignified meals.
+
               </p>
+
 </div>
+
 <div class="mt-6 pt-4 border-t border-outline-variant/50">
+
 <span class="inline-flex items-center gap-1 text-xs text-primary font-semibold">
+
 <span class="material-symbols-outlined text-sm">volunteer_activism</span> Served with Dignity
+
               </span>
+
 </div>
+
 </div>
+
 </div>
+
 </div>
+
 </section>
+
 <!-- ==================== BEAT 6: FOOD QUALITY & SAFETY TESTING ==================== -->
+
 <section class="py-space-xl bg-surface-container-low border-b border-outline-variant" data-warmth="0.85" id="freshguard">
+
 <div class="w-full max-w-7xl mx-auto px-margin">
+
 <div class="max-w-3xl mb-12">
+
 <div class="inline-flex items-center gap-2 bg-primary/10 text-primary px-3 py-1 rounded-full mb-3">
+
 <span class="material-symbols-outlined text-sm">verified</span>
+
 <span class="font-label-sm text-label-sm uppercase tracking-wider font-bold">Food Safety &amp; Quality Check</span>
+
 <span class="data-badge data-badge-verified">100% SAFE PROMISE</span>
+
 </div>
+
 <h2 class="font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg font-bold text-on-background tracking-tight">
+
   How are we going to test food quality?<br/>
+
   <span class="text-primary">Our 3-Step Safety &amp; Hygiene Check.</span>
+
 </h2>
+
 <p class="font-body-xl text-body-xl text-on-surface-variant mt-3">
+
   Every meal we rescue must be as clean, fresh, and dignified as what we would serve our own families. We never cut corners or trust only computer algorithms — trained food inspectors personally inspect, measure temperature, and verify every single container before it reaches anyone.
+
 </p>
+
 </div>
+
 <!-- Notice Banner -->
+
 <div class="bg-amber-500/10 border-l-4 border-amber-500 p-4 md:p-6 rounded-r-xl mb-10 flex items-start gap-4">
+
 <span class="material-symbols-outlined text-amber-600 text-2xl shrink-0 mt-0.5">verified_user</span>
+
 <div>
+
 <h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Our Strict Rule: 100% Certified Human Inspection</h4>
+
 <p class="font-body-md text-body-md text-on-surface-variant mt-1">
+
   Software alone cannot smell if food has turned sour or check if a vessel is truly clean. While technology helps us track timing and routes, a real human inspector personally checks aroma, freshness, and temperature on site. If it's not 100% safe, it is never served to humans.
+
 </p>
+
 </div>
+
 </div>
+
 <!-- The Three Distinct Operational Cards -->
+
 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
 <!-- Step 1: Visual Freshness -->
+
 <div class="bg-surface-container-lowest p-6 rounded-2xl border border-secondary-fixed shadow-sm hover:shadow-md transition-shadow">
+
 <div class="flex items-center justify-between mb-4">
+
 <span class="font-label-sm text-label-sm font-bold text-secondary uppercase tracking-wider">Step 1 · Sight &amp; Smell</span>
+
 <span class="data-badge data-badge-verified">FRESHNESS CHECK</span>
+
 </div>
+
 <div class="w-full h-36 bg-surface-container rounded-lg mb-4 overflow-hidden relative flex items-center justify-center">
+
 <div class="absolute inset-0 bg-gradient-to-tr from-secondary/10 to-transparent"></div>
+
 <div class="text-center p-4">
+
 <span class="material-symbols-outlined text-secondary text-4xl mb-1">visibility</span>
+
 <span class="block font-label-md text-label-md text-on-surface font-semibold">Visual &amp; Aroma Check</span>
+
 <span class="text-[11px] text-on-surface-variant">Steam, natural sheen &amp; fresh cooking aroma verified</span>
+
 </div>
+
 </div>
+
 <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-2">Visual &amp; Hygiene Inspection</h3>
+
 <p class="font-body-md text-body-md text-on-surface-variant mb-4">
+
   Our field team examines the food's appearance, texture, and smell. We ensure it was kept properly covered in clean, food-grade vessels and was never left open to flies or dust.
+
 </p>
+
 <div class="text-xs text-secondary font-semibold flex items-center gap-1">
+
 <span class="material-symbols-outlined text-base">check_circle</span>
+
 Clean appearance &amp; aroma verified
+
 </div>
+
 </div>
+
 <!-- Step 2: Temperature & Safe Timing -->
+
 <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm hover:shadow-md transition-shadow">
+
 <div class="flex items-center justify-between mb-4">
+
 <span class="font-label-sm text-label-sm font-bold text-tertiary uppercase tracking-wider">Step 2 · Temperature</span>
+
 <span class="data-badge data-badge-estimate">HOT HOLD ZONE</span>
+
 </div>
+
 <div class="w-full h-36 bg-surface-container rounded-lg mb-4 overflow-hidden relative flex items-center justify-center">
+
 <div class="absolute inset-0 bg-gradient-to-tr from-tertiary/10 to-transparent"></div>
+
 <div class="text-center p-4">
+
 <span class="material-symbols-outlined text-tertiary text-4xl mb-1">device_thermostat</span>
+
 <span class="block font-label-md text-label-md text-on-surface font-semibold">Digital Probe Temperature</span>
+
 <span class="text-[11px] text-on-surface-variant">Hot meals kept &gt; 60°C · Cold items kept &lt; 4°C</span>
+
 </div>
+
 </div>
+
 <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-2">Temperature &amp; Time Window</h3>
+
 <p class="font-body-md text-body-md text-on-surface-variant mb-4">
+
   Bacteria grow when food sits warm between 5°C and 60°C. We measure the core temperature with digital probes to confirm it is hot (&gt;60°C), and ensure pickup happens within 3 hours of cooking.
+
 </p>
+
 <div class="text-xs text-tertiary font-semibold flex items-center gap-1">
+
 <span class="material-symbols-outlined text-base">timer</span>
+
 Safe dispatch window: Under 90 minutes
+
 </div>
+
 </div>
+
 <!-- Step 3: Inspector Sign-off -->
+
 <div class="bg-surface-container-lowest p-6 rounded-2xl border-2 border-primary-container shadow-sm hover:shadow-md transition-shadow">
+
 <div class="flex items-center justify-between mb-4">
+
 <span class="font-label-sm text-label-sm font-bold text-primary uppercase tracking-wider">Step 3 · Human Approval</span>
+
 <span class="data-badge data-badge-live">FINAL APPROVAL</span>
+
 </div>
+
 <div class="w-full h-36 bg-primary-fixed/20 rounded-lg mb-4 overflow-hidden relative flex items-center justify-center">
+
 <div class="text-center p-4">
+
 <span class="material-symbols-outlined text-primary text-4xl mb-1">assignment_turned_in</span>
+
 <span class="block font-label-md text-label-md text-on-primary-fixed-variant font-bold">Trained Safety Inspector Sign-Off</span>
+
 <span class="text-[11px] text-on-surface-variant">Physical seal placed before loading onto van</span>
+
 </div>
+
 </div>
+
 <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-2">Trained Inspector Approval</h3>
+
 <p class="font-body-md text-body-md text-on-surface-variant mb-4">
+
   Our trained food safety coordinator personally signs off on each batch. If a batch fails any hygiene test, it is never served to humans — it gets routed to animals or compost instead.
+
 </p>
+
 <div class="text-xs text-primary font-bold flex items-center gap-1">
+
 <span class="material-symbols-outlined text-base">lock</span>
+
 Sealed with tamper-proof food safety tag
+
 </div>
+
 </div>
+
 </div>
+
 </div>
+
 </section>
+
 <!-- ==================== BEAT 7: ZERO FOOD WASTE PROMISE (The 3 USPs) ==================== -->
+
 <section class="py-space-xl bg-surface-container-lowest border-b border-outline-variant" data-warmth="1.0" id="pathways">
+
 <div class="w-full max-w-7xl mx-auto px-margin">
+
 <div class="text-center max-w-3xl mx-auto mb-12">
+
 <span class="data-badge data-badge-verified mb-3">ZERO WASTE PROMISE</span>
+
 <h2 class="font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg font-bold text-on-background tracking-tight">
+
   We Don't Let Anything Go To Waste
+
 </h2>
+
 <p class="font-body-xl text-body-xl text-on-surface-variant mt-3">
+
   "If food is good, we give to humans. If medium, we give to animal farms and gaushalas. If bad, we make organic khaad (manure) out of it. Not a single grain is ever dumped into a landfill."
+
 </p>
+
 </div>
+
+
 
 <!-- 3-Way Core Rule Summary Pill Banner -->
+
 <div class="bg-gradient-to-r from-amber-500/10 via-primary/10 to-green-600/10 border border-outline-variant p-6 rounded-2xl mb-12 flex flex-col md:flex-row items-center justify-between gap-6">
+
   <div class="flex items-center gap-4">
+
     <div class="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center font-bold text-xl shrink-0 shadow-md">
+
       100%
+
     </div>
+
     <div>
+
       <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">The Potbhar Zero-Waste Rule</h3>
+
       <p class="font-body-md text-body-md text-on-surface-variant">Every batch of collected food is sorted into three meaningful destinations. Zero food dumped into city garbage hills.</p>
+
     </div>
+
   </div>
+
   <div class="flex flex-wrap items-center gap-2 shrink-0 font-mono text-xs font-bold">
+
     <span class="px-3.5 py-1.5 rounded-full bg-primary/20 text-primary flex items-center gap-1.5 border border-primary/30">
+
       <span>🍲</span> 1. Good → Humans
+
     </span>
+
     <span class="text-outline">→</span>
+
     <span class="px-3.5 py-1.5 rounded-full bg-amber-500/20 text-amber-800 dark:text-amber-300 flex items-center gap-1.5 border border-amber-500/30">
+
       <span>🐄</span> 2. Medium → Animals
+
     </span>
+
     <span class="text-outline">→</span>
+
     <span class="px-3.5 py-1.5 rounded-full bg-green-600/20 text-green-700 dark:text-green-300 flex items-center gap-1.5 border border-green-600/30">
+
       <span>🌱</span> 3. Bad → Khaad
+
     </span>
+
   </div>
+
 </div>
+
+
 
 <!-- Shared Relief Vignette Banner with Atmospheric Steam Particles -->
+
 <div class="rounded-2xl overflow-hidden shadow-md border border-outline-variant mb-12 relative max-h-[340px]">
+
 <img alt="Children and community elders sitting respectfully at a table awaiting fresh warm meals delivered to night shelter" class="w-full h-full object-cover object-center max-h-[340px]" src="https://lh3.googleusercontent.com/aida/AEtjO1UvAx27QCik32MdPrwjiXQ8iuJJToxN3IdGtdl5-hY4RjyRJMUkrqDQU_kw8dd33-cMHMYuc7eB7GhnXVVcYj9XJWLvj1mGtAh-p3uo8V8jRjR9JXgtmuqYE0OFQzD4RoFk-_3svMKPEXUUgFAj9L6vDPQbbuAQfvZhF68wf76SW9GOAc4BB2SPxII4gY9354bgOKbYJ4EmOGF3kmbHDE33RbHkNi0c4XE10y03mAQC7lYP5a9BO63kNJ6B"/>
+
 <!-- Delicate, realistic rising atmospheric steam particle layer -->
+
 <div aria-hidden="true" class="absolute inset-0 pointer-events-none overflow-hidden z-[5]">
+
 <svg class="steam-plume" fill="none" viewbox="0 0 160 260" xmlns="http://www.w3.org/2000/svg">
+
 <path d="M70 240 C55 190, 85 150, 65 110 C48 78, 80 40, 68 15 C60 2, 90 0, 95 0 C82 35, 108 70, 90 110 C75 145, 105 185, 88 240 Z" fill="url(#steam-grad-a)"></path>
+
 <path d="M85 240 C100 180, 65 140, 85 95 C100 65, 75 30, 85 5 C95 18, 115 50, 98 90 C85 130, 115 170, 98 240 Z" fill="url(#steam-grad-b)" opacity="0.6"></path>
+
 <defs>
+
 <lineargradient id="steam-grad-a" x1="0%" x2="0%" y1="100%" y2="0%">
+
 <stop offset="0%" stop-color="#fff8eb" stop-opacity="0.75"></stop>
+
 <stop offset="45%" stop-color="#ffe9c7" stop-opacity="0.38"></stop>
+
 <stop offset="100%" stop-color="#ffffff" stop-opacity="0"></stop>
+
 </lineargradient>
+
 <lineargradient id="steam-grad-b" x1="0%" x2="0%" y1="100%" y2="0%">
+
 <stop offset="0%" stop-color="#ffffff" stop-opacity="0.65"></stop>
+
 <stop offset="50%" stop-color="#fed7aa" stop-opacity="0.25"></stop>
+
 <stop offset="100%" stop-color="#ffffff" stop-opacity="0"></stop>
+
 </lineargradient>
+
 </defs>
+
 </svg>
+
 <div class="steam-particle steam-wisp-1"></div>
+
 <div class="steam-particle steam-wisp-2"></div>
+
 <div class="steam-particle steam-wisp-3"></div>
+
 <div class="steam-particle steam-wisp-4"></div>
+
 <div class="steam-particle steam-wisp-5"></div>
+
 </div>
+
 <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent flex items-end p-6 md:p-8 z-10 pointer-events-none">
+
 <div class="text-white max-w-xl pointer-events-auto">
+
 <span class="data-badge data-badge-verified mb-2">SHARED NOURISHMENT</span>
+
 <h3 class="font-headline-md text-headline-md font-bold text-white">Full Plates, Complete Dignity</h3>
+
 <p class="font-body-md text-body-md text-surface-dim mt-1">Connecting fresh surplus to shared tables in under 90 minutes with strict quality checks.</p>
+
 </div>
+
 </div>
+
 </div>
+
+
 
 <!-- The 3 USPs Columns -->
+
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
   <!-- USP 1: Fresh Good Food to Humans -->
+
   <div class="bg-gradient-to-br from-[#fffbf8] to-[#fff3ed] p-7 rounded-2xl border-2 border-primary-container/60 relative flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+
     <div>
+
       <div class="flex items-center justify-between mb-5">
+
         <div class="w-12 h-12 rounded-xl bg-primary text-white flex items-center justify-center shadow-md">
+
           <span class="material-symbols-outlined text-2xl">soup_kitchen</span>
+
         </div>
+
         <span class="data-badge data-badge-verified">TIER 1 · FOR HUMANS</span>
+
       </div>
+
       <h3 class="font-headline-md text-headline-md font-bold text-on-background mb-2">
+
         Good Fresh Food → Hungry People
+
       </h3>
+
       <div class="text-xs font-semibold text-primary mb-3">Freshly cooked, piping hot &amp; dignified meals</div>
+
       <p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+
         Unserved banquet dishes, wedding buffets, hotel surplus, and catered trays. As long as food is fresh, hot, and hygienic, it is sealed in insulated containers and delivered to night shelters and hungry families within 90 minutes.
+
       </p>
+
       <div class="space-y-2.5 bg-white p-4 rounded-xl border border-outline-variant text-xs mb-6">
+
         <div class="flex items-center justify-between">
+
           <span class="font-bold text-on-surface">Where it goes:</span>
+
           <span class="text-on-surface-variant">Night shelters, orphanages, elder homes</span>
+
         </div>
+
         <div class="flex items-center justify-between">
+
           <span class="font-bold text-on-surface">Food Type:</span>
+
           <span class="text-on-surface-variant">Biryani, curries, paneer, rotis, rice</span>
+
         </div>
+
         <div class="flex items-center justify-between">
+
           <span class="font-bold text-on-surface">Delivery Window:</span>
+
           <span class="text-primary font-bold">Under 90 mins (Hot &gt;60°C)</span>
+
         </div>
+
       </div>
+
     </div>
+
     <div class="pt-4 border-t border-outline-variant/60 flex items-center justify-between text-xs text-primary font-bold">
+
       <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">favorite</span> Full Dignity For Every Diner</span>
+
       <span>Tier 1 Active</span>
+
     </div>
+
   </div>
+
+
 
   <!-- USP 2: Medium Quality Food to Animals & Gaushalas -->
+
   <div class="bg-gradient-to-br from-[#fffdf5] to-[#fef8e7] p-7 rounded-2xl border-2 border-amber-300 relative flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+
     <div>
+
       <div class="flex items-center justify-between mb-5">
+
         <div class="w-12 h-12 rounded-xl bg-amber-600 text-white flex items-center justify-center shadow-md">
+
           <span class="material-symbols-outlined text-2xl">pets</span>
+
         </div>
+
         <span class="data-badge data-badge-estimate">TIER 2 · FOR ANIMALS</span>
+
       </div>
+
       <h3 class="font-headline-md text-headline-md font-bold text-on-background mb-2">
+
         Medium Food → Gaushalas &amp; Animals
+
       </h3>
+
       <div class="text-xs font-semibold text-amber-700 mb-3">Edible surplus, rotis, grains &amp; raw greens</div>
+
       <p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+
         Food that is wholesome and clean but mixed, overhandled, or not ideal for human consumption — such as excess dry chapatis, plain cooked rice, vegetable cut-offs, and breads. Delivered directly to local cow shelters (Gaushalas) and stray animal rescues.
+
       </p>
+
       <div class="space-y-2.5 bg-white p-4 rounded-xl border border-outline-variant text-xs mb-6">
+
         <div class="flex items-center justify-between">
+
           <span class="font-bold text-on-surface">Where it goes:</span>
+
           <span class="text-on-surface-variant">Registered Gaushalas, animal rescues, farms</span>
+
         </div>
+
         <div class="flex items-center justify-between">
+
           <span class="font-bold text-on-surface">Food Type:</span>
+
           <span class="text-on-surface-variant">Dry rotis, plain rice, cooked dal, greens</span>
+
         </div>
+
         <div class="flex items-center justify-between">
+
           <span class="font-bold text-on-surface">Handling:</span>
+
           <span class="text-amber-700 font-bold">100% plastic-free, clean food bins</span>
+
         </div>
+
       </div>
+
     </div>
+
     <div class="pt-4 border-t border-outline-variant/60 flex items-center justify-between text-xs text-amber-700 font-bold">
+
       <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">cruelty_free</span> Nourishing Cows &amp; Rescued Animals</span>
+
       <span>Tier 2 Active</span>
+
     </div>
+
   </div>
+
+
 
   <!-- USP 3: Bad Food to Compost & Khaad -->
+
   <div class="bg-gradient-to-br from-[#f6fcf8] to-[#eaf7ee] p-7 rounded-2xl border-2 border-green-300 relative flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
+
     <div>
+
       <div class="flex items-center justify-between mb-5">
+
         <div class="w-12 h-12 rounded-xl bg-secondary text-white flex items-center justify-center shadow-md">
+
           <span class="material-symbols-outlined text-2xl">compost</span>
+
         </div>
+
         <span class="data-badge data-badge-verified">TIER 3 · ORGANIC KHAAD</span>
+
       </div>
+
       <h3 class="font-headline-md text-headline-md font-bold text-on-background mb-2">
+
         Bad / Spoiled Food → Organic Khaad
+
       </h3>
+
       <div class="text-xs font-semibold text-secondary mb-3">Kitchen scraps, peelings &amp; expired food</div>
+
       <p class="font-body-md text-body-md text-on-surface-variant mb-6 leading-relaxed">
+
         Food that has turned sour, plate scrapes, vegetable peels, and spoiled leftovers. Instead of being dumped in landfills to create toxic methane, we convert them in composting pits and biogas digesters into rich, natural khaad (organic manure) for local farmers.
+
       </p>
+
       <div class="space-y-2.5 bg-white p-4 rounded-xl border border-outline-variant text-xs mb-6">
+
         <div class="flex items-center justify-between">
+
           <span class="font-bold text-on-surface">Where it goes:</span>
+
           <span class="text-on-surface-variant">Community compost pits &amp; Bio-CNG plants</span>
+
         </div>
+
         <div class="flex items-center justify-between">
+
           <span class="font-bold text-on-surface">Output:</span>
+
           <span class="text-on-surface-variant font-bold text-secondary">Organic Manure (Khaad) + Bio-gas</span>
+
         </div>
+
         <div class="flex items-center justify-between">
+
           <span class="font-bold text-on-surface">Landfill Dump:</span>
+
           <span class="text-green-700 font-bold">0% Dumped (Zero Methane Gas)</span>
+
         </div>
+
       </div>
+
     </div>
+
     <div class="pt-4 border-t border-outline-variant/60 flex items-center justify-between text-xs text-secondary font-bold">
+
       <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">eco</span> 100% Natural Fertilizer for Soil</span>
+
       <span>Tier 3 Active</span>
+
     </div>
+
   </div>
+
 </div>
+
 </div>
+
 </section>
+
 </div>
+
 </section>
+
 <!-- ==================== BEAT 8: CASE STUDIES & WORKED MATCHING EXAMPLE ==================== -->
+
 <section class="py-space-xl bg-surface-container-low border-b border-outline-variant" data-warmth="1.0" id="case-studies">
+
 <div class="w-full max-w-7xl mx-auto px-margin">
+
 <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+
 <div>
+
 <div class="inline-flex items-center gap-2 mb-3">
+
 <span class="data-badge data-badge-demo">Fictional persona · Demonstration content</span>
+
 <span class="data-badge data-badge-verified">PLAYBOOK §8</span>
+
 </div>
+
 <h2 class="font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg font-bold text-on-background tracking-tight">
+
               Operational Case Studies
+
             </h2>
+
 <p class="font-body-lg text-body-lg text-on-surface-variant mt-2 max-w-2xl">
+
               Real-world simulated operational manifests illustrating the fail-closed routing logic, diversion math, and prevention feedback loops.
+
             </p>
+
 </div>
+
 </div>
+
 <!-- 4 Clear Case Study Cards -->
+
 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+
 <!-- Case 1 -->
+
 <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between">
+
 <div>
+
 <div class="flex items-center justify-between mb-3">
+
 <span class="font-label-sm text-label-sm font-bold text-primary">CASE 01</span>
+
 <span class="data-badge data-badge-demo">DEMO</span>
+
 </div>
+
 <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-2">Sharma Royal Caterers</h3>
+
 <p class="text-xs text-on-surface-variant mb-4">Mega wedding banquet event with complex multi-dish surplus manifest.</p>
+
 <div class="space-y-2 bg-surface-container-low p-3.5 rounded-lg text-xs font-mono mb-4">
+
 <div class="flex justify-between">
+
 <span>Reported:</span>
+
 <span class="font-bold">148 kg</span>
+
 </div>
+
 <div class="flex justify-between text-secondary font-bold">
+
 <span>Approved:</span>
+
 <span>114 kg (77.0%)</span>
+
 </div>
+
 <div class="flex justify-between text-primary font-bold">
+
 <span>Delivered:</span>
+
 <span>108 kg (73.0%)</span>
+
 </div>
+
 <div class="flex justify-between text-outline">
+
 <span>Biogas Divert:</span>
+
 <span>24 kg</span>
+
 </div>
+
 <div class="flex justify-between text-error">
+
 <span>Held/Rejected:</span>
+
 <span>10 kg</span>
+
 </div>
+
 </div>
+
 </div>
+
 <p class="font-body-md text-[13px] text-on-surface-variant border-t border-outline-variant/60 pt-3">
+
               10 kg held back due to gravy separation indicating thermal breakdown. 24 kg kitchen offcuts diverted to local bio-methanizer.
+
             </p>
+
 </div>
+
 <!-- Case 2 -->
+
 <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between">
+
 <div>
+
 <div class="flex items-center justify-between mb-3">
+
 <span class="font-label-sm text-label-sm font-bold text-secondary">CASE 02</span>
+
 <span class="data-badge data-badge-demo">DEMO</span>
+
 </div>
+
 <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-2">Kaveri Hostel Mess</h3>
+
 <p class="text-xs text-on-surface-variant mb-4">High-volume institutional student dining facility organic scrap diversion.</p>
+
 <div class="space-y-2 bg-[#f0fdf4] p-3.5 rounded-lg text-xs font-mono mb-4 border border-secondary-fixed">
+
 <div class="flex justify-between">
+
 <span>Reported:</span>
+
 <span class="font-bold">468 kg</span>
+
 </div>
+
 <div class="flex justify-between text-secondary font-bold">
+
 <span>Received:</span>
+
 <span>441 kg (94.2%)</span>
+
 </div>
+
 <div class="flex justify-between text-on-surface font-bold">
+
 <span>Processed:</span>
+
 <span>420 kg</span>
+
 </div>
+
 <div class="flex justify-between text-outline">
+
 <span>Moisture Loss:</span>
+
 <span>21 kg</span>
+
 </div>
+
 <div class="flex justify-between text-secondary">
+
 <span>Finished Compost:</span>
+
 <span>84 kg rich humus</span>
+
 </div>
+
 </div>
+
 </div>
+
 <p class="font-body-md text-[13px] text-on-surface-variant border-t border-outline-variant/60 pt-3">
+
               Vegetable peelings and leftover rice processed via university on-site rotary drum composter, enriching community gardens.
+
             </p>
+
 </div>
+
 <!-- Case 3 -->
+
 <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between">
+
 <div>
+
 <div class="flex items-center justify-between mb-3">
+
 <span class="font-label-sm text-label-sm font-bold text-tertiary">CASE 03</span>
+
 <span class="data-badge data-badge-demo">DEMO</span>
+
 </div>
+
 <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-2">Asha Kiran Shelter</h3>
+
 <p class="text-xs text-on-surface-variant mb-4">Strict logistical constraint: no cold refrigeration units available on-site.</p>
+
 <div class="space-y-2 bg-[#fffaf0] p-3.5 rounded-lg text-xs font-mono mb-4 border border-tertiary-fixed">
+
 <div class="flex justify-between">
+
 <span>Capacity Need:</span>
+
 <span class="font-bold">320 kg</span>
+
 </div>
+
 <div class="flex justify-between text-primary font-bold">
+
 <span>Matched &amp; Recvd:</span>
+
 <span>312 kg</span>
+
 </div>
+
 <div class="flex justify-between text-secondary font-bold">
+
 <span>Delivered Meals:</span>
+
 <span>780 wholesome meals</span>
+
 </div>
+
 <div class="flex justify-between text-outline">
+
 <span>Transit Time:</span>
+
 <span>28 mins</span>
+
 </div>
+
 <div class="flex justify-between text-tertiary">
+
 <span>Thermal At Entry:</span>
+
 <span>61.2°C (Compliant)</span>
+
 </div>
+
 </div>
+
 </div>
+
 <p class="font-body-md text-[13px] text-on-surface-variant border-t border-outline-variant/60 pt-3">
+
               Matched only with immediate hot-holding dispatches. Served hot to residents within 45 minutes of kitchen collection.
+
             </p>
+
 </div>
+
 <!-- Case 4 -->
+
 <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between">
+
 <div>
+
 <div class="flex items-center justify-between mb-3">
+
 <span class="font-label-sm text-label-sm font-bold text-on-surface">CASE 04</span>
+
 <span class="data-badge data-badge-demo">DEMO</span>
+
 </div>
+
 <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-2">Marina Banquets</h3>
+
 <p class="text-xs text-on-surface-variant mb-4">Closed-loop upstream menu optimization through FreshGuard predictive logs.</p>
+
 <div class="space-y-2 bg-surface-container-low p-3.5 rounded-lg text-xs font-mono mb-4">
+
 <div class="flex justify-between">
+
 <span>Baseline Waste:</span>
+
 <span class="font-bold">210 kg/weekend</span>
+
 </div>
+
 <div class="flex justify-between text-secondary font-bold">
+
 <span>Sunday Rice Cut:</span>
+
 <span>-26.0% reduction</span>
+
 </div>
+
 <div class="flex justify-between text-on-surface font-bold">
+
 <span>Cost Saved:</span>
+
 <span>₹42,800 / month</span>
+
 </div>
+
 <div class="flex justify-between text-outline">
+
 <span>Client Satisfaction:</span>
+
 <span>99.2%</span>
+
 </div>
+
 <div class="flex justify-between text-secondary">
+
 <span>Status:</span>
+
 <span>Prevention Certified</span>
+
 </div>
+
 </div>
+
 </div>
+
 <p class="font-body-md text-[13px] text-on-surface-variant border-t border-outline-variant/60 pt-3">
+
               By revealing pattern over-preparation in carbohydrate courses, kitchen adjusted staging portions to cut recurring surplus at source.
+
             </p>
+
 </div>
+
 </div>
+
 <!-- Matching Worked Example Container -->
+
 <div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant shadow-md">
+
 <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 pb-6 border-b border-outline-variant">
+
 <div>
+
 <div class="inline-flex items-center gap-2 mb-1">
+
 <span class="material-symbols-outlined text-primary text-sm">calculate</span>
+
 <span class="font-label-sm text-label-sm font-bold uppercase tracking-wider text-primary">Algorithmic Matching Engine</span>
+
 <span class="data-badge data-badge-verified">WORKED EXAMPLE</span>
+
 </div>
+
 <h3 class="font-headline-md text-headline-md font-bold text-on-surface">
+
                 Multi-Factor Recipient Allocation Formula
+
               </h3>
+
 </div>
+
 <div class="flex items-center gap-2 bg-surface-container px-4 py-2 rounded-xl font-mono text-xs text-on-surface">
+
 <span>Score = (D × 0.30) + (C × 0.25) + (N × 0.25) + (W × 0.20)</span>
+
 </div>
+
 </div>
+
 <p class="font-body-md text-body-md text-on-surface-variant mb-6">
+
             When a verified surplus batch of 120 kg hot stew is ready in Ghatkopar, our spatial solver balances transit distance (D), storage capacity (C), acute hunger urgency (N), and food life window (W). Unverified organizations are systematically blocked by the smart contract.
+
           </p>
+
 <div class="overflow-x-auto">
+
 <table class="w-full text-left text-sm">
+
 <thead class="bg-surface-container font-label-md text-label-md text-on-surface uppercase border-b border-outline-variant">
+
 <tr>
+
 <th class="py-3 px-4">Candidate Recipient</th>
+
 <th class="py-3 px-4">Distance (0.30)</th>
+
 <th class="py-3 px-4">Capacity (0.25)</th>
+
 <th class="py-3 px-4">Need (0.25)</th>
+
 <th class="py-3 px-4">Window (0.20)</th>
+
 <th class="py-3 px-4">Computed Score</th>
+
 <th class="py-3 px-4">Dispatch Action</th>
+
 </tr>
+
 </thead>
+
 <tbody class="divide-y divide-outline-variant/60 font-mono text-xs">
+
 <tr class="bg-secondary-fixed/20 font-bold">
+
 <td class="py-4 px-4 font-sans flex items-center gap-2">
+
 <span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+
                     Asha Kiran Shelter (Verified)
+
                   </td>
+
 <td class="py-4 px-4 text-on-surface">3.2 km (0.95)</td>
+
 <td class="py-4 px-4 text-on-surface">Immediate (0.90)</td>
+
 <td class="py-4 px-4 text-on-surface">Severe (0.95)</td>
+
 <td class="py-4 px-4 text-on-surface">Hot ready (0.85)</td>
+
 <td class="py-4 px-4 text-secondary text-sm">0.920 / 1.00</td>
+
 <td class="py-4 px-4">
+
 <span class="inline-flex items-center gap-1 bg-secondary text-white px-2.5 py-1 rounded-full text-[11px] font-sans font-bold">
+
 <span class="material-symbols-outlined text-xs">done_all</span> AWARDED BATCH
+
                     </span>
+
 </td>
+
 </tr>
+
 <tr class="text-on-surface-variant">
+
 <td class="py-4 px-4 font-sans">Navjeevan Seva (Verified)</td>
+
 <td class="py-4 px-4">7.8 km (0.68)</td>
+
 <td class="py-4 px-4">Cold-box (0.80)</td>
+
 <td class="py-4 px-4">Moderate (0.75)</td>
+
 <td class="py-4 px-4">Acceptable (0.70)</td>
+
 <td class="py-4 px-4 font-semibold">0.732 / 1.00</td>
+
 <td class="py-4 px-4">
+
 <span class="text-outline text-xs font-sans">Queue Position #2</span>
+
 </td>
+
 </tr>
+
 <tr class="bg-error-container/20 text-on-error-container">
+
 <td class="py-4 px-4 font-sans flex items-center gap-2 text-error font-semibold">
+
 <span class="material-symbols-outlined text-sm">block</span>
+
                     Unregistered Slum Kitchen B
+
                   </td>
+
 <td class="py-4 px-4">1.1 km (0.99)</td>
+
 <td class="py-4 px-4">Unverified (0.00)</td>
+
 <td class="py-4 px-4">Critical (1.00)</td>
+
 <td class="py-4 px-4">No inspection</td>
+
 <td class="py-4 px-4 text-error font-bold">DISQUALIFIED</td>
+
 <td class="py-4 px-4">
+
 <span class="inline-flex items-center gap-1 bg-error text-white px-2.5 py-1 rounded-full text-[11px] font-sans font-bold">
+
                       EXCLUDED (NO FSSAI)
+
                     </span>
+
 </td>
+
 </tr>
+
 </tbody>
+
 </table>
+
 </div>
+
 </div>
+
 </div>
+
 </section>
+
 <!-- ==================== BEAT 9: VOICES (Community & Field Perspectives) ==================== -->
+
 <section class="py-space-xl bg-background border-b border-outline-variant" data-warmth="1.0" id="voices">
+
 <div class="w-full max-w-7xl mx-auto px-margin">
+
 <div class="text-center max-w-3xl mx-auto mb-14">
+
 <div class="inline-flex items-center gap-2 mb-2">
+
 <span class="data-badge data-badge-demo">Fictional persona · Demonstration content</span>
+
 <span class="data-badge data-badge-verified">PLAYBOOK §8</span>
+
 </div>
+
 <h2 class="font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg font-bold text-on-background tracking-tight">
+
             Voices from the Relay
+
           </h2>
+
 <p class="font-body-md text-body-md text-on-surface-variant max-w-xl mx-auto mt-2">
+
             *Demonstration personas representing stakeholders across our pilot ecosystem. These will be replaced with real participant video vignettes upon completion of the pilot verification period.*
+
           </p>
+
 </div>
+
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
 <!-- Voice 1 -->
+
 <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between">
+
 <div>
+
 <div class="flex items-center gap-3 mb-4">
+
 <div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-on-primary-fixed font-bold text-lg">
+
                   VK
+
                 </div>
+
 <div>
+
 <h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Vikram Kulkarni</h4>
+
 <span class="text-xs text-outline block">Head Chef, Sagarika Grand Banquets</span>
+
 </div>
+
 </div>
+
 <p class="font-body-md text-body-md text-on-surface-variant italic mb-4 leading-relaxed">
+
                 "For sixteen years as an executive chef, watching 40 kilograms of pristine Mughlai gravies being poured into black garbage bins after a midnight reception felt like a moral betrayal. With POTBHAR, it takes 3 minutes on my mobile to log the pots, and within 35 minutes an insulated van arrives with verified temperature logs."
+
               </p>
+
 </div>
+
 <div class="pt-4 border-t border-outline-variant flex items-center justify-between text-xs text-primary font-semibold">
+
 <span>Donor Partner</span>
+
 <span>1,240 kg Rescued</span>
+
 </div>
+
 </div>
+
 <!-- Voice 2 -->
+
 <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between">
+
 <div>
+
 <div class="flex items-center gap-3 mb-4">
+
 <div class="w-12 h-12 rounded-full bg-secondary-fixed flex items-center justify-center text-on-secondary-fixed font-bold text-lg">
+
                   SM
+
                 </div>
+
 <div>
+
 <h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Sister Mary Teresa</h4>
+
 <span class="text-xs text-outline block">Director, Shanti Bhavan Shelter</span>
+
 </div>
+
 </div>
+
 <p class="font-body-md text-body-md text-on-surface-variant italic mb-4 leading-relaxed">
+
                 "Our elders and street children are not beggars waiting for crumbs. POTBHAR honors their dignity. The food comes steaming hot, with an FSSAI temperature inspection sheet attached. We know exactly what kitchen cooked it, when it was prepared, and that it is pure and healthy."
+
               </p>
+
 </div>
+
 <div class="pt-4 border-t border-outline-variant flex items-center justify-between text-xs text-secondary font-semibold">
+
 <span>Shelter Network</span>
+
 <span>3,100 Meals Served</span>
+
 </div>
+
 </div>
+
 <!-- Voice 3 -->
+
 <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between">
+
 <div>
+
 <div class="flex items-center gap-3 mb-4">
+
 <div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center text-on-tertiary-fixed font-bold text-lg">
+
                   AP
+
                 </div>
+
 <div>
+
 <h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Anand Parikh</h4>
+
 <span class="text-xs text-outline block">Certified Field Safety Officer</span>
+
 </div>
+
 </div>
+
 <p class="font-body-md text-body-md text-on-surface-variant italic mb-4 leading-relaxed">
+
                 "Digital thermometers flag temperature drops instantly, but we inspectors are the physical guardians. If the needle probe reads 57°C instead of 60°C, the food is never served to humans — it gets diverted to Gaushalas or organic khaad instead. No compromises. Human health is sacred."
+
               </p>
+
 </div>
+
 <div class="pt-4 border-t border-outline-variant flex items-center justify-between text-xs text-tertiary font-semibold">
+
 <span>Field Operations</span>
+
 <span>184 Inspections Verified</span>
+
 </div>
+
 </div>
+
 </div>
+
 </div>
+
 </section>
+
 <!-- ==================== BEAT 10: IMPACT DASHBOARD & SCENARIO CALCULATOR ==================== -->
+
 <section class="py-space-xl bg-surface-container-low border-b border-outline-variant" data-warmth="1.0" id="calculator">
+
 <div class="w-full max-w-7xl mx-auto px-margin">
+
 <!-- Demonstration Banner -->
+
 <div class="bg-surface-container-highest border border-outline-variant/80 p-4 rounded-xl text-center mb-12 flex items-center justify-center gap-3">
+
 <span class="data-badge data-badge-demo">SIMULATION</span>
+
 <span class="font-label-lg text-label-lg text-on-surface font-semibold">Interactive Zero-Waste Allocation Simulator</span>
+
 <span class="text-xs text-outline hidden sm:inline">Calculates distribution across Humans, Animals &amp; Organic Khaad</span>
+
 </div>
+
 <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+
 <!-- Scenario Calculator Form -->
+
 <div class="lg:col-span-6 bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant shadow-md">
+
 <div class="inline-flex items-center gap-2 bg-[#fee8bf] px-3 py-1 rounded-full mb-4">
+
 <span class="material-symbols-outlined text-primary text-sm">tune</span>
+
 <span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wider">3-Way Zero-Waste Model</span>
+
 <span class="data-badge data-badge-verified">CITY SCALE</span>
+
 </div>
+
 <h3 class="font-headline-lg text-headline-lg font-bold text-on-background mb-2">
+
               City Impact Simulator
+
             </h3>
+
 <p class="font-body-md text-body-md text-on-surface-variant mb-6">
+
               Estimate how much food your city or kitchen cluster can rescue for hungry people, animal gaushalas, and organic fertilizer.
+
             </p>
+
 <form class="space-y-5" id="calc-form" onsubmit="event.preventDefault(); calculateImpact();">
+
 <div>
+
 <label class="block font-label-md text-label-md text-on-surface mb-1.5" for="input-donors">
+
                   Number of Active Food Donors (Hotels, Banquets, Caterers)
+
                 </label>
+
 <div class="relative">
+
 <input class="w-full bg-white border border-outline-variant rounded-lg p-3 text-on-surface focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm" id="input-donors" max="1000" min="1" type="number" value="45"/>
+
 <span class="absolute right-3 top-3 text-xs text-outline">Hotels/Caterers</span>
+
 </div>
+
 </div>
+
 <div>
+
 <label class="block font-label-md text-label-md text-on-surface mb-1.5" for="input-kg">
+
                   Average Surplus Generated per Donor / Week in kg
+
                 </label>
+
 <div class="relative">
+
 <input class="w-full bg-white border border-outline-variant rounded-lg p-3 text-on-surface focus:border-primary focus:ring-2 focus:ring-primary/20 text-sm" id="input-kg" max="2000" min="5" type="number" value="85"/>
+
 <span class="absolute right-3 top-3 text-xs text-outline">kg / week</span>
+
 </div>
+
 </div>
+
 <div>
+
 <label class="block font-label-md text-label-md text-on-surface mb-1.5" for="input-compliance">
+
                   Human Quality Approval Rate (c)
+
                 </label>
+
 <div class="relative">
+
 <input class="w-full accent-primary h-2 bg-surface-container rounded-lg cursor-pointer" id="input-compliance" max="0.95" min="0.5" oninput="updateRangeLabel(this.value)" step="0.01" type="range" value="0.75"/>
+
 <div class="flex justify-between text-xs text-outline mt-1 font-mono">
+
 <span>50% (Strict hot-only)</span>
+
 <span class="font-bold text-primary" id="range-val">75% (Human Safe: Rest goes to Animals &amp; Khaad)</span>
+
 <span>95% (High efficiency)</span>
+
 </div>
+
 </div>
+
 </div>
+
 <div class="pt-4 border-t border-outline-variant">
+
 <button class="w-full bg-primary-container text-on-primary font-label-lg text-label-lg py-3 rounded-lg font-bold hover:opacity-95 transition-opacity flex items-center justify-center gap-2" onclick="calculateImpact()" type="button">
+
 <span class="material-symbols-outlined text-sm">bolt</span>
+
                   Calculate 3-Way Zero-Waste Impact
+
                 </button>
+
 </div>
+
 </form>
+
 </div>
+
 <!-- Dynamic Results Dashboard -->
+
 <div class="lg:col-span-6 flex flex-col justify-between">
+
 <div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant shadow-md h-full flex flex-col justify-between">
+
 <div>
+
 <div class="flex items-center justify-between pb-4 border-b border-outline-variant mb-6">
+
 <div>
+
 <span class="font-label-sm text-label-sm text-outline uppercase block">Allocation Breakdown</span>
+
 <span class="font-mono text-xs text-primary font-bold">100% Utilized · 0% Landfill Waste</span>
+
 </div>
+
 <span class="data-badge data-badge-verified">ZERO WASTE</span>
+
 </div>
+
 <div class="grid grid-cols-2 gap-6 mb-6">
+
 <div class="bg-surface-container p-5 rounded-xl border border-outline-variant/60">
+
 <span class="font-label-sm text-label-sm text-on-surface-variant uppercase block mb-1">🍲 Tier 1: Human Food Rescued</span>
+
 <div class="font-headline-xl text-headline-xl font-bold text-primary" id="res-kg">2,868 kg</div>
+
 <span class="text-xs text-outline block mt-1">High-protein fresh meals</span>
+
 </div>
+
 <div class="bg-secondary-fixed/30 p-5 rounded-xl border border-secondary-fixed">
+
 <span class="font-label-sm text-label-sm text-on-secondary-fixed-variant uppercase block mb-1">Plates Nourished</span>
+
 <div class="font-headline-xl text-headline-xl font-bold text-secondary" id="res-meals">7,171</div>
+
 <span class="text-xs text-on-secondary-fixed-variant block mt-1">Dignified 400g warm portions</span>
+
 </div>
+
 </div>
+
 <div class="space-y-3">
+
 <div class="flex items-center justify-between p-3.5 bg-amber-500/10 rounded-lg border border-amber-500/30 text-sm">
+
 <span class="text-on-surface font-semibold flex items-center gap-2">
+
 <span class="material-symbols-outlined text-amber-700 text-base">pets</span>
+
                       🐄 Tier 2: Animal Feed (Gaushalas &amp; Shelters)
+
                     </span>
+
 <span class="font-mono font-bold text-amber-800 dark:text-amber-300" id="res-animal">574 kg / wk</span>
+
 </div>
+
 <div class="flex items-center justify-between p-3.5 bg-green-500/10 rounded-lg border border-green-500/30 text-sm">
+
 <span class="text-on-surface font-semibold flex items-center gap-2">
+
 <span class="material-symbols-outlined text-green-700 text-base">compost</span>
+
                       🌱 Tier 3: Organic Khaad (Manure &amp; Biogas)
+
                     </span>
+
 <span class="font-mono font-bold text-green-700 dark:text-green-300" id="res-compost">382 kg / wk</span>
+
 </div>
+
 <div class="flex items-center justify-between p-3.5 bg-surface-container-low rounded-lg border border-outline-variant text-sm">
+
 <span class="text-on-surface font-semibold flex items-center gap-2">
+
 <span class="material-symbols-outlined text-secondary text-base">eco</span>
+
                       Methane Prevented from Landfills
+
                     </span>
+
 <span class="font-mono font-bold text-on-surface" id="res-co2">5,450 kg CO₂e / wk</span>
+
 </div>
+
 </div>
+
 </div>
+
 <div class="mt-8 pt-4 border-t border-outline-variant text-xs text-outline flex items-center justify-between">
+
 <span>Rule: Good → Humans · Medium → Animals · Bad → Khaad</span>
+
 <span>100% Landfill Diversion</span>
+
 </div>
+
 </div>
+
 </div>
+
 </div>
+
 </div>
+
 </section>
+
 <!-- ==================== BEAT 11: CALL TO ACTION (Urgent Dual Action) ==================== -->
+
 <section class="py-space-xl bg-[#263143] text-white relative overflow-hidden" data-warmth="1.0" id="report-action">
+
 <!-- Glow ambient -->
+
 <div class="absolute -left-20 bottom-0 w-80 h-80 rounded-full bg-primary/30 blur-3xl pointer-events-none"></div>
+
 <div class="w-full max-w-7xl mx-auto px-margin relative z-10 text-center">
+
 <div class="inline-flex items-center gap-2 bg-white/10 px-4 py-1.5 rounded-full mb-6 border border-white/20">
+
 <span class="w-2.5 h-2.5 rounded-full bg-primary-container animate-ping"></span>
+
 <span class="font-label-sm text-label-sm text-primary-fixed uppercase tracking-wider font-bold">24/7 Rapid Response Network</span>
+
 </div>
+
 <h2 class="font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg font-bold tracking-tight max-w-3xl mx-auto mb-4">
+
           No edible meal belongs in the trash.<br/>
+
 <span class="text-primary-fixed">Take action right now.</span>
+
 </h2>
+
 <p class="font-body-xl text-body-xl text-surface-dim max-w-2xl mx-auto mb-10 leading-relaxed font-light">
+
           Whether you are an executive banquet chef closing a 1,000-person wedding tonight or an accredited community shelter needing fresh meals, our dispatch grid is live.
+
         </p>
+
+
 
 <!-- ==================== LIVE DISPATCH RADAR & OPERATIONS FEED ==================== -->
+
 <div class="max-w-4xl mx-auto mb-12 bg-black/60 backdrop-blur-xl border border-white/15 rounded-2xl p-6 text-left shadow-2xl relative overflow-hidden">
+
   <!-- Subtle ambient green glow for active operations -->
+
   <div class="absolute -bottom-10 -right-10 w-48 h-48 bg-secondary/15 rounded-full blur-2xl pointer-events-none"></div>
 
+
+
   <div class="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-4 mb-4">
+
     <div class="flex items-center gap-2.5">
+
       <!-- Radar Sonar Pulse Beacon -->
+
       <div class="relative w-7 h-7 flex items-center justify-center">
+
         <span class="absolute w-full h-full rounded-full bg-secondary/30 sonar-ring"></span>
+
         <span class="absolute w-full h-full rounded-full bg-secondary/30 sonar-ring-delay-1"></span>
+
         <span class="w-3 h-3 rounded-full bg-secondary-fixed shadow-[0_0_10px_#95f8a7]"></span>
+
       </div>
+
       <div>
+
         <div class="text-xs font-mono font-bold uppercase tracking-wider text-secondary-fixed flex items-center gap-1.5">
+
           <span>Active Hyperlocal Dispatch Radar</span>
+
           <span class="text-[10px] bg-secondary/20 text-secondary-fixed px-1.5 py-0.2 rounded font-sans">GRID ACTIVE</span>
+
         </div>
+
         <div class="text-[11px] text-surface-dim font-mono">14 Insulated EV Vans on Patrol · 3 Metro Clusters Connected</div>
+
       </div>
+
     </div>
+
+
 
     <div class="flex items-center gap-2 font-mono text-[11px] text-surface-dim bg-white/5 px-3 py-1.5 rounded-full border border-white/10">
+
       <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
+
       <span id="active-pings-counter">18 Transits Live</span>
+
     </div>
+
   </div>
+
+
 
   <!-- Dynamic Live Rescue Transaction Feed -->
+
   <div class="space-y-2.5 font-mono text-xs" id="dispatch-feed">
+
     <div class="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 hover:border-secondary-fixed/30 transition-all">
+
       <div class="flex items-center gap-3">
+
         <span class="text-secondary-fixed text-base">🟢</span>
+
         <div>
+
           <span class="font-bold text-white">Van #04 (Indiranagar)</span>
+
           <span class="text-surface-dim ml-1">→ 65kg hot surplus collected from Hotel Grand Sapphire</span>
+
         </div>
+
       </div>
+
       <div class="text-right shrink-0">
+
         <span class="text-[11px] text-secondary-fixed font-bold">68.2°C PASS</span>
+
         <span class="block text-[10px] text-surface-dim/70">1 min ago</span>
+
       </div>
+
     </div>
 
+
+
     <div class="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 hover:border-secondary-fixed/30 transition-all">
+
       <div class="flex items-center gap-3">
+
         <span class="text-secondary-fixed text-base">🟢</span>
+
         <div>
+
           <span class="font-bold text-white">Van #11 (Dharavi Hub)</span>
+
           <span class="text-surface-dim ml-1">→ 180 portions delivered &amp; verified at Sneha Sadan Shelter</span>
+
         </div>
+
       </div>
+
       <div class="text-right shrink-0">
+
         <span class="text-[11px] text-green-400 font-bold">INTAKE VERIFIED</span>
+
         <span class="block text-[10px] text-surface-dim/70">4 mins ago</span>
+
       </div>
+
     </div>
 
+
+
     <div class="flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 hover:border-secondary-fixed/30 transition-all">
+
       <div class="flex items-center gap-3">
+
         <span class="text-amber-400 text-base">🟡</span>
+
         <div>
+
           <span class="font-bold text-white">Van #07 (BKC Mumbai)</span>
+
           <span class="text-surface-dim ml-1">→ En route to Convention Center 800-guest wedding banquet</span>
+
         </div>
+
       </div>
+
       <div class="text-right shrink-0">
+
         <span class="text-[11px] text-amber-300 font-bold">ETA 5 MINS</span>
+
         <span class="block text-[10px] text-surface-dim/70">Live GPS</span>
+
       </div>
+
     </div>
+
   </div>
+
 </div>
+
+
 
 <!-- Dual Prominent Action Cards -->
+
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto text-left mb-12">
+
 <!-- Action 1: Donors -->
+
 <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:border-primary-fixed transition-all flex flex-col justify-between">
+
 <div>
+
 <div class="flex items-center justify-between mb-4">
+
 <span class="material-symbols-outlined text-primary-fixed text-4xl">restaurant</span>
+
 <span class="data-badge data-badge-live text-white bg-primary">FOOD DONORS</span>
+
 </div>
+
 <h3 class="font-headline-md text-headline-md font-bold text-white mb-2">Report Surplus Food</h3>
+
 <p class="font-body-md text-body-md text-surface-dim mb-6">
+
                 Have unserved banquet trays, hotel buffet surplus, or institutional kitchen leftovers? Log your pickup in 90 seconds. We dispatch insulated vans immediately.
+
               </p>
+
 </div>
+
 <button class="w-full bg-primary-container text-on-primary font-label-lg text-label-lg py-3.5 rounded-lg font-bold hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-lg" onclick="launchDonorSimulator()" type="button">
+
 <span class="material-symbols-outlined text-lg">add_circle</span>
+
               Initiate Rapid Surplus Pickup
+
             </button>
+
 </div>
+
 <!-- Action 2: Recipients -->
+
 <div class="bg-white/10 backdrop-blur-md p-8 rounded-2xl border border-white/20 hover:border-secondary-fixed transition-all flex flex-col justify-between">
+
 <div>
+
 <div class="flex items-center justify-between mb-4">
+
 <span class="material-symbols-outlined text-secondary-fixed text-4xl">home_work</span>
+
 <span class="data-badge data-badge-verified">RECIPIENT HUBS</span>
+
 </div>
+
 <h3 class="font-headline-md text-headline-md font-bold text-white mb-2">Find Food Donations</h3>
+
 <p class="font-body-md text-body-md text-surface-dim mb-6">
+
                 Are you an accredited shelter, soup kitchen, or elder care home? Register your cold-chain capacity and meal needs to join our automated allocation grid.
+
               </p>
+
 </div>
+
 <button class="w-full bg-secondary text-white font-label-lg text-label-lg py-3.5 rounded-lg font-bold hover:brightness-110 active:scale-[0.98] transition-all flex items-center justify-center gap-2 shadow-lg" onclick="launchRecipientPortal()" type="button">
+
 <span class="material-symbols-outlined text-lg">how_to_reg</span>
+
               Register Recipient Center
+
             </button>
+
 </div>
+
 </div>
+
 <!-- 24/7 Hotline -->
+
 <div class="inline-flex flex-col sm:flex-row items-center gap-4 bg-white/5 border border-white/10 px-8 py-4 rounded-2xl backdrop-blur-sm">
+
 <div class="flex items-center gap-3">
+
 <span class="material-symbols-outlined text-primary-fixed text-3xl animate-bounce">call</span>
+
 <div class="text-left">
+
 <span class="font-label-sm text-label-sm text-surface-dim uppercase block">Emergency Hunger &amp; Surplus Dispatch</span>
+
 <span class="font-headline-md text-headline-md font-bold text-white tracking-wider">1800-POT-BHAR (1800-768-2427)</span>
+
 </div>
+
 </div>
+
 <span class="text-xs text-surface-dim border-t sm:border-t-0 sm:border-l border-white/20 pt-2 sm:pt-0 sm:pl-4">
+
             Toll-Free 24 Hours · Hindi, Marathi, Tamil, Bengali &amp; English
+
           </span>
+
 </div>
+
 </div>
+
 </section>
+
 </main>
+
 <!-- ==================== WEB FOOTER ==================== -->
+
 <footer class="bg-surface-container-low dark:bg-inverse-surface border-t border-outline-variant dark:border-outline w-full mt-auto" data-warmth="1.0">
+
 <div class="w-full max-w-7xl mx-auto px-margin py-space-xl flex flex-col md:flex-row justify-between items-center gap-gutter">
+
 <!-- Brand & Motto -->
+
 <div class="flex flex-col items-center md:items-start text-center md:text-left">
+
 <a class="flex items-center gap-2 mb-2" href="#hero">
+
 <div class="w-7 h-7 rounded bg-primary-container flex items-center justify-center text-on-primary">
+
 <span class="material-symbols-outlined text-base">soup_kitchen</span>
+
 </div>
+
 <span class="font-headline-sm text-headline-sm text-primary dark:text-inverse-primary font-bold">POTBHAR</span>
+
 </a>
+
 <p class="font-body-md text-body-md text-on-surface-variant dark:text-outline-variant max-w-md">
+
           © 2025 POTBHAR Foundation. Har Pet Bhare, Har Nivala Sambhale. Certified FSSAI Surplus Recovery Protocol Compliant. Hunger Emergency Hotline: 1800-POT-BHAR
+
         </p>
+
 </div>
+
 <!-- Links Cluster -->
+
 <div class="flex flex-wrap justify-center gap-x-6 gap-y-3">
+
 <a class="text-on-surface-variant dark:text-outline-variant font-label-sm text-label-sm hover:text-primary dark:hover:text-inverse-primary underline transition-colors duration-150" href="#impact">Impact Reports</a>
+
 <a class="text-on-surface-variant dark:text-outline-variant font-label-sm text-label-sm hover:text-primary dark:hover:text-inverse-primary underline transition-colors duration-150" href="#freshguard">Food Safety &amp; Quality Check</a>
+
 <a class="text-on-surface-variant dark:text-outline-variant font-label-sm text-label-sm hover:text-primary dark:hover:text-inverse-primary underline transition-colors duration-150" href="#pathways">3-Way Zero Waste (Humans, Animals, Khaad)</a>
+
 <a class="text-on-surface-variant dark:text-outline-variant font-label-sm text-label-sm hover:text-primary dark:hover:text-inverse-primary underline transition-colors duration-150" href="#case-studies">Donor Integrity Code</a>
+
 <a class="text-on-surface-variant dark:text-outline-variant font-label-sm text-label-sm hover:text-primary dark:hover:text-inverse-primary underline transition-colors duration-150" href="#report-action">Volunteer Onboarding</a>
+
 <a class="text-on-surface-variant dark:text-outline-variant font-label-sm text-label-sm hover:text-primary dark:hover:text-inverse-primary underline transition-colors duration-150" href="#">Privacy Policy</a>
+
 </div>
+
 </div>
+
 </footer>
+
 <!-- Floating Dynamic Warmth Arc Badge (Playbook §1.1 & §4) -->
+
 <div class="fixed bottom-6 right-6 z-40 hidden sm:flex items-center gap-2 px-3.5 py-2 rounded-full bg-surface-container-lowest/90 backdrop-blur-md border border-outline-variant shadow-lg text-xs font-mono transition-all duration-300" id="floating-warmth-chip">
+
 <span class="w-2.5 h-2.5 rounded-full transition-all duration-500 shadow-sm" id="float-indicator-dot" style="background-color: var(--slate);"></span>
+
 <div class="flex flex-col">
+
 <span class="text-[9px] uppercase tracking-wider text-outline font-sans font-bold leading-none">Arc Warmth</span>
+
 <span class="text-on-surface font-semibold text-[11px] leading-tight" id="float-indicator-label">Cold Slate · 0%</span>
+
 </div>
+
 </div><!-- ==================== FLOATING ROLE SWITCHER WIDGET ==================== -->
+
 <div class="fixed bottom-6 left-6 z-40 flex items-center gap-2 bg-inverse-surface text-inverse-on-surface px-4 py-2.5 rounded-full shadow-2xl border border-white/20 backdrop-blur-md text-xs">
+
 <span class="material-symbols-outlined text-primary-fixed text-base">swap_horiz</span>
+
 <span class="font-semibold text-white hidden sm:inline">Switch View:</span>
+
 <div class="flex items-center gap-1.5">
+
 <button class="px-2.5 py-1 rounded-md bg-white/10 hover:bg-primary-container text-white transition-colors text-[11px] font-bold" onclick="loginAsDemo('donor'); openRoleWorkspace('donor');">Donor</button>
+
 <button class="px-2.5 py-1 rounded-md bg-white/10 hover:bg-secondary text-white transition-colors text-[11px] font-bold" onclick="loginAsDemo('recipient'); openRoleWorkspace('recipient');">Recipient</button>
+
 <button class="px-2.5 py-1 rounded-md bg-white/10 hover:bg-tertiary-container text-white transition-colors text-[11px] font-bold" onclick="loginAsDemo('admin'); openRoleWorkspace('admin');">Dispatcher/Ops</button>
+
 </div>
+
 </div>
+
 <!-- ==================== MODAL 1: AUTHENTICATION (Sign In / Register / Demo 1-Click) ==================== -->
+
 <div class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 overflow-y-auto" id="auth-modal">
+
 <div class="bg-surface-container-lowest max-w-md w-full rounded-2xl shadow-2xl border border-outline-variant overflow-hidden relative animate-in fade-in zoom-in-95 duration-200">
+
 <div class="flex items-center justify-between p-5 border-b border-outline-variant bg-surface-container-low">
+
 <div class="flex items-center gap-2">
+
 <div class="w-8 h-8 rounded-lg bg-primary-container text-on-primary flex items-center justify-center font-bold text-sm">
+
 <span class="material-symbols-outlined text-base">soup_kitchen</span>
+
 </div>
+
 <div>
+
 <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">POTBHAR Access</h3>
+
 <span class="text-[11px] text-on-surface-variant">Institutional Surplus Recovery Network</span>
+
 </div>
+
 </div>
+
 <button class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" onclick="closeAuthModal()">
+
 <span class="material-symbols-outlined text-lg">close</span>
+
 </button>
+
 </div>
+
 <div class="flex border-b border-outline-variant bg-surface-container">
+
 <button class="flex-1 py-3 text-xs font-bold border-b-2 border-primary text-primary bg-surface-container-lowest transition-all" id="tab-auth-login" onclick="switchAuthTab('login')">Sign In</button>
+
 <button class="flex-1 py-3 text-xs font-semibold text-on-surface-variant hover:text-on-surface transition-all" id="tab-auth-register" onclick="switchAuthTab('register')">Register Organization</button>
+
 <button class="flex-1 py-3 text-xs font-semibold text-on-surface-variant hover:text-on-surface transition-all" id="tab-auth-demo" onclick="switchAuthTab('demo')">1-Click Test</button>
+
 </div>
+
 <div class="p-6">
+
 <!-- Tab Form: Login -->
+
 <form class="space-y-4" id="form-login" onsubmit="handleLogin(event)">
+
 <div>
+
 <label class="block text-xs font-semibold text-on-surface mb-1">Official Work Email or FSSAI License ID</label>
+
 <input class="w-full text-xs p-3 rounded-lg border border-outline-variant bg-white text-on-surface focus:border-primary focus:ring-1 focus:ring-primary" placeholder="e.g. chef@grandsapphire.com or FSSAI-2119" required="" type="text" value="chef@grandsapphire.com"/>
+
 </div>
+
 <div>
+
 <label class="block text-xs font-semibold text-on-surface mb-1">Access Password / Security PIN</label>
+
 <input class="w-full text-xs p-3 rounded-lg border border-outline-variant bg-white text-on-surface focus:border-primary focus:ring-1 focus:ring-primary" placeholder="••••••••" required="" type="password" value="demo1234"/>
+
 </div>
+
 <div class="flex items-center justify-between text-xs text-on-surface-variant">
+
 <label class="flex items-center gap-1.5 cursor-pointer">
+
 <input checked="" class="accent-primary rounded" type="checkbox"/> Remember Session
+
           </label>
+
 <a class="text-primary hover:underline" href="#" onclick="showToast('Demo reset link dispatched to authorized contacts.'); return false;">Forgot Key?</a>
+
 </div>
+
 <button class="w-full py-3 rounded-lg bg-primary-container text-on-primary font-bold text-xs shadow-sm hover:opacity-95 transition-opacity flex items-center justify-center gap-1.5" type="submit">
+
 <span class="material-symbols-outlined text-sm">login</span> Secure Sign In
+
         </button>
+
 </form>
+
 <!-- Tab Form: Register -->
+
 <form class="space-y-3 hidden" id="form-register" onsubmit="handleRegister(event)">
+
 <div>
+
 <label class="block text-xs font-semibold text-on-surface mb-1">Organization Type</label>
+
 <select class="w-full text-xs p-2.5 rounded-lg border border-outline-variant bg-white text-on-surface focus:border-primary">
+
 <option>Commercial Food Donor (Banquet / Hotel / Caterer)</option>
+
 <option>Verified Recipient Hub (Shelter / Community Kitchen)</option>
+
 <option>Certified Food Safety Assessor (FSSAI Accredited)</option>
+
 </select>
+
 </div>
+
 <div>
+
 <label class="block text-xs font-semibold text-on-surface mb-1">Entity Legal Name</label>
+
 <input class="w-full text-xs p-2.5 rounded-lg border border-outline-variant bg-white text-on-surface" placeholder="e.g. Bombay Central Kitchens" required="" type="text"/>
+
 </div>
+
 <div>
+
 <label class="block text-xs font-semibold text-on-surface mb-1">FSSAI License / NGO Darpan Number</label>
+
 <input class="w-full text-xs p-2.5 rounded-lg border border-outline-variant bg-white text-on-surface" placeholder="14-digit registration number" required="" type="text"/>
+
 </div>
+
 <div>
+
 <label class="block text-xs font-semibold text-on-surface mb-1">Authorized Admin Email</label>
+
 <input class="w-full text-xs p-2.5 rounded-lg border border-outline-variant bg-white text-on-surface" placeholder="dispatch@organization.org" required="" type="email"/>
+
 </div>
+
 <button class="w-full py-3 rounded-lg bg-secondary text-white font-bold text-xs shadow-sm hover:brightness-110 transition-all flex items-center justify-center gap-1.5 mt-2" type="submit">
+
 <span class="material-symbols-outlined text-sm">how_to_reg</span> Complete Onboarding Verification
+
         </button>
+
 </form>
+
 <!-- Tab Form: 1-Click Demo -->
+
 <div class="space-y-3 hidden" id="form-demo-select">
+
 <p class="text-xs text-on-surface-variant mb-2">Test the end-to-end platform instantaneously with pre-configured active pilot personas:</p>
+
 <button class="w-full p-3 rounded-xl border border-primary-container/40 bg-surface-container-low hover:bg-primary-fixed/20 transition-colors flex items-center justify-between text-left" onclick="loginAsDemo('donor'); closeAuthModal();">
+
 <div class="flex items-center gap-3">
+
 <div class="w-8 h-8 rounded-lg bg-primary-container text-white flex items-center justify-center font-bold text-xs">FD</div>
+
 <div>
+
 <div class="text-xs font-bold text-on-surface">Food Donor Persona</div>
+
 <div class="text-[11px] text-on-surface-variant">Grand Sapphire Banquet Hall · Chef Vikram</div>
+
 </div>
+
 </div>
+
 <span class="material-symbols-outlined text-primary text-base">arrow_forward</span>
+
 </button>
+
 <button class="w-full p-3 rounded-xl border border-secondary-fixed bg-surface-container-low hover:bg-secondary-fixed/20 transition-colors flex items-center justify-between text-left" onclick="loginAsDemo('recipient'); closeAuthModal();">
+
 <div class="flex items-center gap-3">
+
 <div class="w-8 h-8 rounded-lg bg-secondary text-white flex items-center justify-center font-bold text-xs">RH</div>
+
 <div>
+
 <div class="text-xs font-bold text-on-surface">Recipient Hub Persona</div>
+
 <div class="text-[11px] text-on-surface-variant">Asha Kiran Community Shelter · Sister Mary</div>
+
 </div>
+
 </div>
+
 <span class="material-symbols-outlined text-secondary text-base">arrow_forward</span>
+
 </button>
+
 <button class="w-full p-3 rounded-xl border border-tertiary-fixed bg-surface-container-low hover:bg-tertiary-fixed/20 transition-colors flex items-center justify-between text-left" onclick="loginAsDemo('admin'); closeAuthModal();">
+
 <div class="flex items-center gap-3">
+
 <div class="w-8 h-8 rounded-lg bg-tertiary text-white flex items-center justify-center font-bold text-xs">AD</div>
+
 <div>
+
 <div class="text-xs font-bold text-on-surface">Central Ops &amp; Compliance</div>
+
 <div class="text-[11px] text-on-surface-variant">FSSAI Central Assessor · Anand Parikh</div>
+
 </div>
+
 </div>
+
 <span class="material-symbols-outlined text-tertiary text-base">arrow_forward</span>
+
 </button>
+
 </div>
+
 </div>
+
 </div>
+
 </div>
+
 <!-- ==================== MODAL 2: ROLE-DEDICATED INTERACTIVE WORKSPACE (Donor / Recipient / Admin) ==================== -->
+
 <div class="fixed inset-0 z-50 hidden bg-black/70 backdrop-blur-md flex items-center justify-center p-3 md:p-6 overflow-y-auto" id="role-workspace-modal">
+
 <div class="bg-surface-container-lowest max-w-5xl w-full rounded-2xl shadow-2xl border border-outline-variant overflow-hidden flex flex-col max-h-[92vh]">
+
 <!-- Workspace Header -->
+
 <div class="flex items-center justify-between px-6 py-4 border-b border-outline-variant bg-surface-container-low">
+
 <div class="flex items-center gap-3">
+
 <div class="w-10 h-10 rounded-xl bg-primary-container text-on-primary flex items-center justify-center font-bold" id="workspace-icon">
+
 <span class="material-symbols-outlined">dashboard</span>
+
 </div>
+
 <div>
+
 <div class="flex items-center gap-2">
+
 <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface" id="workspace-title">Operations &amp; Dispatch Control</h2>
+
 <span class="data-badge data-badge-verified" id="workspace-badge">ACTIVE RUNTIME</span>
+
 </div>
+
 <p class="text-xs text-on-surface-variant" id="workspace-subtitle">Live management corridor under FSSAI Safe Food Recovery Mandate §8.4</p>
+
 </div>
+
 </div>
+
 <div class="flex items-center gap-2">
+
 <!-- Role Switch inside modal -->
+
 <div class="inline-flex rounded-lg bg-surface-container p-1 border border-outline-variant text-xs">
+
 <button class="px-3 py-1 rounded-md text-xs font-semibold text-on-surface-variant hover:text-on-surface transition-all" id="tab-btn-donor" onclick="openRoleWorkspace('donor')">Donor Portal</button>
+
 <button class="px-3 py-1 rounded-md text-xs font-semibold text-on-surface-variant hover:text-on-surface transition-all" id="tab-btn-recipient" onclick="openRoleWorkspace('recipient')">Recipient Hub</button>
+
 <button class="px-3 py-1 rounded-md text-xs font-bold bg-primary text-white transition-all" id="tab-btn-admin" onclick="openRoleWorkspace('admin')">Ops &amp; Compliance</button>
+
 </div>
+
 <button class="p-2 text-on-surface-variant hover:text-on-surface hover:bg-surface-container rounded-lg transition-colors" onclick="closeRoleWorkspace()">
+
 <span class="material-symbols-outlined">close</span>
+
 </button>
+
 </div>
+
 </div>
+
 <!-- Workspace Body -->
+
 <div class="p-6 overflow-y-auto flex-1 bg-surface-container-low/40">
+
 <!-- VIEW 1: DONOR PORTAL INTAKE SIMULATOR -->
+
 <div class="space-y-6 hidden" id="workspace-view-donor">
+
 <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+
 <!-- Form: Batch Log -->
+
 <div class="md:col-span-7 bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm space-y-4">
+
 <div class="flex items-center justify-between pb-3 border-b border-outline-variant">
+
 <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface flex items-center gap-2">
+
 <span class="material-symbols-outlined text-primary">add_task</span> Log Surplus Batch
+
               </h3>
+
 <span class="data-badge data-badge-live">STEP 1 LOGGING</span>
+
 </div>
+
 <form class="space-y-4" id="donor-batch-form" onsubmit="simulateBatchSubmission(event)">
+
 <div class="grid grid-cols-2 gap-4">
+
 <div>
+
 <label class="block text-xs font-semibold text-on-surface mb-1">Food Category</label>
+
 <select class="w-full text-xs p-2.5 rounded-lg border border-outline-variant bg-white text-on-surface" id="donor-food-type">
+
 <option value="Cooked Rice / Biryani / Pulav">Cooked Rice &amp; Biryani</option>
+
 <option value="Lentil Curry / Dal Makhani">Lentil Curry / Dal Makhani</option>
+
 <option value="Paneer Butter Gravy">Paneer Gravy &amp; Vegetable Korma</option>
+
 <option value="Chapatis / Naan Breads">Chapatis / Tandoori Breads</option>
+
 <option value="Sweets / Gulab Jamun">Traditional Sweets</option>
+
 </select>
+
 </div>
+
 <div>
+
 <label class="block text-xs font-semibold text-on-surface mb-1">Surplus Weight (kg)</label>
+
 <input class="w-full text-xs p-2.5 rounded-lg border border-outline-variant bg-white text-on-surface" id="donor-weight" max="1000" min="5" required="" type="number" value="65"/>
+
 </div>
+
 </div>
+
 <div class="grid grid-cols-2 gap-4">
+
 <div>
+
 <label class="block text-xs font-semibold text-on-surface mb-1">Current Holding Temp (°C)</label>
+
 <input class="w-full text-xs p-2.5 rounded-lg border border-outline-variant bg-white text-on-surface" id="donor-temp" required="" step="0.1" type="number" value="64.5"/>
+
 <span class="text-[10px] text-secondary font-medium">✓ Hot Compliant (&gt;60°C)</span>
+
 </div>
+
 <div>
+
 <label class="block text-xs font-semibold text-on-surface mb-1">Kitchen Completion Time</label>
+
 <input class="w-full text-xs p-2.5 rounded-lg border border-outline-variant bg-white text-on-surface" id="donor-time" type="time" value="23:15"/>
+
 </div>
+
 </div>
+
 <div>
+
 <label class="block text-xs font-semibold text-on-surface mb-1">Packaging &amp; Cambro Spec</label>
+
 <select class="w-full text-xs p-2.5 rounded-lg border border-outline-variant bg-white text-on-surface">
+
 <option>Food-Grade Stainless Steel Insulated Cambros (Pre-sealed)</option>
+
 <option>Deep Gastro Pan Containers with Airtight Lids</option>
+
 <option>Disposable Heavy-Duty Foil Containers (Sealed)</option>
+
 </select>
+
 </div>
+
 <div class="p-4 rounded-xl border border-dashed border-outline-variant bg-surface-container-low text-center">
+
 <span class="material-symbols-outlined text-primary text-3xl mb-1">photo_camera</span>
+
 <div class="text-xs font-bold text-on-surface">Food Photo &amp; Quality Preview</div>
+
 <div class="text-[11px] text-on-surface-variant">Checking container freshness &amp; steam levels</div>
+
 </div>
+
 <button class="w-full py-3 rounded-lg bg-primary-container text-on-primary font-bold text-xs shadow-sm hover:brightness-110 transition-all flex items-center justify-center gap-2" type="submit">
+
 <span class="material-symbols-outlined text-sm">bolt</span> Submit Surplus &amp; Request Pickup Van
+
               </button>
+
 </form>
+
 </div>
+
 <!-- Donor Recent Logged Batches -->
+
 <div class="md:col-span-5 space-y-4">
+
 <div class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant shadow-sm">
+
 <div class="flex items-center justify-between mb-3">
+
 <h4 class="text-xs font-bold uppercase tracking-wider text-outline">Active Donor Dispatches</h4>
+
 <span class="data-badge data-badge-live">TODAY</span>
+
 </div>
+
 <div class="space-y-3" id="donor-batches-list">
+
 <div class="p-3 rounded-xl border border-outline-variant/60 bg-surface-container-low text-xs">
+
 <div class="flex justify-between items-center mb-1">
+
 <span class="font-bold text-on-surface">Batch #MH-4019</span>
+
 <span class="data-badge data-badge-verified">DISPATCHED</span>
+
 </div>
+
 <div class="text-on-surface-variant text-[11px]">120 kg Basmati Pulav + Dal Makhani</div>
+
 <div class="mt-2 pt-2 border-t border-outline-variant/50 flex justify-between text-[11px] text-outline">
+
 <span>Temp: 64.2°C</span>
+
 <span class="text-secondary font-bold">En route to Asha Sadan (12 min away)</span>
+
 </div>
+
 </div>
+
 <div class="p-3 rounded-xl border border-outline-variant/60 bg-surface-container-low text-xs">
+
 <div class="flex justify-between items-center mb-1">
+
 <span class="font-bold text-on-surface">Batch #MH-4012</span>
+
 <span class="data-badge data-badge-verified">DELIVERED</span>
+
 </div>
+
 <div class="text-on-surface-variant text-[11px]">85 kg Paneer Gravy + 200 Rotis</div>
+
 <div class="mt-2 pt-2 border-t border-outline-variant/50 flex justify-between text-[11px] text-outline">
+
 <span>Temp: 62.0°C</span>
+
 <span class="text-primary font-bold">100% Satiety Logged (210 beneficiaries)</span>
+
 </div>
+
 </div>
+
 </div>
+
 </div>
+
 <div class="p-4 rounded-xl bg-primary-fixed/20 border border-primary-fixed text-xs text-on-primary-fixed-variant">
+
 <span class="font-bold block mb-1">★ Donor Tax &amp; ESG Credit Active</span>
+
               All logged meals automatically receive verified digital certificates under Corporate Social Responsibility Schedule VII norms.
+
             </div>
+
 </div>
+
 </div>
+
 </div>
+
 <!-- VIEW 2: RECIPIENT PORTAL MATCH ACCEPTANCE FEED -->
+
 <div class="space-y-6 hidden" id="workspace-view-recipient">
+
 <div class="flex items-center justify-between bg-surface-container-lowest p-4 rounded-xl border border-outline-variant">
+
 <div class="flex items-center gap-3">
+
 <div class="w-10 h-10 rounded-lg bg-secondary text-white flex items-center justify-center font-bold">
+
 <span class="material-symbols-outlined">soup_kitchen</span>
+
 </div>
+
 <div>
+
 <div class="text-sm font-bold text-on-surface">Asha Kiran Community Shelter — Receiving Station</div>
+
 <div class="text-xs text-on-surface-variant">Capacity: 350 diners tonight · Holding Refrigerator: None (Immediate Hot Service Only)</div>
+
 </div>
+
 </div>
+
 <div class="text-right">
+
 <span class="data-badge data-badge-live">WAITING INCOMING BATCHES</span>
+
 </div>
+
 </div>
+
 <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="recipient-incoming-grid">
+
 <!-- Match 1 -->
+
 <div class="bg-surface-container-lowest p-5 rounded-2xl border-2 border-secondary-fixed shadow-sm flex flex-col justify-between">
+
 <div>
+
 <div class="flex items-center justify-between mb-2">
+
 <span class="font-mono font-bold text-xs text-primary">BATCH #MH-4022</span>
+
 <span class="data-badge data-badge-verified">MATCH: 92%</span>
+
 </div>
+
 <h4 class="font-headline-sm text-sm font-bold text-on-surface mb-1">65 kg Hot Dal &amp; Jeera Rice</h4>
+
 <p class="text-xs text-on-surface-variant mb-3">From Grand Sapphire Banquet Hall (3.2 km distance). Core temperature certified at 64.8°C.</p>
+
 <div class="space-y-1.5 p-3 rounded-lg bg-surface-container-low text-xs font-mono mb-4">
+
 <div class="flex justify-between"><span>Portions:</span><span class="font-bold">~160 Nourishing Servings</span></div>
+
 <div class="flex justify-between text-secondary"><span>Transit ETA:</span><span class="font-bold">18 mins</span></div>
+
 <div class="flex justify-between text-outline"><span>Holding Limit:</span><span>105 mins remaining</span></div>
+
 </div>
+
 </div>
+
 <div class="flex items-center gap-2">
+
 <button class="flex-1 py-2.5 rounded-lg bg-secondary text-white text-xs font-bold hover:brightness-110 transition-all flex items-center justify-center gap-1" onclick="acceptBatch('MH-4022', this)">
+
 <span class="material-symbols-outlined text-sm">check_circle</span> Accept Dispatch
+
               </button>
+
 <button class="px-3 py-2.5 rounded-lg border border-outline-variant text-on-surface-variant hover:text-error text-xs font-semibold transition-colors" onclick="declineBatch('MH-4022', this)">
+
                 Decline
+
               </button>
+
 </div>
+
 </div>
+
 <!-- Match 2 -->
+
 <div class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant shadow-sm flex flex-col justify-between">
+
 <div>
+
 <div class="flex items-center justify-between mb-2">
+
 <span class="font-mono font-bold text-xs text-outline">BATCH #MH-4024</span>
+
 <span class="data-badge data-badge-verified">MATCH: 84%</span>
+
 </div>
+
 <h4 class="font-headline-sm text-sm font-bold text-on-surface mb-1">40 kg Mixed Vegetable Pulav</h4>
+
 <p class="text-xs text-on-surface-variant mb-3">From Taj Santacruz Executive Dining. Sealed hot cambros, inspected by Assessor Anand.</p>
+
 <div class="space-y-1.5 p-3 rounded-lg bg-surface-container-low text-xs font-mono mb-4">
+
 <div class="flex justify-between"><span>Portions:</span><span class="font-bold">~100 Servings</span></div>
+
 <div class="flex justify-between text-secondary"><span>Transit ETA:</span><span class="font-bold">24 mins</span></div>
+
 <div class="flex justify-between text-outline"><span>Holding Limit:</span><span>120 mins remaining</span></div>
+
 </div>
+
 </div>
+
 <div class="flex items-center gap-2">
+
 <button class="flex-1 py-2.5 rounded-lg bg-secondary text-white text-xs font-bold hover:brightness-110 transition-all flex items-center justify-center gap-1" onclick="acceptBatch('MH-4024', this)">
+
 <span class="material-symbols-outlined text-sm">check_circle</span> Accept Dispatch
+
               </button>
+
 <button class="px-3 py-2.5 rounded-lg border border-outline-variant text-on-surface-variant hover:text-error text-xs font-semibold transition-colors" onclick="declineBatch('MH-4024', this)">
+
                 Decline
+
               </button>
+
 </div>
+
 </div>
+
 <!-- Match 3 (Chilled requiring cold chain) -->
+
 <div class="bg-surface-container-lowest p-5 rounded-2xl border border-outline-variant/60 shadow-sm opacity-80 flex flex-col justify-between">
+
 <div>
+
 <div class="flex items-center justify-between mb-2">
+
 <span class="font-mono font-bold text-xs text-outline">BATCH #MH-4029</span>
+
 <span class="data-badge data-badge-estimate">COLD CHAIN ONLY</span>
+
 </div>
+
 <h4 class="font-headline-sm text-sm font-bold text-on-surface mb-1">35 kg Dairy Desserts &amp; Yogurt</h4>
+
 <p class="text-xs text-on-surface-variant mb-3">Requires continuous &lt;4°C chilling. Filter flagged: your shelter has no active refrigeration.</p>
+
 <div class="space-y-1.5 p-3 rounded-lg bg-surface-container-low text-xs font-mono mb-4">
+
 <div class="flex justify-between text-error"><span>Compatibility:</span><span class="font-bold">Cold Storage Missing</span></div>
+
 <div class="flex justify-between text-outline"><span>Rerouted:</span><span>To Navjeevan Seva</span></div>
+
 </div>
+
 </div>
+
 <button class="w-full py-2.5 rounded-lg bg-surface-container text-outline text-xs font-semibold cursor-not-allowed" disabled="">
+
               Auto-Rerouted to Cold Hub
+
             </button>
+
 </div>
+
 </div>
+
 </div>
+
 <!-- VIEW 3: OPS DISPATCH & AUDIT TRAIL (Admin View) -->
+
 <div class="space-y-6" id="workspace-view-admin">
+
 <!-- Live Fleet & Batch Monitor -->
+
 <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+
 <div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant">
+
 <span class="text-[11px] font-bold text-outline uppercase">Active Vans in Transit</span>
+
 <div class="text-2xl font-bold text-primary mt-1">14 Vehicles</div>
+
 <span class="text-[10px] text-secondary font-semibold">All telemetry &gt;60°C hot holding</span>
+
 </div>
+
 <div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant">
+
 <span class="text-[11px] font-bold text-outline uppercase">Today's Rescued Volume</span>
+
 <div class="text-2xl font-bold text-secondary mt-1">1,842 kg</div>
+
 <span class="text-[10px] text-on-surface-variant">4,605 dignified hot meals</span>
+
 </div>
+
 <div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant">
+
 <span class="text-[11px] font-bold text-outline uppercase">Biogas Composting Divert</span>
+
 <div class="text-2xl font-bold text-tertiary mt-1">310 kg</div>
+
 <span class="text-[10px] text-outline">100% diverted from Ghazipur</span>
+
 </div>
+
 <div class="bg-surface-container-lowest p-4 rounded-xl border border-outline-variant">
+
 <span class="text-[11px] font-bold text-outline uppercase">FSSAI Audit Compliance</span>
+
 <div class="text-2xl font-bold text-on-surface mt-1">99.8%</div>
+
 <span class="text-[10px] text-secondary font-semibold">Zero biological safety incidents</span>
+
 </div>
+
 </div>
+
 <!-- Batch Verification & Triage Queue -->
+
 <div class="bg-surface-container-lowest p-6 rounded-2xl border border-outline-variant shadow-sm">
+
 <div class="flex items-center justify-between pb-4 border-b border-outline-variant mb-4">
+
 <div>
+
 <h3 class="font-headline-sm text-sm font-bold text-on-surface">Live Dispatch &amp; Safety Triage Queue</h3>
+
 <span class="text-xs text-on-surface-variant">Assessor decision gatekeeping &amp; dual-cryptographic release</span>
+
 </div>
+
 <button class="px-3 py-1.5 rounded-lg border border-outline-variant text-xs font-semibold hover:bg-surface-container text-on-surface flex items-center gap-1.5" onclick="showToast('Refreshed real-time telemetry from Mumbai corridor sensors.')">
+
 <span class="material-symbols-outlined text-sm">refresh</span> Refresh Feed
+
             </button>
+
 </div>
+
 <div class="overflow-x-auto">
+
 <table class="w-full text-left text-xs font-mono">
+
 <thead class="bg-surface-container uppercase text-outline text-[11px]">
+
 <tr>
+
 <th class="py-3 px-3">Batch ID</th>
+
 <th class="py-3 px-3">Donor Kitchen</th>
+
 <th class="py-3 px-3">Food Type &amp; Weight</th>
+
 <th class="py-3 px-3">Temp Probe</th>
+
 <th class="py-3 px-3">Quality Check</th>
+
 <th class="py-3 px-3">Inspector Decision</th>
+
 </tr>
+
 </thead>
+
 <tbody class="divide-y divide-outline-variant/50" id="admin-queue-tbody">
+
 <tr id="row-batch-101">
+
 <td class="py-3 px-3 font-bold text-primary">#MH-4031</td>
+
 <td class="py-3 px-3 font-sans">Grand Sapphire Banquets</td>
+
 <td class="py-3 px-3">Paneer &amp; Pulao (90 kg)</td>
+
 <td class="py-3 px-3 font-bold text-secondary">63.4°C</td>
+
 <td class="py-3 px-3"><span class="data-badge data-badge-verified">FRESH &amp; CLEAN</span></td>
+
 <td class="py-3 px-3 flex items-center gap-2">
+
 <button class="px-2.5 py-1 rounded bg-secondary text-white font-sans font-bold hover:brightness-110" onclick="approveAdminBatch('row-batch-101', '#MH-4031')">Approve for Humans</button>
+
 <button class="px-2.5 py-1 rounded bg-surface-container text-amber-700 font-sans font-semibold hover:bg-amber-100" onclick="rejectAdminBatch('row-batch-101', '#MH-4031')">Divert to Animals/Khaad</button>
+
 </td>
+
 </tr>
+
 <tr id="row-batch-102">
+
 <td class="py-3 px-3 font-bold text-primary">#MH-4032</td>
+
 <td class="py-3 px-3 font-sans">Mayfair Ballroom Worli</td>
+
 <td class="py-3 px-3">Mixed Gravy (45 kg)</td>
+
 <td class="py-3 px-3 font-bold text-error">54.2°C (Below 60°C)</td>
+
 <td class="py-3 px-3"><span class="data-badge data-badge-live">THERMAL BREACH</span></td>
+
 <td class="py-3 px-3 flex items-center gap-2">
+
 <button class="px-2.5 py-1 rounded bg-surface-container text-outline font-sans opacity-50 cursor-not-allowed" disabled="">Locked</button>
+
 <button class="px-2.5 py-1 rounded bg-amber-600 text-white font-sans font-bold hover:brightness-110" onclick="divertToBioGas('row-batch-102', '#MH-4032')">Route to Gaushalas / Khaad</button>
+
 </td>
+
 </tr>
+
 </tbody>
+
 </table>
+
 </div>
+
 </div>
+
 </div>
+
 </div>
+
 </div>
+
 </div>
+
 <!-- ==================== TOAST NOTIFICATION CONTAINER ==================== -->
+
 <div class="fixed top-24 right-6 z-50 flex flex-col gap-2 pointer-events-none" id="toast-container"></div>
+
 <!-- Inline Scenario Calculator & Warmth Transition JS -->
+
 <script>
+
     function updateRangeLabel(val) {
+
       const pct = Math.round(val * 100);
+
       document.getElementById('range-val').innerText = pct + '% (Safety Compliance Rate)';
+
     }
+
+
 
     function calculateImpact() {
+
       const D = parseFloat(document.getElementById('input-donors').value) || 0;
+
       const K = parseFloat(document.getElementById('input-kg').value) || 0;
+
       const c = parseFloat(document.getElementById('input-compliance').value) || 0.75;
 
+
+
       // Tier 1: Fresh Good Food Delivered to Humans = D * K * c
+
       const weeklyDeliveredKg = D * K * c;
+
       const weeklyMeals = Math.round(weeklyDeliveredKg / 0.4);
+
       
+
       // Remaining surplus allocated to Animals and Khaad = D * K * (1 - c)
+
       const divertedKg = D * K * (1 - c);
+
       // Tier 2: 60% of remaining surplus goes to Gaushalas & Animal Shelters
+
       const animalKg = Math.round(divertedKg * 0.6);
+
       // Tier 3: 40% (scraps/peelings) goes to Organic Khaad & Composting
+
       const compostKg = Math.round(divertedKg * 0.4);
 
+
+
       // Total 100% diverted from landfill: ~1.9 kg CO2e per kg avoided food waste
+
       const co2Kg = Math.round((weeklyDeliveredKg + divertedKg) * 1.9);
 
+
+
       document.getElementById('res-kg').innerText = Math.round(weeklyDeliveredKg).toLocaleString() + ' kg';
+
       document.getElementById('res-meals').innerText = weeklyMeals.toLocaleString();
+
       const animalEl = document.getElementById('res-animal');
+
       if (animalEl) animalEl.innerText = animalKg.toLocaleString() + ' kg / wk';
+
       document.getElementById('res-compost').innerText = compostKg.toLocaleString() + ' kg / wk';
+
       document.getElementById('res-co2').innerText = co2Kg.toLocaleString() + ' kg CO₂e / wk';
+
     }
+
+
 
     // ==================== DUAL-REALITY CINEMATIC TYPEWRITER ====================
+
     const realities = [
+
       {
+
         badgeTitle: "The Daily Reality · Hunger in Our Cities",
+
         badgeDotClass: "bg-error",
+
         badgeProvClass: "data-badge-verified",
+
         badgeProvText: "VERIFIED DATA",
+
         heading: "Tonight, somewhere, a plate is empty.",
+
         headingColor: "text-white",
+
         body: "In community settlements across our cities, mothers turn out the lights early so hunger hurts a little less in the dark. Silence settles on bare floorboards.",
+
         cursorColor: "text-error",
+
         bgPlateOpacity: "1",
+
         bgBanquetOpacity: "0"
+
       },
+
       {
+
         badgeTitle: "Midnight Excess · Banquet Food in the Bin",
+
         badgeDotClass: "bg-tertiary-container",
+
         badgeProvClass: "data-badge-estimate",
+
         badgeProvText: "FOOD WASTE",
+
         heading: "...and somewhere else, a tray is going in the bin.",
+
         headingColor: "text-[#ffdcc3]",
+
         body: "At 23:45 outside grand banquet halls, four-tier copper chafing dishes brimming with paneer handi, biryani, and gulab jamun are quietly tipped into 60-liter black plastic garbage bags. Cooked with pride three hours ago. Destined for toxic landfills before dawn.",
+
         cursorColor: "text-[#FF9F1C]",
+
         bgPlateOpacity: "0",
+
         bgBanquetOpacity: "1"
+
       }
+
     ];
 
+
+
     let currentRealityIdx = 0;
+
     let isAutoplay = true;
+
     let typewriterTimeouts = [];
 
+
+
     function clearTypewriterTimeouts() {
+
       typewriterTimeouts.forEach(t => clearTimeout(t));
+
       typewriterTimeouts = [];
+
     }
+
+
 
     function scheduleTypewriterTimeout(fn, ms) {
+
       const t = setTimeout(fn, ms);
+
       typewriterTimeouts.push(t);
+
       return t;
+
     }
+
+
 
     function switchReality(idx, manual = false) {
+
       currentRealityIdx = idx;
+
       clearTypewriterTimeouts();
 
+
+
       const r = realities[idx];
+
       const headingEl = document.getElementById('typewriter-heading');
+
       const bodyEl = document.getElementById('typewriter-body');
+
       const headingCursor = document.getElementById('heading-cursor');
+
       const bodyCursor = document.getElementById('body-cursor');
+
       const bgPlate = document.getElementById('hero-bg-plate');
+
       const bgBanquet = document.getElementById('hero-bg-banquet');
+
       const badgeTitle = document.getElementById('hero-badge-title');
+
       const badgeDot = document.getElementById('hero-badge-dot');
+
       const badgeProv = document.getElementById('hero-badge-provenance');
 
+
+
       // Update tabs
+
       for (let i = 0; i < realities.length; i++) {
+
         const tab = document.getElementById(`reality-tab-${i}`);
+
         if (tab) {
+
           if (i === idx) {
+
             tab.className = "px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all flex items-center gap-2 bg-white/20 text-white shadow-sm ring-1 ring-white/30 cursor-pointer";
+
           } else {
+
             tab.className = "px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-all flex items-center gap-2 text-surface-dim hover:text-white cursor-pointer";
+
           }
+
         }
+
       }
+
+
 
       // Crossfade backgrounds
+
       if (bgPlate) bgPlate.style.opacity = r.bgPlateOpacity;
+
       if (bgBanquet) bgBanquet.style.opacity = r.bgBanquetOpacity;
 
+
+
       // Update Badge
+
       if (badgeTitle) badgeTitle.innerText = r.badgeTitle;
+
       if (badgeDot) badgeDot.className = `w-2 h-2 rounded-full ${r.badgeDotClass} animate-ping`;
+
       if (badgeProv) {
+
         badgeProv.className = `data-badge ${r.badgeProvClass}`;
+
         badgeProv.innerText = r.badgeProvText;
+
       }
+
+
 
       // Heading styling
+
       if (headingEl) {
+
         headingEl.className = `font-headline-xl md:font-display-lg text-headline-xl md:text-display-lg font-extrabold max-w-3xl tracking-tight leading-tight inline whitespace-pre-wrap ${r.headingColor}`;
+
       }
+
       if (bodyEl) {
+
         bodyEl.className = `font-body-xl text-body-xl text-surface-dim leading-relaxed font-light inline whitespace-pre-wrap`;
+
       }
+
       if (headingCursor) {
+
         headingCursor.className = `typewriter-cursor ${r.cursorColor}`;
+
       }
+
       if (bodyCursor) {
+
         bodyCursor.className = `typewriter-cursor ${r.cursorColor} hidden`;
+
       }
+
+
 
       // Respect prefers-reduced-motion
+
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+
         if (headingEl) headingEl.textContent = r.heading;
+
         if (bodyEl) bodyEl.textContent = r.body;
+
         if (headingCursor) headingCursor.classList.add('hidden');
+
         if (bodyCursor) bodyCursor.classList.remove('hidden');
+
         return;
+
       }
+
+
 
       // Reset text
+
       if (headingEl) headingEl.textContent = '';
+
       if (bodyEl) bodyEl.textContent = '';
+
       if (headingCursor) headingCursor.classList.remove('hidden');
+
       if (bodyCursor) bodyCursor.classList.add('hidden');
 
+
+
       let hIdx = 0;
+
       function typeHeading() {
+
         if (hIdx < r.heading.length) {
+
           hIdx++;
+
           headingEl.textContent = r.heading.slice(0, hIdx);
+
           const ch = r.heading.charAt(hIdx - 1);
+
           let delay = 34;
+
           if (ch === ',' || ch === '.') delay += 70;
+
           scheduleTypewriterTimeout(typeHeading, delay);
+
         } else {
+
           // Switch cursor to body
+
           scheduleTypewriterTimeout(() => {
+
             if (headingCursor) headingCursor.classList.add('hidden');
+
             if (bodyCursor) bodyCursor.classList.remove('hidden');
+
             let bIdx = 0;
+
             function typeBody() {
+
               if (bIdx < r.body.length) {
+
                 bIdx++;
+
                 bodyEl.textContent = r.body.slice(0, bIdx);
+
                 const ch = r.body.charAt(bIdx - 1);
+
                 let delay = 14;
+
                 if (ch === '.' || ch === ',') delay += 60;
+
                 scheduleTypewriterTimeout(typeBody, delay);
+
               } else {
+
                 // Reading pause before auto cycling
+
                 if (isAutoplay) {
+
                   scheduleTypewriterTimeout(() => {
+
                     const nextIdx = (currentRealityIdx + 1) % realities.length;
+
                     switchReality(nextIdx, false);
+
                   }, 5200);
+
                 }
+
               }
+
             }
+
             typeBody();
+
           }, 260);
+
         }
+
       }
+
       typeHeading();
+
     }
+
+
 
     function toggleRealityAutoplay() {
+
       isAutoplay = !isAutoplay;
+
       const icon = document.getElementById('reality-pause-icon');
+
       if (icon) {
+
         icon.innerText = isAutoplay ? 'pause' : 'play_arrow';
+
       }
+
       if (isAutoplay) {
+
         const nextIdx = (currentRealityIdx + 1) % realities.length;
+
         switchReality(nextIdx, false);
+
       } else {
+
         clearTypewriterTimeouts();
+
       }
+
     }
 
+
+
     // Scroll trigger for Beat 2 (The Overflow)
+
     function initOverflowTypewriter() {
+
       const target = document.getElementById('overflow');
+
       const hEl = document.getElementById('overflow-heading');
+
       const bEl = document.getElementById('overflow-body');
+
       const hCur = document.getElementById('overflow-heading-cursor');
+
       const bCur = document.getElementById('overflow-body-cursor');
+
       if (!target || !hEl || !bEl) return;
 
+
+
       const fullH = hEl.innerText.trim();
+
       const fullB = bEl.innerText.trim();
+
+
 
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+
+
       let triggered = false;
+
       const obs = new IntersectionObserver((entries) => {
+
         entries.forEach(entry => {
+
           if (entry.isIntersecting && !triggered) {
+
             triggered = true;
+
             obs.unobserve(entry.target);
 
+
+
             hEl.textContent = '';
+
             bEl.textContent = '';
+
             if (hCur) hCur.classList.remove('hidden');
 
+
+
             let hi = 0;
+
             function stepH() {
+
               if (hi < fullH.length) {
+
                 hi++;
+
                 hEl.textContent = fullH.slice(0, hi);
+
                 const ch = fullH.charAt(hi - 1);
+
                 let delay = 32;
+
                 if (ch === ',' || ch === '.') delay += 60;
+
                 setTimeout(stepH, delay);
+
               } else {
+
                 if (hCur) hCur.classList.add('hidden');
+
                 if (bCur) bCur.classList.remove('hidden');
+
                 let bi = 0;
+
                 function stepB() {
+
                   if (bi < fullB.length) {
+
                     bi++;
+
                     bEl.textContent = fullB.slice(0, bi);
+
                     const ch = fullB.charAt(bi - 1);
+
                     let delay = 14;
+
                     if (ch === ',' || ch === '.') delay += 60;
+
                     setTimeout(stepB, delay);
+
                   }
+
                 }
+
                 setTimeout(stepB, 200);
+
               }
+
             }
+
             stepH();
+
           }
+
         });
+
       }, { threshold: 0.25 });
+
       obs.observe(target);
+
     }
 
+
+
     // ==================== LIVE CRISIS IMPACT ACCUMULATOR ====================
+
     function initCrisisAccumulator() {
+
       const startTime = Date.now();
+
       const kgEl = document.getElementById('live-kg-counter');
+
       const mealsEl = document.getElementById('live-meals-counter');
+
       const inrEl = document.getElementById('live-inr-counter');
+
       const co2El = document.getElementById('live-co2-counter');
+
       const timerEl = document.getElementById('session-timer');
+
+
 
       if (!kgEl || !mealsEl || !inrEl || !co2El || !timerEl) return;
 
+
+
       function updateTicker() {
+
         const elapsedSec = (Date.now() - startTime) / 1000;
 
+
+
         // Rates: 68M tonnes/yr in India = ~2,156.4 kg/sec
+
         const kg = Math.floor(elapsedSec * 2156.4);
+
         const meals = Math.floor(kg / 0.4);
+
         // ₹89,000 Cr/yr = ~₹28,220/sec
+
         const inr = Math.floor(elapsedSec * 28220);
+
         // 1.9 kg CO2e per kg food waste in open landfill
+
         const co2 = Math.floor(kg * 1.9);
 
+
+
         kgEl.innerText = kg.toLocaleString();
+
         mealsEl.innerText = meals.toLocaleString();
+
         inrEl.innerText = inr.toLocaleString();
+
         co2El.innerText = co2.toLocaleString();
 
+
+
         const mins = Math.floor(elapsedSec / 60);
+
         const secs = Math.floor(elapsedSec % 60);
+
         timerEl.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+
       }
 
+
+
       setInterval(updateTicker, 200);
+
       updateTicker();
+
     }
 
+
+
     // ==================== ANIMATED METRIC COUNTERS ON SCROLL ====================
+
     function initScrollCounters() {
+
       const counters = document.querySelectorAll('[data-counter]');
+
       if (!('IntersectionObserver' in window)) return;
 
+
+
       const observer = new IntersectionObserver((entries, obs) => {
+
         entries.forEach(entry => {
+
           if (entry.isIntersecting) {
+
             const el = entry.target;
+
             obs.unobserve(el);
 
+
+
             const targetVal = parseFloat(el.getAttribute('data-counter'));
+
             const suffix = el.getAttribute('data-suffix') || '';
+
             const prefix = el.getAttribute('data-prefix') || '';
+
             const isFloat = targetVal % 1 !== 0;
+
             const duration = 1600;
+
             const startTime = performance.now();
 
+
+
             function easeOutExpo(x) {
+
               return x === 1 ? 1 : 1 - Math.pow(2, -10 * x);
+
             }
 
+
+
             function updateCount(currentTime) {
+
               const elapsed = currentTime - startTime;
+
               const progress = Math.min(elapsed / duration, 1);
+
               const eased = easeOutExpo(progress);
+
               const currentVal = targetVal * eased;
 
+
+
               let formatted;
+
               if (isFloat) {
+
                 formatted = currentVal.toFixed(1);
+
               } else {
+
                 formatted = Math.floor(currentVal).toLocaleString();
+
               }
+
+
 
               el.textContent = `${prefix}${formatted}${suffix}`;
 
+
+
               if (progress < 1) {
+
                 requestAnimationFrame(updateCount);
+
               } else {
+
                 el.textContent = `${prefix}${isFloat ? targetVal.toFixed(1) : targetVal.toLocaleString()}${suffix}`;
+
               }
+
             }
 
+
+
             requestAnimationFrame(updateCount);
+
           }
+
         });
+
       }, { threshold: 0.25 });
 
+
+
       counters.forEach(c => observer.observe(c));
+
     }
 
+
+
     // ==================== LIVE DISPATCH RADAR TELEMETRY CYCLER ====================
+
     function initDispatchFeedCycler() {
+
       const feed = document.getElementById('dispatch-feed');
+
       const pingsCounter = document.getElementById('active-pings-counter');
+
       if (!feed) return;
 
+
+
       const simulatedEvents = [
+
         {
+
           van: "Van #02 (Bandra West)",
+
           desc: "→ 80kg biryani & dessert rescued from Grand Sea Palace Banquet",
+
           status: "66.5°C PASS",
+
           statusClass: "text-secondary-fixed",
+
           time: "Just Now",
+
           dot: "🟢"
+
         },
+
         {
+
           van: "Van #09 (Whitefield Hub)",
+
           desc: "→ 220 portions delivered to St. Joseph Night Care Shelter",
+
           status: "INTAKE VERIFIED",
+
           statusClass: "text-green-400",
+
           time: "2 mins ago",
+
           dot: "🟢"
+
         },
+
         {
+
           van: "Van #14 (Salt Lake City)",
+
           desc: "→ FSSAI Thermal & visual screening approved at ITC Sonar Kitchen",
+
           status: "71.0°C SEALED",
+
           statusClass: "text-secondary-fixed",
+
           time: "3 mins ago",
+
           dot: "🟢"
+
         },
+
         {
+
           van: "Van #05 (Connaught Place)",
+
           desc: "→ Dispatched for late-night corporate banquet surplus (120kg)",
+
           status: "IN TRANSIT",
+
           statusClass: "text-amber-300",
+
           time: "Live GPS",
+
           dot: "🟡"
+
         }
+
       ];
 
+
+
       let eventIndex = 0;
+
       setInterval(() => {
+
         const ev = simulatedEvents[eventIndex % simulatedEvents.length];
+
         eventIndex++;
 
+
+
         // Randomize active transits slightly to show live dynamism (17-22)
+
         if (pingsCounter) {
+
           const transits = 17 + Math.floor(Math.random() * 6);
+
           pingsCounter.innerText = `${transits} Transits Live`;
+
         }
 
+
+
         const item = document.createElement('div');
+
         item.className = "flex items-center justify-between p-3 rounded-xl bg-white/5 border border-white/5 hover:border-secondary-fixed/30 transition-all opacity-0 translate-y-2";
+
         item.innerHTML = `
+
           <div class="flex items-center gap-3">
+
             <span class="${ev.statusClass} text-base">${ev.dot}</span>
+
             <div>
+
               <span class="font-bold text-white">${ev.van}</span>
+
               <span class="text-surface-dim ml-1">${ev.desc}</span>
+
             </div>
+
           </div>
+
           <div class="text-right shrink-0">
+
             <span class="text-[11px] ${ev.statusClass} font-bold">${ev.status}</span>
+
             <span class="block text-[10px] text-surface-dim/70">${ev.time}</span>
+
           </div>
+
         `;
+
+
 
         feed.insertBefore(item, feed.firstChild);
 
+
+
         // Animate in
+
         requestAnimationFrame(() => {
+
           item.classList.remove('opacity-0', 'translate-y-2');
+
           item.classList.add('transition-all', 'duration-500', 'opacity-100', 'translate-y-0');
+
         });
+
+
 
         // Keep maximum 3 items
+
         if (feed.children.length > 3) {
+
           feed.removeChild(feed.lastChild);
+
         }
+
       }, 5500);
+
     }
 
+
+
     // Initialize calculator and scroll warmth observer
+
     window.addEventListener('DOMContentLoaded', () => {
+
       calculateImpact();
+
       switchReality(0);
+
       initOverflowTypewriter();
+
       initCrisisAccumulator();
+
       initScrollCounters();
+
       initDispatchFeedCycler();
 
+
+
       // Emotional Arc Stage definitions per Playbook §1.1 & §4
+
       const warmthStages = [
+
         { min: 0.0, max: 0.15, label: "Cold Hunger · #1B2430", color: "#1B2430" },
+
         { min: 0.16, max: 0.35, label: "Midnight Excess · #6B4E2E", color: "#6B4E2E" },
+
         { min: 0.36, max: 0.55, label: "Paradox Gap · #824500", color: "#824500" },
+
         { min: 0.56, max: 0.75, label: "The Pot Awakes · #F2A900", color: "#F2A900" },
+
         { min: 0.76, max: 0.90, label: "System Trust · #E28500", color: "#E28500" },
+
         { min: 0.91, max: 1.0, label: "Golden Nourishment · #FF9F1C", color: "#FF9F1C" }
+
       ];
 
+
+
       function updateWarmthDisplay(val) {
+
         const numericVal = parseFloat(val);
+
         document.documentElement.style.setProperty('--warmth', numericVal);
 
+
+
         const stage = warmthStages.find(s => numericVal >= s.min && numericVal <= s.max) || warmthStages[warmthStages.length - 1];
+
         const pctText = Math.round(numericVal * 100) + '%';
 
+
+
         const navLabel = document.getElementById('warmth-indicator-label');
+
         const navDot = document.getElementById('warmth-indicator-dot');
+
         const floatLabel = document.getElementById('float-indicator-label');
+
         const floatDot = document.getElementById('float-indicator-dot');
 
+
+
         if (navLabel) navLabel.innerText = `${stage.label.split('·')[0].trim()} · ${pctText}`;
+
         if (navDot) navDot.style.backgroundColor = stage.color;
+
         if (floatLabel) floatLabel.innerText = `${stage.label.split('·')[0].trim()} · ${pctText}`;
+
         if (floatDot) {
+
           floatDot.style.backgroundColor = stage.color;
+
           floatDot.style.boxShadow = `0 0 10px ${stage.color}66`;
+
         }
+
       }
+
+
 
       // IntersectionObserver for elements with [data-warmth]
+
       const warmthElements = document.querySelectorAll('[data-warmth]');
+
       if ('IntersectionObserver' in window && warmthElements.length > 0) {
+
         const observer = new IntersectionObserver((entries) => {
+
           entries.forEach(entry => {
+
             if (entry.isIntersecting) {
+
               const warmthVal = entry.target.dataset.warmth;
+
               if (warmthVal !== undefined) {
+
                 updateWarmthDisplay(warmthVal);
+
               }
+
             }
+
           });
+
         }, {
+
           threshold: [0.2, 0.45, 0.8],
+
           rootMargin: '-10% 0px -25% 0px'
+
         });
 
+
+
         warmthElements.forEach(el => observer.observe(el));
+
       } else {
+
         updateWarmthDisplay("0");
+
       }
+
     });
+
   </script>
+
 </body></html>
