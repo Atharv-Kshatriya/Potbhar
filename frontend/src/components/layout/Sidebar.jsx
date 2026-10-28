@@ -20,10 +20,16 @@ const NAV = {
     { to: '/assessment-queue', icon: '🔬', label: 'Assessment Queue' },
     { to: '/analytics', icon: '📊', label: 'Safety Analytics' },
   ],
+  LOGISTICS: [
+    { to: '/dashboard', icon: '🏠', label: 'Rider Dashboard' },
+    { to: '/deliveries', icon: '🚚', label: 'Delivery Dispatches' },
+    { to: '/analytics', icon: '📊', label: 'Fleet Impact' },
+  ],
   ADMIN: [
     { to: '/dashboard', icon: '🏠', label: 'Admin Dashboard' },
-    { to: '/admin', icon: '⚙️', label: 'Platform Governance' },
+    { to: '/deliveries', icon: '🚚', label: 'Delivery Radar' },
     { to: '/assessment-queue', icon: '🔬', label: 'Assessments' },
+    { to: '/admin', icon: '⚙️', label: 'Platform Governance' },
     { to: '/analytics', icon: '📊', label: 'ESG & City Impact' },
   ],
   PROCESSOR: [
@@ -34,10 +40,26 @@ const NAV = {
 }
 
 export default function Sidebar() {
-  const { user, logout } = useAuth()
+  const { user, logout, login } = useAuth()
   const location = useLocation()
   const navigate = useNavigate()
   const links = NAV[user?.role] || NAV.DONOR
+
+  const DEMO_PERSONAS = [
+    { role: 'DONOR', email: 'donor@potbhar.demo', label: '🍲 Donor', path: '/batches/new' },
+    { role: 'ASSESSOR', email: 'assessor@potbhar.demo', label: '🔬 Checker', path: '/assessment-queue' },
+    { role: 'RECIPIENT', email: 'recipient@potbhar.demo', label: '🍱 Recipient', path: '/food-offers' },
+    { role: 'LOGISTICS', email: 'delivery@potbhar.demo', label: '🚚 Rider', path: '/deliveries' },
+  ]
+
+  const switchPersona = async (p) => {
+    try {
+      await login(p.email, 'demo123')
+      navigate(p.path)
+    } catch (e) {
+      console.error('Failed to switch persona:', e)
+    }
+  }
 
   return (
     <aside className="w-64 min-h-screen bg-white flex flex-col border-r border-[#EDE5D8] fixed left-0 top-0 bottom-0 z-40 shadow-sm">
@@ -53,7 +75,7 @@ export default function Sidebar() {
       </Link>
 
       {/* Navigation */}
-      <nav className="flex-1 px-3 py-5 space-y-1.5 overflow-y-auto">
+      <nav className="flex-1 px-3 py-4 space-y-1 overflow-y-auto">
         <div className="px-3 pb-2 text-[10px] font-bold uppercase tracking-wider text-[#9BA8A7]">
           Navigation
         </div>
@@ -77,15 +99,41 @@ export default function Sidebar() {
         })}
       </nav>
 
+      {/* Quick Role Switcher for live testing */}
+      <div className="p-3 border-t border-[#EDE5D8] bg-[#FFFBF5]">
+        <div className="text-[10px] font-bold uppercase tracking-wider text-[#D97706] mb-2 px-1 flex items-center justify-between">
+          <span>⚡ Quick Switch Persona</span>
+        </div>
+        <div className="grid grid-cols-2 gap-1.5">
+          {DEMO_PERSONAS.map((p) => {
+            const isCurrent = user?.role === p.role
+            return (
+              <button
+                key={p.role}
+                onClick={() => switchPersona(p)}
+                className={`text-[11px] font-bold py-1.5 px-2 rounded-xl text-left truncate transition-all ${
+                  isCurrent
+                    ? 'bg-[#006B62] text-white shadow-sm ring-1 ring-[#006B62]'
+                    : 'bg-white border border-[#EDE5D8] text-[#1C2424] hover:border-[#D97706] hover:bg-[#FFFDF9]'
+                }`}
+                title={`Switch to ${p.label}`}
+              >
+                {p.label}
+              </button>
+            )
+          })}
+        </div>
+      </div>
+
       {/* User Info & Sign Out Footer */}
-      <div className="p-4 border-t border-[#EDE5D8] bg-[#FAF7F2]">
-        <div className="flex items-center gap-3 mb-3">
-          <div className="w-9 h-9 bg-[#E6F4F1] border border-[#B0DCD7] text-[#006B62] rounded-full flex items-center justify-center text-sm font-extrabold shadow-sm">
+      <div className="p-3.5 border-t border-[#EDE5D8] bg-[#FAF7F2]">
+        <div className="flex items-center gap-2.5 mb-2.5">
+          <div className="w-8 h-8 bg-[#E6F4F1] border border-[#B0DCD7] text-[#006B62] rounded-full flex items-center justify-center text-xs font-extrabold shadow-sm">
             {user?.full_name?.[0]?.toUpperCase() || 'U'}
           </div>
           <div className="flex-1 min-w-0">
             <div className="text-xs font-bold text-[#1C2424] truncate">{user?.full_name}</div>
-            <span className="inline-block px-2 py-0.2 rounded-full text-[10px] font-bold bg-[#FEF3E2] text-[#D97706] mt-0.5">
+            <span className="inline-block px-1.5 py-0.2 rounded-full text-[9px] font-bold bg-[#FEF3E2] text-[#D97706]">
               {user?.role}
             </span>
           </div>

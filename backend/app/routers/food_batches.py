@@ -131,6 +131,14 @@ def list_batches(current_user: User = Depends(get_current_user), db: Session = D
     elif current_user.role == "RECIPIENT":
         # Show only MATCHING-eligible batches
         q = q.filter(FoodBatch.status == BatchStatus.MATCHING)
+    elif current_user.role in ("ASSESSOR", "ADMIN"):
+        # Assessors see all batches needing review, including ones with missing info
+        q = q.filter(FoodBatch.status.in_([
+            BatchStatus.ASSESSMENT_REQUIRED,
+            BatchStatus.UNDER_ASSESSMENT,
+            BatchStatus.PENDING_INFORMATION,
+            BatchStatus.SUBMITTED,
+        ]))
     batches = q.order_by(FoodBatch.created_at.desc()).all()
     return [_batch_dict(b) for b in batches]
 
@@ -278,10 +286,47 @@ def approve_batch(
          prev={"status": old_status}, new={"status": batch.status, "reason": req.reason})
     db.commit()
 
-    # If approved, automatically move to MATCHING
+    # If approved, automatically move to MATCHING and generate matches for recipient shelters
     if req.decision == "APPROVED":
         batch.status = BatchStatus.MATCHING
         db.commit()
+        try:
+            from app.services.freshguard import match_recipients
+            from app.models.db_models import RecipientRequirement, DonationMatch, MatchStatus
+            reqs = db.query(RecipientRequirement).filter(RecipientRequirement.status == "ACTIVE").all()
+            donor = db.query(Organization).filter(Organization.id == batch.donor_id).first()
+            scored = match_recipients(batch, reqs, donor.latitude if donor else None, donor.longitude if donor else None)
+            for s in scored[:3]:
+                if s.get("organization"):
+                    m = DonationMatch(
+                        batch_id=batch.id,
+                        recipient_id=s["organization"].id,
+                        offered_quantity_kg=batch.quantity_kg,
+                        estimated_distance_km=s.get("estimated_distance_km", 3.5),
+                        match_score=s.get("match_score", 92.0),
+                        status=MatchStatus.OFFERED
+                    )
+                    db.add(m)
+            batch.status = BatchStatus.MATCHED
+            db.commit()
+        except Exception as e:
+            print("[WARN] Auto-match exception:", e)
+    elif req.decision == "REJECTED":
+        # Zero-waste diversion: route rejected batch to Gaushala or Compost
+        try:
+            from app.models.db_models import WasteBatch, WasteStatus
+            waste = WasteBatch(
+                donor_id=batch.donor_id,
+                waste_category="Cooked Food (Diverted)",
+                quantity_kg=batch.quantity_kg,
+                contamination_status="ORGANIC_CATTLE_FEED",
+                contamination_details=f"Diverted safely to Gaushala/Compost: {req.reason}",
+                status=WasteStatus.REPORTED
+            )
+            db.add(waste)
+            db.commit()
+        except Exception as err:
+            print("[WARN] Auto-waste routing exception:", err)
 
     return {"status": batch.status, "decision": req.decision}
 

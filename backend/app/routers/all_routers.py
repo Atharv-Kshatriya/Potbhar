@@ -171,9 +171,16 @@ def accept_match(match_id: str, current_user: User = Depends(get_current_user), 
     m.status = MatchStatus.ACCEPTED
     m.accepted_quantity_kg = m.offered_quantity_kg
     m.responded_at = datetime.utcnow()
-    # Create delivery
-    delivery = Delivery(match_id=match_id, status=DeliveryStatus.SCHEDULED, scheduled_pickup=datetime.utcnow())
+    # Create delivery record
+    delivery = Delivery(
+        match_id=match_id,
+        status=DeliveryStatus.SCHEDULED,
+        scheduled_pickup=datetime.utcnow(),
+        dispatched_quantity_kg=m.accepted_quantity_kg
+    )
     db.add(delivery)
+    if m.batch:
+        m.batch.status = BatchStatus.PICKUP_SCHEDULED
     db.commit()
     return {"status": "ACCEPTED", "delivery_id": delivery.id}
 
@@ -193,10 +200,44 @@ delivery_router = APIRouter(prefix="/deliveries", tags=["Deliveries"])
 
 @delivery_router.get("/")
 def list_deliveries(current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
-    deliveries = db.query(Delivery).order_by(Delivery.created_at.desc()).all()
-    return [{"id": d.id, "match_id": d.match_id, "status": d.status,
-             "delivered_quantity_kg": d.delivered_quantity_kg,
-             "actual_delivery": d.actual_delivery.isoformat() if d.actual_delivery else None} for d in deliveries]
+    from sqlalchemy.orm import joinedload
+    deliveries = (
+        db.query(Delivery)
+        .options(
+            joinedload(Delivery.match).joinedload(DonationMatch.batch).joinedload(FoodBatch.donor),
+            joinedload(Delivery.match).joinedload(DonationMatch.recipient),
+        )
+        .order_by(Delivery.created_at.desc())
+        .all()
+    )
+    out = []
+    for d in deliveries:
+        match = d.match
+        batch = match.batch if match else None
+        donor = batch.donor if batch else None
+        recipient = match.recipient if match else None
+        out.append({
+            "id": d.id,
+            "match_id": d.match_id,
+            "status": d.status,
+            "food_category": batch.food_category if batch else "Surplus Food",
+            "quantity_kg": (
+                d.delivered_quantity_kg
+                or d.dispatched_quantity_kg
+                or (match.accepted_quantity_kg if match else None)
+                or (batch.quantity_kg if batch else 0)
+            ),
+            "donor_name": donor.name if donor else "Donor Kitchen",
+            "donor_address": donor.address if donor else "Pune, Maharashtra",
+            "recipient_name": recipient.name if recipient else "Community Shelter",
+            "recipient_address": recipient.address if recipient else "Shelter Location",
+            "distance_km": match.estimated_distance_km if match else 4.2,
+            "scheduled_pickup": d.scheduled_pickup.isoformat() if d.scheduled_pickup else None,
+            "actual_pickup": d.actual_pickup.isoformat() if d.actual_pickup else None,
+            "actual_delivery": d.actual_delivery.isoformat() if d.actual_delivery else None,
+            "created_at": d.created_at.isoformat() if d.created_at else None,
+        })
+    return out
 
 @delivery_router.post("/{delivery_id}/pickup")
 def record_pickup(delivery_id: str, current_user: User = Depends(get_current_user), db: Session = Depends(get_db)):
@@ -205,6 +246,8 @@ def record_pickup(delivery_id: str, current_user: User = Depends(get_current_use
         raise HTTPException(404, "Delivery not found")
     d.actual_pickup = datetime.utcnow()
     d.status = DeliveryStatus.IN_TRANSIT
+    if d.match and d.match.batch:
+        d.match.batch.status = BatchStatus.IN_TRANSIT
     db.commit()
     return {"status": "IN_TRANSIT"}
 

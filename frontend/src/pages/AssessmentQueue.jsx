@@ -17,7 +17,7 @@ export default function AssessmentQueue() {
       .then((r) =>
         setBatches(
           r.data.filter((b) =>
-            ['ASSESSMENT_REQUIRED', 'UNDER_ASSESSMENT'].includes(b.status)
+            ['ASSESSMENT_REQUIRED', 'UNDER_ASSESSMENT', 'PENDING_INFORMATION', 'SUBMITTED'].includes(b.status)
           )
         )
       )

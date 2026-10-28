@@ -28,7 +28,10 @@ export default function FoodOffers() {
     setActing(id)
     try {
       await acceptMatch(id)
+      setMsg('Food offer accepted! Delivery has been scheduled for dispatch to your facility.')
       load()
+    } catch (err) {
+      setMsg(err.response?.data?.detail || 'Failed to accept offer')
     } finally {
       setActing('')
     }
@@ -37,7 +40,10 @@ export default function FoodOffers() {
     setActing(id)
     try {
       await declineMatch(id)
+      setMsg('Food offer declined. Batch re-routed for next recipient match or organic recycling.')
       load()
+    } catch (err) {
+      setMsg(err.response?.data?.detail || 'Failed to decline offer')
     } finally {
       setActing('')
     }

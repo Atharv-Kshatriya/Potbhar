@@ -164,6 +164,50 @@ export default function Dashboard() {
               </div>
             )}
 
+            {user?.role === 'RECIPIENT' && (
+              <div className="mb-8">
+                <Link
+                  to="/food-offers"
+                  className="card p-6 border border-[#B0DCD7] bg-[#F0F9F8] hover:-translate-y-1 transition-all flex items-center gap-5 group"
+                >
+                  <div className="w-14 h-14 bg-white rounded-2xl border border-[#EDE5D8] flex items-center justify-center text-2xl shadow-sm">
+                    🍱
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-[#006B62] text-lg">Incoming Food Offers</h3>
+                    <p className="text-[#637473] text-xs mt-0.5">
+                      Review nutritious surplus food batches matched for your shelter residents.
+                    </p>
+                  </div>
+                  <div className="text-sm font-bold text-[#006B62] group-hover:translate-x-1 transition-transform">
+                    View Offers →
+                  </div>
+                </Link>
+              </div>
+            )}
+
+            {user?.role === 'LOGISTICS' && (
+              <div className="mb-8">
+                <Link
+                  to="/deliveries"
+                  className="card p-6 border border-[#F58220]/30 bg-[#FFF9F3] hover:-translate-y-1 transition-all flex items-center gap-5 group"
+                >
+                  <div className="w-14 h-14 bg-white rounded-2xl border border-[#EDE5D8] flex items-center justify-center text-2xl shadow-sm">
+                    🚚
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="font-bold text-[#D66C12] text-lg">Active Delivery Radar</h3>
+                    <p className="text-[#637473] text-xs mt-0.5">
+                      View assigned donor pickups, route navigation, and record doorstep handovers.
+                    </p>
+                  </div>
+                  <div className="text-sm font-bold text-[#D66C12] group-hover:translate-x-1 transition-transform">
+                    Open Radar →
+                  </div>
+                </Link>
+              </div>
+            )}
+
             {/* Recent Batches Table Card */}
             <div className="card mb-8">
               <div className="flex items-center justify-between mb-5 pb-3 border-b border-[#EDE5D8]">

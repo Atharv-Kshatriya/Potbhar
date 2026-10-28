@@ -16,15 +16,23 @@ import AppLayout from '../components/layout/AppLayout'
 export function BatchCreate() {
   const navigate = useNavigate()
   const [categories, setCategories] = useState([])
+  const getDefaultPrepTime = () => {
+    const d = new Date()
+    d.setHours(d.getHours() - 1)
+    // Format as YYYY-MM-DDTHH:mm for datetime-local input
+    const pad = (n) => String(n).padStart(2, '0')
+    return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}T${pad(d.getHours())}:${pad(d.getMinutes())}`
+  }
+
   const [form, setForm] = useState({
     food_category: '',
     description: '',
     quantity_kg: '',
-    preparation_time: '',
+    preparation_time: getDefaultPrepTime(),
     storage_temp: 'ROOM_TEMP',
     storage_method: 'SEALED',
     packaging_intact: true,
-    handling_completeness: 0.8,
+    handling_completeness: 0.85,
     transport_duration_hours: 0,
   })
   const [loading, setLoading] = useState(false)

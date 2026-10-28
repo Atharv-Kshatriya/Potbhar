@@ -8,6 +8,7 @@ import { BatchCreate, BatchDetail } from './pages/Batches'
 import FreshGuardScanner from './pages/Scanner'
 import AssessmentQueue from './pages/AssessmentQueue'
 import FoodOffers from './pages/FoodOffers'
+import Deliveries from './pages/Deliveries'
 import WasteManagement from './pages/Waste'
 import Analytics from './pages/Analytics'
 
@@ -42,6 +43,7 @@ function AppRoutes() {
       <Route path="/assessment-queue" element={<PrivateRoute><AssessmentQueue /></PrivateRoute>} />
       <Route path="/food-offers" element={<PrivateRoute><FoodOffers /></PrivateRoute>} />
       <Route path="/requirements" element={<PrivateRoute><FoodOffers /></PrivateRoute>} />
+      <Route path="/deliveries" element={<PrivateRoute><Deliveries /></PrivateRoute>} />
       <Route path="/waste" element={<PrivateRoute><WasteManagement /></PrivateRoute>} />
       <Route path="/analytics" element={<PrivateRoute><Analytics /></PrivateRoute>} />
       <Route path="/admin" element={<PrivateRoute><Analytics /></PrivateRoute>} />

@@ -8,38 +8,43 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        outfit: ['"Outfit"', 'sans-serif'],
-        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+        sans: ['Poppins', 'Nunito', 'sans-serif'],
         mono: ['"JetBrains Mono"', 'monospace'],
       },
       colors: {
-        primary: {
-          50: '#ecfdf5',
-          100: '#d1fae5',
-          200: '#a7f3d0',
-          500: '#10b981',
-          600: '#059669',
-          700: '#047857',
+        cream: {
+          DEFAULT: '#FAF6F0',
+          dark: '#EFE8DC',
         },
-        accent: {
-          50: '#fffbeb',
-          100: '#fef3c7',
-          500: '#f59e0b',
-          600: '#d97706',
-          700: '#b45309',
+        'card-border': '#EBE3D5',
+        saffron: {
+          DEFAULT: '#F58220',
+          dark: '#D66C12',
+          light: '#FFF4EA',
+          contrast: '#B85A0B',
         },
-        organic: {
-          50: '#f7fee7',
-          100: '#ecfccb',
-          600: '#65a30d',
-          700: '#4d7c0f',
+        leaf: {
+          DEFAULT: '#257A4B',
+          dark: '#1B5E39',
+          light: '#E8F5EE',
         },
-        logistics: {
-          50: '#eff6ff',
-          600: '#2563eb',
-          700: '#1d4ed8',
+        charcoal: {
+          DEFAULT: '#1F1A17',
+          muted: '#594D46',
         },
+        white: '#FFFFFF',
       },
+      boxShadow: {
+        'warm-sm': '0 2px 8px rgba(31,26,23,.04)',
+        'warm-md': '0 8px 24px rgba(31,26,23,.06)',
+        'warm-lg': '0 16px 36px rgba(31,26,23,.09)',
+        'saffron-glow': '0 8px 20px rgba(245,130,32,.28)',
+      },
+      borderRadius: {
+        'xl': '0.75rem',
+        '2xl': '1rem',
+        '3xl': '1.5rem',
+      }
     },
   },
   plugins: [],

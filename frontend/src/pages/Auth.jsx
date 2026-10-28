@@ -24,54 +24,84 @@ export function Login() {
     }
   }
 
+  const loginAsPersona = async (role) => {
+    const creds = {
+      DONOR: { email: 'donor@potbhar.demo', password: 'demo123' },
+      ASSESSOR: { email: 'assessor@potbhar.demo', password: 'demo123' },
+      RECIPIENT: { email: 'recipient@potbhar.demo', password: 'demo123' },
+      LOGISTICS: { email: 'delivery@potbhar.demo', password: 'demo123' },
+      PROCESSOR: { email: 'processor@potbhar.demo', password: 'demo123' },
+      ADMIN: { email: 'admin@potbhar.demo', password: 'demo123' },
+    }
+    const c = creds[role]
+    if (!c) return
+    setForm(c)
+    setLoading(true)
+    setError('')
+    try {
+      await login(c.email, c.password)
+      navigate('/dashboard')
+    } catch (err) {
+      setError(err.response?.data?.detail || 'Invalid credentials')
+    } finally {
+      setLoading(false)
+    }
+  }
+
   const fillDemo = (role) => {
     const creds = {
       DONOR: { email: 'donor@potbhar.demo', password: 'demo123' },
-      RECIPIENT: { email: 'recipient@potbhar.demo', password: 'demo123' },
       ASSESSOR: { email: 'assessor@potbhar.demo', password: 'demo123' },
-      ADMIN: { email: 'admin@potbhar.demo', password: 'demo123' },
+      RECIPIENT: { email: 'recipient@potbhar.demo', password: 'demo123' },
+      LOGISTICS: { email: 'delivery@potbhar.demo', password: 'demo123' },
       PROCESSOR: { email: 'processor@potbhar.demo', password: 'demo123' },
+      ADMIN: { email: 'admin@potbhar.demo', password: 'demo123' },
     }
     setForm(creds[role])
   }
 
   return (
     <div className="min-h-screen bg-[#FAF7F2] flex items-center justify-center p-4">
-      <div className="w-full max-w-md animate-slide-up">
+      <div className="w-full max-w-lg animate-slide-up">
         {/* Brand Header */}
         <Link to="/" className="flex items-center gap-3 mb-6 justify-center group">
-          <div className="w-12 h-12 bg-[#006B62] rounded-full flex items-center justify-center text-white text-2xl shadow-md group-hover:scale-105 transition-transform">
-            🍛
+          <div className="w-12 h-12 bg-white rounded-2xl border border-[#EDE5D8] flex items-center justify-center p-1 shadow-md group-hover:scale-105 transition-transform">
+            <img src="/assets/img/potbhar-logo.png" alt="POTBHAR logo" className="w-10 h-10 object-contain" />
           </div>
           <div>
-            <div className="text-2xl font-black text-[#006B62] tracking-tight">POTBHAR</div>
-            <div className="text-xs font-semibold text-[#D97706]">Every Nivala Matters • पोटभर</div>
+            <div className="text-2xl font-black text-[#1F1A17] tracking-tight">POTBHAR</div>
+            <div className="text-xs font-semibold text-[#F58220]">Surplus to Smiles • पोटभर</div>
           </div>
         </Link>
 
         {/* Card */}
         <div className="bg-white rounded-3xl border border-[#EDE5D8] p-8 shadow-sm">
-          <h2 className="text-2xl font-extrabold text-[#1C2424] mb-1">Welcome Back</h2>
-          <p className="text-[#637473] text-sm mb-6">Sign in to your POTBHAR food recovery portal</p>
+          <h2 className="text-2xl font-extrabold text-[#1F1A17] mb-1">Separate Persona Login</h2>
+          <p className="text-[#594D46] text-sm mb-6">Select your individual persona for a neat, tailored interface</p>
 
-          {/* Quick Demo Login Pills */}
-          <div className="mb-6 p-3.5 rounded-2xl bg-[#F7F2EA] border border-[#EDE5D8]">
-            <p className="text-xs font-bold text-[#006B62] mb-2">⚡ 1-Click Demo Login:</p>
-            <div className="flex flex-wrap gap-1.5">
+          {/* Dedicated Persona Login Grid */}
+          <div className="mb-6 p-4 rounded-2xl bg-[#FFF4EA] border border-[#F58220]/25">
+            <p className="text-xs font-black text-[#D66C12] uppercase tracking-wider mb-3">
+              ⚡ 1-Click Instant Persona Sign-In:
+            </p>
+            <div className="grid grid-cols-2 gap-2">
               {[
-                { r: 'DONOR', label: 'Donor' },
-                { r: 'RECIPIENT', label: 'NGO / Shelter' },
-                { r: 'ASSESSOR', label: 'Assessor' },
-                { r: 'PROCESSOR', label: 'Processor' },
-                { r: 'ADMIN', label: 'Admin' },
-              ].map(({ r, label }) => (
+                { r: 'DONOR', label: '🍲 Food Donor', desc: 'Banquet & Hotel Caterer' },
+                { r: 'ASSESSOR', label: '🔬 Quality Checker', desc: 'FreshGuard Food Safety' },
+                { r: 'RECIPIENT', label: '🏠 Shelter / NGO', desc: 'Orphanage & Care Home' },
+                { r: 'LOGISTICS', label: '🛵 Delivery Rider', desc: 'Transit Fleet Hero' },
+                { r: 'PROCESSOR', label: '🐄 Gaushala / Compost', desc: 'Zero-Landfill Circular' },
+                { r: 'ADMIN', label: '⚙️ Operations Admin', desc: 'System Oversight' },
+              ].map(({ r, label, desc }) => (
                 <button
                   key={r}
                   type="button"
-                  onClick={() => fillDemo(r)}
-                  className="text-xs px-3 py-1 rounded-full font-semibold bg-white hover:bg-[#006B62] hover:text-white text-[#475454] border border-[#EDE5D8] transition-colors"
+                  onClick={() => loginAsPersona(r)}
+                  disabled={loading}
+                  className="text-left p-2.5 rounded-xl bg-white hover:bg-[#F58220] hover:text-white text-[#1F1A17] border border-[#EDE5D8] transition-all group shadow-2xs hover:shadow-sm"
                 >
-                  {label}
+                  <div className="text-xs font-extrabold">{label}</div>
+                  <div className="text-[10px] text-[#594D46] group-hover:text-white/90">{desc}</div>
                 </button>
               ))}
             </div>
