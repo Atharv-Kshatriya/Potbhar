@@ -11,4 +11,14 @@ export default defineConfig({
       '/uploads': { target: 'http://localhost:8000', changeOrigin: true },
     }
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          charts: ['recharts'],
+          icons: ['lucide-react']
+        }
+      }
+    }
+  }
 });

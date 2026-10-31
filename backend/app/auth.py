@@ -2,6 +2,7 @@
 POTBHAR - Auth utilities: JWT creation, verification, password hashing
 """
 from datetime import datetime, timedelta
+import os
 from typing import Optional
 from jose import JWTError, jwt
 from passlib.context import CryptContext
@@ -10,12 +11,15 @@ from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.orm import Session
 from app.models.db_models import get_db, User
 
-SECRET_KEY = "potbhar-super-secret-key-2024-change-in-production"
+SECRET_KEY = os.getenv("POTBHAR_SECRET_KEY")
+if not SECRET_KEY:
+    if os.getenv("APP_ENV", "development").lower() == "production":
+        raise RuntimeError("POTBHAR_SECRET_KEY must be set in production")
+    SECRET_KEY = "local-development-only-change-before-deploy"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24  # 24 hours
 
 import hashlib
-import os
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/api/v1/auth/login")
 

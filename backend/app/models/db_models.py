@@ -11,9 +11,11 @@ from sqlalchemy import (
 from sqlalchemy.orm import DeclarativeBase, relationship, sessionmaker
 import uuid
 import enum
+import os
 
-DATABASE_URL = "sqlite:///./potbhar.db"
-engine = create_engine(DATABASE_URL, connect_args={"check_same_thread": False})
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./potbhar.db")
+engine_options = {"connect_args": {"check_same_thread": False}} if DATABASE_URL.startswith("sqlite") else {}
+engine = create_engine(DATABASE_URL, **engine_options)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 
@@ -274,6 +276,18 @@ class AuditLog(Base):
     new_state = Column(JSON, nullable=True)
     metadata_ = Column("metadata", JSON, default=dict)
     created_at = Column(DateTime, default=datetime.utcnow)
+
+
+class LiveWorkflow(Base):
+    """Shared portal workflow records, polled by signed-in workspaces."""
+    __tablename__ = "live_workflows"
+    id = Column(String, primary_key=True, default=new_uuid)
+    donor_id = Column(String, ForeignKey("users.id"), nullable=False)
+    data = Column(JSON, nullable=False, default=dict)
+    status = Column(String, nullable=False, default="AVAILABLE")
+    created_at = Column(DateTime, default=datetime.utcnow)
+    updated_at = Column(DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
+    donor = relationship("User")
 
 
 def create_tables():
