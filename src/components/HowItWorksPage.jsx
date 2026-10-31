@@ -1,10 +1,10 @@
 import React from 'react';
-import { ArrowLeft, ArrowDown, Recycle, ShieldCheck, HeartHandshake, Truck, ClipboardCheck } from 'lucide-react';
+import { ArrowDown, Recycle, ShieldCheck, HeartHandshake, Truck, ClipboardCheck } from 'lucide-react';
 import { CONTENT_KIT } from '../lib/contentKit';
 
 const icons = [ClipboardCheck, ShieldCheck, HeartHandshake, Truck, Recycle];
 
-export default function HowItWorksPage({ lang, onBack }) {
+export default function HowItWorksPage({ lang }) {
   const steps = CONTENT_KIT.howItWorks.steps;
   const copy = lang === 'mr';
   const details = copy ? [
@@ -22,13 +22,10 @@ export default function HowItWorksPage({ lang, onBack }) {
   ];
 
   return (
-    <main className="min-h-screen bg-[#FFF6E8] text-[#4B2E1E]">
+    <section id="how-it-works" className="bg-[#FFF6E8] text-[#4B2E1E] scroll-mt-24">
       <section className="relative overflow-hidden border-b border-[#E8DAC2] bg-gradient-to-br from-[#EAF5EC] via-[#FFF6E8] to-[#FFF0DE] py-14 sm:py-20">
         <div className="pointer-events-none absolute -right-16 -top-20 h-72 w-72 rounded-full bg-[#4E9A59]/10 blur-3xl" />
         <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <button onClick={onBack} className="mb-8 inline-flex items-center gap-2 rounded-full border border-[#D8E6D8] bg-white/80 px-4 py-2 text-sm font-bold text-[#1F5C3A] hover:bg-white">
-            <ArrowLeft className="h-4 w-4" /> {copy ? 'मुख्यपृष्ठावर परत' : 'Back to home'}
-          </button>
           <span className="mb-4 inline-flex items-center gap-2 rounded-full border border-[#A7D7AF] bg-white/75 px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#1F5C3A]">
             <HeartHandshake className="h-4 w-4" /> {copy ? 'अन्न पुनर्वापर प्रवास' : 'The food recovery journey'}
           </span>
@@ -71,6 +68,6 @@ export default function HowItWorksPage({ lang, onBack }) {
         </div>
         <div className="mt-10 flex justify-center text-[#4E9A59]"><ArrowDown className="h-6 w-6 animate-bounce" aria-hidden="true" /></div>
       </section>
-    </main>
+    </section>
   );
 }

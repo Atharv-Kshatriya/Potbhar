@@ -40,7 +40,6 @@ import {
 export default function App() {
   const [lang, setLang] = useState('en'); // 'en' | 'mr'
   const [activePortal, setActivePortal] = useState(null); // null (landing) or 'donor' | 'orphanage' | 'shelter' | 'gaushala' | 'compost' | 'volunteer' | 'admin'
-  const [activePage, setActivePage] = useState('home');
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
@@ -61,14 +60,6 @@ export default function App() {
   };
 
   const navigateToSection = (sectionId) => {
-    if (activePage === 'how-it-works') {
-      setActivePage('home');
-      window.setTimeout(() => {
-        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        window.history.replaceState(null, '', `#${sectionId}`);
-      }, 50);
-      return;
-    }
     document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
@@ -95,10 +86,6 @@ export default function App() {
     return <AdminPortal lang={lang} user={currentUser} onBackToLanding={handlePortalBack} />;
   }
 
-  if (activePage === 'how-it-works') {
-    return <div className="min-h-screen bg-[#FFF6E8] text-[#4B2E1E] selection:bg-[#F28C28]/20 selection:text-[#B85F00] font-sans"><Navbar lang={lang} setLang={setLang} setActivePortal={setActivePortal} openAuthModal={() => setAuthModalOpen(true)} openHowItWorks={() => window.scrollTo({ top: 0, behavior: 'smooth' })} goHome={() => { setActivePage('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} onSectionNavigate={navigateToSection} isHowItWorksPage /><HowItWorksPage lang={lang} onBack={() => { setActivePage('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} /><Footer lang={lang} onSectionNavigate={navigateToSection} /><AuthModal isOpen={authModalOpen} onClose={() => setAuthModalOpen(false)} onLoginSuccess={handleLoginSuccess} lang={lang} /></div>;
-  }
-
   // Public Landing Page
   return (
     <div className="min-h-screen bg-[#FFF6E8] text-[#4B2E1E] selection:bg-[#F28C28]/20 selection:text-[#B85F00] font-sans">
@@ -109,8 +96,8 @@ export default function App() {
         setLang={setLang}
         setActivePortal={setActivePortal}
         openAuthModal={() => setAuthModalOpen(true)}
-        openHowItWorks={() => { setActivePage('how-it-works'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
-        goHome={() => { setActivePage('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+        openHowItWorks={() => navigateToSection('how-it-works')}
+        goHome={() => navigateToSection('home')}
         onSectionNavigate={navigateToSection}
       />
 
@@ -254,6 +241,9 @@ export default function App() {
 
         </div>
       </section>
+
+      {/* Five-step food recovery process */}
+      <HowItWorksPage lang={lang} />
 
       {/* 5. Food Quality Assessment & Priority Rules (No live radar scan) */}
       <FreshGuardSection lang={lang} />
