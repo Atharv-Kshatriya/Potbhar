@@ -97,7 +97,7 @@ export const CONTENT_KIT = {
   },
 
   howItWorks: {
-    title: { en: 'How PotBhar Works in 4 Steps', mr: 'PotBhar कसं चालतं: ४ पायऱ्या' },
+    title: { en: 'How PotBhar Works in 5 Steps', mr: 'PotBhar कसं चालतं: ५ पायऱ्या' },
     subtitle: {
       en: 'A transparent, priority-gated system connecting donors directly to orphanages, gaushalas, or compost.',
       mr: 'अतिरिक्त अन्नाला गरजू अनाथाश्रम, गोशाळा किंवा खत प्रकल्पापर्यंत थेट व सुरक्षितपणे पोहोचवणारी व्यवस्था.'
@@ -119,7 +119,7 @@ export const CONTENT_KIT = {
           en: 'System evaluates safety parameters and recommends priority: Orphanage/Shelter first, Gaushala second, or Bio-Compost. Donor reviews and confirms.',
           mr: 'प्रणाली निकष तपासून प्राधान्य सुचवते: आधी अनाथाश्रम/निवारा, नंतर गोशाळा, किंवा सेंद्रिय खत. दाते शिफारस तपासून पुष्टी करतात.'
         },
-        image: '/images/quality-check-reference.png'
+        image: '/images/community-food-cycle.png'
       },
       {
         num: '03',
@@ -128,7 +128,7 @@ export const CONTENT_KIT = {
           en: 'Donor chooses to deliver directly or dispatch a volunteer rider with optimized live GPS tracking on the map.',
           mr: 'दाते स्वतः पोहोचवण्याचा किंवा नकाशावर थेट GPS ट्रॅकिंग असलेल्या स्वयंसेवक रायडरचा पर्याय निवडतात.'
         },
-        image: '/images/delivery-reference.png'
+        image: '/images/community-food-delivery-network.png'
       },
       {
         num: '04',
@@ -138,6 +138,15 @@ export const CONTENT_KIT = {
           mr: 'अन्न पोहोचल्यावर संस्था प्रत्यक्ष तपासणी करते. खाण्यायोग्य असल्यास स्वीकारून दात्याला पावती दिली जाते; योग्य नसल्यास लगेच खताकडे वळवले जाते व दात्याला तसे कळवले जाते.'
         },
         image: '/images/community-serving.png'
+      },
+      {
+        num: '05',
+        title: { en: 'Return Nutrients to the Soil', mr: '\u0938\u0947\u0902\u0926\u094d\u0930\u093f\u092f \u0916\u0924 \u0928\u093f\u0930\u094d\u092e\u093f\u0924\u0940' },
+        desc: {
+          en: 'Food declined at inspection or spoiled beyond safe use is diverted to a compost unit, where organic matter is processed into manure for local farms.',
+          mr: '\u0924\u092a\u093e\u0938\u0923\u0940\u0924 \u0928\u093e\u0915\u093e\u0930\u0932\u0947\u0932\u0947 \u0915\u093f\u0902\u0935\u093e \u0935\u093e\u092a\u0930\u093e\u0938 \u0905\u092f\u094b\u0917\u094d\u092f \u0920\u0930\u0932\u0947\u0932\u0947 \u0905\u0928\u094d\u0928 \u0916\u0924 \u092a\u094d\u0930\u0915\u0932\u094d\u092a\u093e\u0915\u0921\u0947 \u0935\u0933\u0935\u0932\u0947 \u091c\u093e\u0924\u0947; \u0924\u0947\u0925\u0947 \u0924\u094d\u092f\u093e\u091a\u0947 \u0938\u0947\u0902\u0926\u094d\u0930\u093f\u092f \u0916\u0924\u093e\u0924 \u0930\u0942\u092a\u093e\u0902\u0924\u0930 \u0939\u094b\u0924\u0947.'
+        },
+        image: '/images/composting-ecosystem.png'
       }
     ]
   },

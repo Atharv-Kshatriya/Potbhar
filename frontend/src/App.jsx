@@ -1,65 +1,440 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
-import { AuthProvider, useAuth } from './context/AuthContext'
-import { Spinner } from './components/ui/Components'
-import Landing from './pages/Landing'
-import { Login, Register } from './pages/Auth'
-import Dashboard from './pages/Dashboard'
-import { BatchCreate, BatchDetail } from './pages/Batches'
-import FreshGuardScanner from './pages/Scanner'
-import AssessmentQueue from './pages/AssessmentQueue'
-import FoodOffers from './pages/FoodOffers'
-import Deliveries from './pages/Deliveries'
-import WasteManagement from './pages/Waste'
-import Analytics from './pages/Analytics'
+import React, { useState, useEffect } from 'react';
+import Navbar from './components/Navbar';
+import Footer from './components/Footer';
+import FreshGuardSection from './components/FreshGuardSection';
+import QuotesCarousel from './components/QuotesCarousel';
+import StoriesSection from './components/StoriesSection';
+import PortalsShowcase from './components/PortalsShowcase';
+import ImpactCharts from './components/ImpactCharts';
+import FaqSection from './components/FaqSection';
+import AuthModal from './components/AuthModal';
 
-function PrivateRoute({ children }) {
-  const { user, loading } = useAuth()
-  if (loading) return (
-    <div className="min-h-screen flex items-center justify-center">
-      <Spinner size="lg" />
-    </div>
-  )
-  return user ? children : <Navigate to="/login" replace />
-}
+// Dedicated Portals (Compost & Gaushala are completely separate)
+import DonorPortal from './components/portals/DonorPortal';
+import OrphanagePortal from './components/portals/OrphanagePortal';
+import ShelterPortal from './components/portals/ShelterPortal';
+import GaushalaPortal from './components/portals/GaushalaPortal';
+import CompostPortal from './components/portals/CompostPortal';
+import VolunteerPortal from './components/portals/VolunteerPortal';
+import AdminPortal from './components/portals/AdminPortal';
 
-function PublicRoute({ children }) {
-  const { user, loading } = useAuth()
-  if (loading) return null
-  return user ? <Navigate to="/dashboard" replace /> : children
-}
-
-function AppRoutes() {
-  return (
-    <Routes>
-      <Route path="/" element={<Landing />} />
-      <Route path="/login" element={<PublicRoute><Login /></PublicRoute>} />
-      <Route path="/register" element={<PublicRoute><Register /></PublicRoute>} />
-
-      {/* Protected Routes */}
-      <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
-      <Route path="/batches/new" element={<PrivateRoute><BatchCreate /></PrivateRoute>} />
-      <Route path="/batches/:id" element={<PrivateRoute><BatchDetail /></PrivateRoute>} />
-      <Route path="/scanner" element={<PrivateRoute><FreshGuardScanner /></PrivateRoute>} />
-      <Route path="/assessment-queue" element={<PrivateRoute><AssessmentQueue /></PrivateRoute>} />
-      <Route path="/food-offers" element={<PrivateRoute><FoodOffers /></PrivateRoute>} />
-      <Route path="/requirements" element={<PrivateRoute><FoodOffers /></PrivateRoute>} />
-      <Route path="/deliveries" element={<PrivateRoute><Deliveries /></PrivateRoute>} />
-      <Route path="/waste" element={<PrivateRoute><WasteManagement /></PrivateRoute>} />
-      <Route path="/analytics" element={<PrivateRoute><Analytics /></PrivateRoute>} />
-      <Route path="/admin" element={<PrivateRoute><Analytics /></PrivateRoute>} />
-
-      {/* Fallback */}
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
-  )
-}
+import { CONTENT_KIT } from './lib/contentKit';
+import { 
+  Sparkles, 
+  ArrowRight, 
+  ShieldCheck, 
+  Clock, 
+  MapPin, 
+  Heart, 
+  Users, 
+  Leaf, 
+  CheckCircle2, 
+  Play, 
+  Award,
+  Layers,
+  ChevronRight,
+  Navigation,
+  Recycle
+} from 'lucide-react';
 
 export default function App() {
+  const [lang, setLang] = useState('en'); // 'en' | 'mr'
+  const [activePortal, setActivePortal] = useState(null); // null (landing) or 'donor' | 'orphanage' | 'shelter' | 'gaushala' | 'compost' | 'volunteer' | 'admin'
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+
+  useEffect(() => {
+    document.documentElement.lang = lang;
+  }, [lang]);
+
+  const handleLoginSuccess = (userData) => {
+    setCurrentUser(userData);
+    setActivePortal(userData.role);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  // Dedicated Portals Routing
+  if (activePortal === 'donor') {
+    return <DonorPortal lang={lang} user={currentUser} onBackToLanding={() => setActivePortal(null)} />;
+  }
+  if (activePortal === 'orphanage') {
+    return <OrphanagePortal lang={lang} user={currentUser} onBackToLanding={() => setActivePortal(null)} />;
+  }
+  if (activePortal === 'shelter') {
+    return <ShelterPortal lang={lang} user={currentUser} onBackToLanding={() => setActivePortal(null)} />;
+  }
+  if (activePortal === 'gaushala') {
+    return <GaushalaPortal lang={lang} user={currentUser} onBackToLanding={() => setActivePortal(null)} />;
+  }
+  if (activePortal === 'compost') {
+    return <CompostPortal lang={lang} user={currentUser} onBackToLanding={() => setActivePortal(null)} />;
+  }
+  if (activePortal === 'volunteer') {
+    return <VolunteerPortal lang={lang} user={currentUser} onBackToLanding={() => setActivePortal(null)} />;
+  }
+  if (activePortal === 'admin') {
+    return <AdminPortal lang={lang} user={currentUser} onBackToLanding={() => setActivePortal(null)} />;
+  }
+
+  // Public Landing Page
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <AppRoutes />
-      </AuthProvider>
-    </BrowserRouter>
-  )
+    <div className="min-h-screen bg-[#FFF6E8] text-[#4B2E1E] selection:bg-[#F28C28]/20 selection:text-[#B85F00] font-sans">
+      
+      {/* 1. Header (Sticky, blurred cream) */}
+      <Navbar
+        lang={lang}
+        setLang={setLang}
+        activePortal={activePortal}
+        setActivePortal={setActivePortal}
+        openAuthModal={() => setAuthModalOpen(true)}
+      />
+
+      {/* 2. Hero Section - With prominent hero-illustration.png */}
+      <section className="relative pt-8 pb-16 sm:pt-14 sm:pb-24 overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+            
+            {/* Left Hero Content */}
+            <div className="lg:col-span-6 space-y-6 text-left">
+              
+              {/* Eyebrow Secondary Tagline */}
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-pill bg-[#FFF0DE] border border-[#F28C28]/30 shadow-xs">
+                <span className="w-2 h-2 rounded-full bg-[#F28C28] animate-pulse"></span>
+                <span className="text-xs font-bold text-[#B85F00] uppercase tracking-wider font-sans">
+                  {CONTENT_KIT.hero.eyebrow[lang]}
+                </span>
+              </div>
+
+              {/* Display Headline */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-display font-extrabold text-[#1F5C3A] leading-[1.14] tracking-tight">
+                {lang === 'mr' ? (
+                  <>
+                    आजचं उरलेलं अन्न,<br />
+                    <span className="text-[#F28C28]">आज रात्रीचं जेवण.</span>
+                  </>
+                ) : (
+                  <>
+                    Today's Surplus,<br />
+                    <span className="text-[#F28C28]">Tonight's Meal.</span>
+                  </>
+                )}
+              </h1>
+
+              {/* Subtitle */}
+              <p className="text-base sm:text-lg text-[#735747] leading-relaxed max-w-xl">
+                {CONTENT_KIT.hero.sub[lang]}
+              </p>
+
+              {/* CTAs Row */}
+              <div className="flex flex-wrap items-center gap-3.5 pt-2">
+                
+                {/* Donate Surplus Food (Primary Forest Green Pill) */}
+                <button
+                  onClick={() => setActivePortal('donor')}
+                  className="px-6 py-3.5 bg-[#1F5C3A] hover:bg-[#16452B] text-white font-bold text-sm rounded-pill btn-pill shadow-soft flex items-center gap-2.5"
+                >
+                  <Sparkles className="w-4 h-4 text-[#F6C343]" />
+                  <span>{CONTENT_KIT.hero.ctaDonate[lang]}</span>
+                </button>
+
+                {/* Find Food / Recipient Intake (High Contrast Gold Button) */}
+                <button
+                  onClick={() => setActivePortal('orphanage')}
+                  className="px-6 py-3.5 bg-[#F6C343] hover:bg-[#E0A922] text-[#4B2E1E] font-bold text-sm rounded-pill btn-pill shadow-soft border border-[#E0A922] flex items-center gap-2"
+                >
+                  <span>{CONTENT_KIT.hero.ctaFind[lang]}</span>
+                </button>
+
+                <a
+                  href="#how-it-works"
+                  className="px-4 py-3 text-xs font-bold text-[#1F5C3A] hover:text-[#B85F00] flex items-center gap-2 transition-colors"
+                >
+                  <span>{CONTENT_KIT.hero.ctaHow[lang]}</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
+
+              {/* Pilot Notice Badge */}
+              <div className="pt-2">
+                <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#735747]">
+                  <span className="w-2 h-2 rounded-full bg-[#4E9A59]"></span>
+                  {CONTENT_KIT.hero.badgePilot[lang]}
+                </span>
+              </div>
+
+            </div>
+
+            {/* Right Hero Artwork: hero-illustration.png */}
+            <div className="lg:col-span-6 relative">
+              <div className="relative rounded-3xl overflow-hidden p-2 bg-white border border-[#E8DAC2] shadow-soft-lg">
+                <img
+                  src="/images/hero-illustration.png"
+                  alt="PotBhar Community Surplus Redistribution"
+                  className="w-full h-auto max-h-[460px] rounded-2xl object-cover"
+                  onError={(e) => {
+                    e.target.onerror = null;
+                    e.target.src = '/newARCH/hero-illustration.png';
+                  }}
+                />
+                
+                {/* Floating summary badge */}
+                <div className="absolute bottom-5 left-5 right-5 bg-white/95 backdrop-blur-md p-3.5 rounded-2xl border border-[#E8DAC2] shadow-md flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-xl bg-[#E6F4EA] text-[#1F5C3A] flex items-center justify-center font-bold">
+                      ✓
+                    </div>
+                    <div>
+                      <span className="text-xs font-bold text-[#1F5C3A] block">
+                        {lang === 'mr' ? '३-स्तरीय शून्य अपव्यय वाटप' : '3-Tier Priority Redistribution'}
+                      </span>
+                      <span className="text-[11px] text-[#735747]">
+                        {lang === 'mr' ? '१. निवारा • २. गोशाळा • ३. सेंद्रिय खत' : '1. Shelters • 2. Gaushalas • 3. Compost'}
+                      </span>
+                    </div>
+                  </div>
+                  <span className="text-xs font-mono font-bold text-[#F28C28]">
+                    100% Zero-Waste
+                  </span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          {/* 3-Stat Strip Floating Across Bottom */}
+          <div className="mt-14 max-w-4xl mx-auto bg-white rounded-3xl p-5 sm:p-7 border border-[#E8DAC2] shadow-soft-lg grid grid-cols-1 sm:grid-cols-3 gap-6 text-center divide-y sm:divide-y-0 sm:divide-x divide-[#F0E6D8]">
+            <div className="pt-2 sm:pt-0">
+              <div className="text-2xl sm:text-3xl font-display font-extrabold text-[#F28C28]">
+                🍲 {CONTENT_KIT.statsStrip.recovered.value}
+              </div>
+              <div className="text-xs font-bold text-[#735747] uppercase tracking-wider mt-1">
+                {CONTENT_KIT.statsStrip.recovered.label[lang]}
+              </div>
+            </div>
+
+            <div className="pt-4 sm:pt-0">
+              <div className="text-2xl sm:text-3xl font-display font-extrabold text-[#1F5C3A]">
+                🍽 {CONTENT_KIT.statsStrip.meals.value}
+              </div>
+              <div className="text-xs font-bold text-[#735747] uppercase tracking-wider mt-1">
+                {CONTENT_KIT.statsStrip.meals.label[lang]}
+              </div>
+            </div>
+
+            <div className="pt-4 sm:pt-0">
+              <div className="text-2xl sm:text-3xl font-display font-extrabold text-[#4E9A59]">
+                🌱 {CONTENT_KIT.statsStrip.composted.value}
+              </div>
+              <div className="text-xs font-bold text-[#735747] uppercase tracking-wider mt-1">
+                {CONTENT_KIT.statsStrip.composted.label[lang]}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 3. The Problem Section */}
+      <section className="py-20 bg-gradient-to-b from-[#FFF6E8] to-[#FFF0DE]/40 border-t border-[#E8DAC2]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-display font-bold text-[#1F5C3A] leading-snug">
+              "{CONTENT_KIT.theProblem.title[lang]}"
+            </h2>
+            <p className="mt-4 text-sm sm:text-base text-[#735747]">
+              {CONTENT_KIT.theProblem.subtitle[lang]}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {CONTENT_KIT.theProblem.cards.map((card, idx) => (
+              <div key={idx} className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8DAC2] shadow-soft flex flex-col justify-between">
+                <div>
+                  <span className="text-3xl sm:text-4xl font-display font-extrabold text-[#D9622B] block mb-2">
+                    {lang === 'mr' ? card.figureMr : card.figure}
+                  </span>
+                  <p className="text-sm font-bold text-[#4B2E1E] leading-relaxed">
+                    {card.label[lang]}
+                  </p>
+                </div>
+                <div className="mt-6 pt-4 border-t border-[#F0E6D8] text-[11px] font-semibold text-[#A38979]">
+                  Source: {card.source}
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* 4. How It Works - Illustrated with Real Artwork (NO AI label) */}
+      <section id="how-it-works" className="py-20 bg-[#FFF6E8] border-t border-[#E8DAC2]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-pill bg-[#FFF0DE] border border-[#F28C28]/30 text-xs font-bold text-[#B85F00] mb-3.5 shadow-xs">
+              <span>{lang === 'mr' ? 'अन्न पुनर्वापर कार्यप्रवाह' : 'Food Recovery Workflow'}</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-[#1F5C3A] leading-tight">
+              {CONTENT_KIT.howItWorks.title[lang]}
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-[#735747]">
+              {CONTENT_KIT.howItWorks.subtitle[lang]}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {CONTENT_KIT.howItWorks.steps.map((st, i) => (
+              <div key={i} className="bg-white rounded-3xl p-5 sm:p-6 border border-[#E8DAC2] shadow-soft flex flex-col justify-between hover:border-[#F28C28] transition-all">
+                <div>
+                  {/* Step Thumbnail Artwork */}
+                  <div className="w-full h-36 rounded-2xl overflow-hidden bg-[#FFFBF5] border border-[#E8DAC2] mb-4 p-1">
+                    <img 
+                      src={st.image} 
+                      alt={st.title[lang]} 
+                      className="w-full h-full object-cover rounded-xl"
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = '/brand/logo.png';
+                      }}
+                    />
+                  </div>
+
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="w-6 h-6 rounded-lg bg-[#FFF0DE] text-[#B85F00] font-mono font-bold text-xs flex items-center justify-center">
+                      {st.num}
+                    </span>
+                    <h3 className="font-display font-bold text-base text-[#1F5C3A]">
+                      {st.title[lang]}
+                    </h3>
+                  </div>
+
+                  <p className="text-xs text-[#735747] leading-relaxed">
+                    {st.desc[lang]}
+                  </p>
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-[#F0E6D8] text-[11px] font-bold text-[#F28C28] flex items-center justify-between">
+                  <span>Step {i + 1} of 4</span>
+                  <ChevronRight className="w-3.5 h-3.5" />
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* 5. Food Quality Assessment & Priority Rules (No live radar scan) */}
+      <FreshGuardSection lang={lang} />
+
+      {/* 6. Stories Section */}
+      <StoriesSection lang={lang} />
+
+      {/* 7. Quotes Carousel */}
+      <QuotesCarousel lang={lang} />
+
+      {/* 8. Dedicated Portals Showcase (Compost & Gaushala are fully separate) */}
+      <PortalsShowcase
+        lang={lang}
+        onSelectPortal={(portalId) => {
+          setActivePortal(portalId);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+      />
+
+      {/* 9. Impact Visualizations */}
+      <ImpactCharts lang={lang} />
+
+      {/* 10. Dedicated "About Us" Section */}
+      <section id="about-us" className="py-20 bg-white border-t border-[#E8DAC2]">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          
+          <div className="text-center space-y-4">
+            <span className="text-xs font-bold text-[#F28C28] uppercase tracking-wider block">
+              {CONTENT_KIT.aboutUs.title[lang]}
+            </span>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-[#1F5C3A]">
+              {CONTENT_KIT.aboutUs.headline[lang]}
+            </h2>
+            <p className="mt-6 text-sm sm:text-base text-[#4B2E1E] leading-relaxed max-w-3xl mx-auto font-sans">
+              {CONTENT_KIT.aboutUs.missionText[lang]}
+            </p>
+          </div>
+
+          {/* Core Values Grid */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {CONTENT_KIT.aboutUs.values.map((val, i) => (
+              <div key={i} className="p-5 rounded-2xl bg-[#FFFBF5] border border-[#E8DAC2] space-y-2">
+                <h4 className="font-display font-bold text-sm text-[#1F5C3A]">
+                  {val.title[lang]}
+                </h4>
+                <p className="text-xs text-[#735747] leading-relaxed">
+                  {val.desc[lang]}
+                </p>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* 11. FAQ Accordion */}
+      <FaqSection lang={lang} />
+
+      {/* 12. Final CTA Band */}
+      <section className="py-20 bg-gradient-to-r from-[#1F5C3A] to-[#144528] text-white relative overflow-hidden">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
+          
+          <span className="text-xs font-bold text-[#F6C343] uppercase tracking-wider block">
+            {CONTENT_KIT.ctaBand.tagline[lang]}
+          </span>
+
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-extrabold text-white leading-tight">
+            {CONTENT_KIT.ctaBand.headline[lang]}
+          </h2>
+
+          <p className="text-sm sm:text-base text-white/80 max-w-2xl mx-auto leading-relaxed">
+            {CONTENT_KIT.ctaBand.sub[lang]}
+          </p>
+
+          <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+            <button
+              onClick={() => setActivePortal('donor')}
+              className="px-7 py-3.5 bg-[#F28C28] hover:bg-[#D97314] text-white font-bold text-sm rounded-pill btn-pill shadow-soft"
+            >
+              {CONTENT_KIT.ctaBand.btnDonate[lang]}
+            </button>
+            <button
+              onClick={() => setActivePortal('orphanage')}
+              className="px-7 py-3.5 bg-white text-[#1F5C3A] hover:bg-[#FFF6E8] font-bold text-sm rounded-pill btn-pill shadow-soft"
+            >
+              {CONTENT_KIT.ctaBand.btnJoin[lang]}
+            </button>
+          </div>
+
+        </div>
+      </section>
+
+      {/* 13. Footer */}
+      <Footer
+        lang={lang}
+        onSelectPortal={(portalId) => {
+          setActivePortal(portalId);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+      />
+
+      {/* Auth Modal */}
+      <AuthModal
+        isOpen={authModalOpen}
+        onClose={() => setAuthModalOpen(false)}
+        onLoginSuccess={handleLoginSuccess}
+        lang={lang}
+      />
+
+    </div>
+  );
 }

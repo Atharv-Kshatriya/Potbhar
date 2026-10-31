@@ -226,7 +226,7 @@ export default function FreshGuardSection({ lang }) {
                   </div>
                   <div>
                     <h4 className="font-display font-bold text-lg sm:text-xl text-white">
-                      {lang === 'mr' ? 'प्रणालीने सुचवलेले प्राधान्य' : 'System Suggested Priority'}
+                      SafeGuard AI
                     </h4>
                     <p className="text-xs text-white/70">
                       {lang === 'mr' ? 'निकष तपासून ठरवलेला योग्य मार्ग' : 'Dynamic priority routing based on condition'}

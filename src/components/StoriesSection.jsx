@@ -1,13 +1,9 @@
 import React, { useState } from 'react';
 import { CONTENT_KIT } from '../lib/contentKit';
 import { 
-  ArrowRight, 
   Sparkles, 
   CheckCircle2, 
   XCircle, 
-  Users, 
-  Clock, 
-  MapPin,
   Heart
 } from 'lucide-react';
 
@@ -104,25 +100,6 @@ export default function StoriesSection({ lang }) {
               <p className="text-sm sm:text-base text-[#1F5C3A] font-semibold leading-relaxed">
                 {current.withPotbhar[lang]}
               </p>
-            </div>
-
-            {/* Relay Process Line */}
-            <div className="pt-3 border-t border-[#F0E6D8] flex flex-wrap items-center justify-between gap-2 text-xs font-bold text-[#735747]">
-              <span className="flex items-center gap-1 text-[#F28C28]">
-                📝 {lang === 'mr' ? 'नोंद करा' : 'List'}
-              </span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#A38979]" />
-              <span className="flex items-center gap-1 text-[#1F5C3A]">
-                🛡️ {lang === 'mr' ? 'तपासा' : 'Check'}
-              </span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#A38979]" />
-              <span className="flex items-center gap-1 text-[#4FA3E0]">
-                ⚡ {lang === 'mr' ? 'जुळवा' : 'Match'}
-              </span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#A38979]" />
-              <span className="flex items-center gap-1 text-[#4E9A59]">
-                🤝 {lang === 'mr' ? 'हस्तांतरण' : 'Handoff'}
-              </span>
             </div>
 
           </div>

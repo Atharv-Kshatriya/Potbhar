@@ -2,7 +2,12 @@ import React from 'react';
 import { CONTENT_KIT, MARATHI_BRAND_LINE } from '../lib/contentKit';
 import { ShieldCheck, MapPin, Mail } from 'lucide-react';
 
-export default function Footer({ lang }) {
+export default function Footer({ lang, onSectionNavigate }) {
+  const sectionLink = (event, id) => {
+    if (!onSectionNavigate) return;
+    event.preventDefault();
+    onSectionNavigate(id);
+  };
   return (
     <footer className="bg-[#16452B] text-white pt-16 pb-12 border-t border-[#1F5C3A]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -56,12 +61,11 @@ export default function Footer({ lang }) {
               {lang === 'mr' ? 'महत्त्वाचे दुवे' : 'Platform'}
             </h4>
             <ul className="space-y-2.5 text-sm text-white/80">
-              <li><a href="#about-us" className="hover:text-white transition-colors">{CONTENT_KIT.nav?.about?.[lang] || 'About Us'}</a></li>
-              <li><a href="#how-it-works" className="hover:text-white transition-colors">{CONTENT_KIT.nav?.howItWorks?.[lang] || 'How it works'}</a></li>
-              <li><a href="#freshguard-quality" className="hover:text-white transition-colors">{CONTENT_KIT.nav?.qualityCheck?.[lang] || 'Food Quality'}</a></li>
-              <li><a href="#stories" className="hover:text-white transition-colors">{CONTENT_KIT.nav?.story?.[lang] || 'Stories'}</a></li>
-              <li><a href="#impact" className="hover:text-white transition-colors">{CONTENT_KIT.nav?.impact?.[lang] || 'Impact'}</a></li>
-              <li><a href="#faq" className="hover:text-white transition-colors">{CONTENT_KIT.nav?.faq?.[lang] || 'FAQ'}</a></li>
+              <li><a href="#about-us" onClick={(event) => sectionLink(event, 'about-us')} className="hover:text-white transition-colors">{CONTENT_KIT.nav?.about?.[lang] || 'About Us'}</a></li>
+              <li><a href="#freshguard-quality" onClick={(event) => sectionLink(event, 'freshguard-quality')} className="hover:text-white transition-colors">{CONTENT_KIT.nav?.qualityCheck?.[lang] || 'Food Quality'}</a></li>
+              <li><a href="#stories" onClick={(event) => sectionLink(event, 'stories')} className="hover:text-white transition-colors">{CONTENT_KIT.nav?.story?.[lang] || 'Stories'}</a></li>
+              <li><a href="#impact" onClick={(event) => sectionLink(event, 'impact')} className="hover:text-white transition-colors">{CONTENT_KIT.nav?.impact?.[lang] || 'Impact'}</a></li>
+              <li><a href="#faq" onClick={(event) => sectionLink(event, 'faq')} className="hover:text-white transition-colors">{CONTENT_KIT.nav?.faq?.[lang] || 'FAQ'}</a></li>
             </ul>
           </div>
 

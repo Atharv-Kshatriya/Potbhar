@@ -7,6 +7,7 @@ import StoriesSection from './components/StoriesSection';
 const ImpactCharts = lazy(() => import('./components/ImpactCharts'));
 import FaqSection from './components/FaqSection';
 import AuthModal from './components/AuthModal';
+import HowItWorksPage from './components/HowItWorksPage';
 
 // Dedicated Portals (Compost & Gaushala are completely separate)
 import DonorPortal from './components/portals/DonorPortal';
@@ -39,6 +40,7 @@ import {
 export default function App() {
   const [lang, setLang] = useState('en'); // 'en' | 'mr'
   const [activePortal, setActivePortal] = useState(null); // null (landing) or 'donor' | 'orphanage' | 'shelter' | 'gaushala' | 'compost' | 'volunteer' | 'admin'
+  const [activePage, setActivePage] = useState('home');
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
@@ -56,6 +58,18 @@ export default function App() {
     window.sessionStorage.removeItem('potbhar.accessToken');
     setCurrentUser(null);
     setActivePortal(null);
+  };
+
+  const navigateToSection = (sectionId) => {
+    if (activePage === 'how-it-works') {
+      setActivePage('home');
+      window.setTimeout(() => {
+        document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        window.history.replaceState(null, '', `#${sectionId}`);
+      }, 50);
+      return;
+    }
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   // Dedicated Portals Routing
@@ -81,6 +95,10 @@ export default function App() {
     return <AdminPortal lang={lang} user={currentUser} onBackToLanding={handlePortalBack} />;
   }
 
+  if (activePage === 'how-it-works') {
+    return <div className="min-h-screen bg-[#FFF6E8] text-[#4B2E1E] selection:bg-[#F28C28]/20 selection:text-[#B85F00] font-sans"><Navbar lang={lang} setLang={setLang} setActivePortal={setActivePortal} openAuthModal={() => setAuthModalOpen(true)} openHowItWorks={() => window.scrollTo({ top: 0, behavior: 'smooth' })} goHome={() => { setActivePage('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} onSectionNavigate={navigateToSection} isHowItWorksPage /><HowItWorksPage lang={lang} onBack={() => { setActivePage('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }} /><Footer lang={lang} onSectionNavigate={navigateToSection} /><AuthModal isOpen={authModalOpen} onClose={() => setAuthModalOpen(false)} onLoginSuccess={handleLoginSuccess} lang={lang} /></div>;
+  }
+
   // Public Landing Page
   return (
     <div className="min-h-screen bg-[#FFF6E8] text-[#4B2E1E] selection:bg-[#F28C28]/20 selection:text-[#B85F00] font-sans">
@@ -91,10 +109,13 @@ export default function App() {
         setLang={setLang}
         setActivePortal={setActivePortal}
         openAuthModal={() => setAuthModalOpen(true)}
+        openHowItWorks={() => { setActivePage('how-it-works'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+        goHome={() => { setActivePage('home'); window.scrollTo({ top: 0, behavior: 'smooth' }); }}
+        onSectionNavigate={navigateToSection}
       />
 
       {/* 2. Hero Section - With prominent hero-illustration.png */}
-      <section className="relative pt-8 pb-16 sm:pt-14 sm:pb-24 overflow-hidden">
+      <section id="home" className="relative pt-8 pb-16 sm:pt-14 sm:pb-24 overflow-hidden scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-6 items-center">
@@ -150,13 +171,6 @@ export default function App() {
                   <span>{CONTENT_KIT.hero.ctaFind[lang]}</span>
                 </button>
 
-                <a
-                  href="#how-it-works"
-                  className="px-4 py-3 text-xs font-bold text-[#1F5C3A] hover:text-[#B85F00] flex items-center gap-2 transition-colors"
-                >
-                  <span>{CONTENT_KIT.hero.ctaHow[lang]}</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </a>
               </div>
 
             </div>
@@ -233,64 +247,6 @@ export default function App() {
                 </div>
                 <div className="mt-6 pt-4 border-t border-[#F0E6D8] text-[11px] font-semibold text-[#A38979]">
                   Source: {card.source}
-                </div>
-              </div>
-            ))}
-          </div>
-
-        </div>
-      </section>
-
-      {/* 4. How It Works - Illustrated with Real Artwork (NO AI label) */}
-      <section id="how-it-works" className="py-20 bg-[#FFF6E8] border-t border-[#E8DAC2]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-pill bg-[#FFF0DE] border border-[#F28C28]/30 text-xs font-bold text-[#B85F00] mb-3.5 shadow-xs">
-              <span>{lang === 'mr' ? 'अन्न पुनर्वापर कार्यप्रवाह' : 'Food Recovery Workflow'}</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-bold text-[#1F5C3A] leading-tight">
-              {CONTENT_KIT.howItWorks.title[lang]}
-            </h2>
-            <p className="mt-4 text-base sm:text-lg text-[#735747]">
-              {CONTENT_KIT.howItWorks.subtitle[lang]}
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {CONTENT_KIT.howItWorks.steps.map((st, i) => (
-              <div key={i} className="bg-white rounded-3xl p-5 sm:p-6 border border-[#E8DAC2] shadow-soft flex flex-col justify-between hover:border-[#F28C28] transition-all">
-                <div>
-                  {/* Step Thumbnail Artwork */}
-                  <div className="w-full h-36 rounded-2xl overflow-hidden bg-[#FFFBF5] border border-[#E8DAC2] mb-4 p-1">
-                    <img 
-                      src={st.image} 
-                      alt={st.title[lang]} 
-                      className="w-full h-full object-cover rounded-xl"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = '/brand/logo.png';
-                      }}
-                    />
-                  </div>
-
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="w-6 h-6 rounded-lg bg-[#FFF0DE] text-[#B85F00] font-mono font-bold text-xs flex items-center justify-center">
-                      {st.num}
-                    </span>
-                    <h3 className="font-display font-bold text-base text-[#1F5C3A]">
-                      {st.title[lang]}
-                    </h3>
-                  </div>
-
-                  <p className="text-xs text-[#735747] leading-relaxed">
-                    {st.desc[lang]}
-                  </p>
-                </div>
-
-                <div className="mt-4 pt-3 border-t border-[#F0E6D8] text-[11px] font-bold text-[#F28C28] flex items-center justify-between">
-                  <span>Step {i + 1} of 4</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
                 </div>
               </div>
             ))}
